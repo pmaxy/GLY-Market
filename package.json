@@ -11,15 +11,27 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.0",
+    "@angular/cdk": "^19.0.1",
     "@angular/common": "^17.3.0",
     "@angular/compiler": "^17.3.0",
     "@angular/core": "^17.3.0",
-    "@angular/forms": "^17.3.0",
+    "@angular/forms": "^17.3.12",
+    "@angular/material": "^19.0.1",
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@asymmetrik/ngx-leaflet": "^18.0.1",
+    "@fortawesome/angular-fontawesome": "^1.0.0",
+    "@ionic/angular": "^8.4.0",
+    "flowbite": "^2.5.2",
+    "ionicons": "^7.4.0",
+    "leaflet": "^1.9.4",
     "rxjs": "~7.8.0",
+    "scrollreveal": "^4.0.9",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "tns": "^0.2.0",
     "tslib": "^2.3.0",
+    "vanilla-tilt": "^1.8.1",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
@@ -33,6 +45,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "tailwindcss": "^3.4.15",
     "typescript": "~5.4.2"
   }
 }

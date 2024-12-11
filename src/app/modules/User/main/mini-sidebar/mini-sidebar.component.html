@@ -1,0 +1,134 @@
+<div
+class="flex hidden overflow-y-auto scrollbar-hide h-full flex-col mx-auto w-[380px] bg-white max-w-[380px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+role="main"
+[class.hidden]="!isOpen1"
+aria-label="Order Details Page"
+>
+<header
+  class="flex  gap-10  pr-20 pl-4 w-full text-center bg-white shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+>
+  <img
+    loading="lazy"
+    src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/98ea8ef070c3c17131d4e209f39c8b76599088cefe5412695c8c1512662085ae?apiKey=1cda1be9d1894bb2995be32d30ac20e2&"
+    class="object-contain shrink-0 aspect-[1.05] rounded-[50px] w-[50px]"
+    alt="Customer profile"
+  />
+  <div class="flex flex-col self-start">
+    <h1 class="self-center text-xl text-slate-700">pat's order</h1>
+    <p class="mt-2.5 text-base text-zinc-300">order number #005</p>
+  </div>
+</header>
+
+<div
+  class="flex flex-col justify-center px-2.5 py-2.5 mt-2 w-full text-xl text-center bg-white shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-slate-700"
+>
+  <div
+    class="flex overflow-hidden gap-5 justify-between px-4 pt-3 pb-4 bg-neutral-100 rounded-[30px]"
+    role="button"
+    tabindex="0"
+  >
+    <div>COUNTER NO</div>
+    <img
+      loading="lazy"
+      src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/cfbddb8beb42be4368ab5ab1ffd9f734da35273de4d8d8ad11ab5e2c42bc19c5?apiKey=1cda1be9d1894bb2995be32d30ac20e2&"
+      class="object-contain shrink-0 self-start mt-1 aspect-square shadow-[0px_4px_4px_rgba(0,0,0,0.25)] w-[18px]"
+      alt=""
+    />
+  </div>
+</div>
+
+<section
+  class="flex flex-col self-center px-1.5 py-3.5 mt-1 w-full text-center bg-white max-w-[370px]"
+  aria-label="Order Items" *ngFor="let item of orderItems"
+>
+  <div
+    class="flex overflow-hidden gap-2 justify-between items-start   pb-1 pl-1 bg-white rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+  >
+    <img
+      loading="lazy"
+      [src]="item.image"
+      alt="{{ item.name }}"
+      class="w-20"
+    />
+    <div class="flex flex-col items-start my-auto">
+      <h2 class="self-stretch text-md font-bold text-slate-700">{{ item.name }}</h2>
+      <p class=" text-base text-zinc-300">ksh.{{ item.price }}</p>
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/1dc04d0b88a7e6d47e5b5385983d221fccc2415b05c21f4ac6612e33ce3fe7a2?apiKey=1cda1be9d1894bb2995be32d30ac20e2&"
+        class="object-contain  aspect-[0.95] rounded-[50px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] w-[19px]"
+        alt=""
+      />
+    </div>
+    <div
+      class="flex  gap-5 self-end px-1.5 py-1.5 text-xl text-black whitespace-nowrap bg-neutral-100 rounded-[30px]"
+      role="group"
+      aria-label="Quantity selector"
+    >
+      <button
+        class="px-3 pb-7 flex justify-center w-4 h-4 bg-white rounded-[50px]"
+        aria-label="Decrease quantity"
+      >
+        -
+      </button>
+      <div class="self-start text-slate-700" aria-label="Current quantity">
+        1
+      </div>
+      <button
+        class="px-3 pb-7 flex justify-center bg-white w-4 h-4 rounded-[50px]"
+        aria-label="Increase quantity"
+      >
+        +
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<section
+  class="flex flex-col items-start self-center px-2.5 py-4 mt-3 w-full text-xl whitespace-nowrap bg-white shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+  aria-label="Order Summary"
+>
+  <div class="flex gap-1 justify-between w-full max-w-[355px]">
+    <div class="flex flex-col self-start">
+      <p class="text-slate-700">Subtotal</p>
+      <p class="mt-4 text-zinc-300">Tax(10%)</p>
+      <p class="mt-2 text-zinc-500">Discount</p>
+    </div>
+    <div class="flex flex-col text-center">
+      <div class="flex gap-5 justify-between text-slate-700">
+        <span>ksh</span>
+        <span>900</span>
+      </div>
+      <div class="flex gap-5 justify-between mt-4 text-zinc-300">
+        <span>ksh</span>
+        <span>90</span>
+      </div>
+      <div class="flex gap-5 justify-between mt-2 text-zinc-500">
+        <span>ksh</span>
+        <span>20</span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="shrink-0 self-stretch mt-2.5 h-px border border-solid bg-zinc-300 border-zinc-300"
+    role="separator"
+  ></div>
+  <div
+    class="flex gap-5 justify-between mt-3 w-full max-w-[354px] text-slate-700"
+  >
+    <p>TOTAL</p>
+    <div class="flex gap-10 text-center">
+      <span>ksh</span>
+      <span>970</span>
+    </div>
+  </div>
+</section>
+
+<button
+  class="overflow-hidden px-16 py-9 mt-6 w-full text-xl font-bold text-center text-white bg-primary-900"
+  aria-label="Place Order"
+>
+  Place Order
+</button>
+</div>

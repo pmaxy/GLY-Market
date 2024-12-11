@@ -1,0 +1,27 @@
+<div class="flex pl-10 pr-10 flex-row m-auto gap-2  justify-between items-center px-1 w-full bg-white min-h-[60px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] max-md:max-w-full">
+    <div class="gap-4 flex flex flex-row pr-5">
+        <button 
+        class="flex overflow-hidden flex-col grow shrink  px-1 py-1 my-auto w-6"
+        aria-label="Menu"
+        (click)="onToggleSidebar()"
+        >
+        <div class="w-8 border border-black border-solid min-h-[1px]"></div>
+        <div class="mt-2 w-8 border border-black border-solid min-h-[1px]"></div>
+        <div class="mt-2 w-8 border border-black border-solid min-h-[1px]"></div>
+        </button>
+        <div class="grow shrink  my-auto text-xl text-center font-bold text-slate-700">
+        GLY SHOP
+        </div>
+    </div>
+    <div class="flex overflow-hidden flex-col grow shrink justify-center items-start self-stretch relative px-1 py-1 ">
+      <input type="search" name=""  id="" class=" focus:ring-primary-100  my-auto border border-solid border-gray-300 w-full rounded-[30px]  max-md:pr-5 max-md:max-w-full" >
+      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/d658eb025026eae992a8e379ef856fc06230ebc6020cb7ae6e4dc86a69e657fb?apiKey=1cda1be9d1894bb2995be32d30ac20e2&" alt="" class="object-contain aspect-[0.86] w-[18px] absolute left-1" />
+    </div>
+    <div class="flex flex-row gap-12 ">
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/44c2fa92d56e40abc94c02fb2ad6e7838ff2cd762012cec36b9b030d872e7a25?apiKey=1cda1be9d1894bb2995be32d30ac20e2&" alt="" class="object-contain shrink-0 self-stretch my-auto aspect-[0.89] w-[30px]" />
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/81b045278c138ff12d7a84374aebaae41df525c16e678ebf6291c9b4f606e7c3?apiKey=1cda1be9d1894bb2995be32d30ac20e2&" alt="" class="object-contain shrink-0 self-stretch my-auto aspect-[0.9] w-[20px]" />
+        <button (click)="onToggleMiniSidebar()">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/0355823216579687e5cc13ab06567b85b2cc3de893b631d485f95d70effb1243?apiKey=1cda1be9d1894bb2995be32d30ac20e2&" alt="" class="object-contain shrink-0 self-stretch my-auto aspect-[1.31] w-[30px]" />
+        </button>
+    </div>
+</div>

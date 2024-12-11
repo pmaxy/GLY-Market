@@ -1,0 +1,4 @@
+.custom-dialog {
+    border-radius: 15px; /* Adjust radius as needed */
+    overflow: hidden;    /* Ensure content stays within the rounded corners */
+  }
