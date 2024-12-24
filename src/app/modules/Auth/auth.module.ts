@@ -9,6 +9,11 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from '../../../material.module';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { CodeInputModule } from 'angular-code-input';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -18,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     OtpComponent,
     PasswordResetComponent,
     RegisterComponent,
+    
   
   ],
   imports: [
@@ -25,8 +31,16 @@ import { FormsModule } from '@angular/forms';
     AuthRoutingModule,
     RouterModule,
     IonicModule.forRoot(),
-    FormsModule
-  ]
+    FormsModule,
+    MaterialModule,
+    RouterModule,
+    ToastrModule,
+    HttpClientModule,
+    CodeInputModule,
+    NgxSpinnerModule
+
+  ],
+  providers: [provideHttpClient()],
 })
 export class AuthModule { }
 

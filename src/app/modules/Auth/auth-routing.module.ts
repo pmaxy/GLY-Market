@@ -12,6 +12,10 @@ const routes: Routes = [
     component: LandingPageComponent
   },
   {
+    path: 'landingpage',
+    component: LandingPageComponent,
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

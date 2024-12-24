@@ -10,7 +10,7 @@ import { SettingsComponent } from './main/home-main/settings/settings.component'
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'user',
     component: MainComponent,
     children:[
       {

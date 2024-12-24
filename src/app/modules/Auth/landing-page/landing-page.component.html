@@ -1,3 +1,11 @@
+<div class="loading-overlay" *ngIf="isLoading" [class.active]="isLoading">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-spin-fade-rotating">
+    <div class="progress-bar">
+      <div class="progress" [style.width]="progressWidth"></div> <!-- Dynamically set the width -->
+    </div>
+    Loading...
+  </ngx-spinner>
+</div>
 <div class="relative h-screen w-screen bg-primary-950 overflow-hidden">
 <section class="absolute top-0 left-0 w-full h-full z-0">
     <div class="leaf">
@@ -33,11 +41,11 @@
         Welcome to GLY—Shop one-stop shop for convenience and quality! Place your orders today and enjoy fast, reliable delivery right to your doorstep. We offer wholesale services to meet your bulk purchasing needs, ensuring unbeatable value. Our shop is open 24/7, making shopping easy and accessible anytime, anywhere. Experience seamless service and exceptional customer care with us.
       </p>
       <form id="form" autocomplete="off" class="flex items-center gap-3">
-        <button [routerLink]="['/login']" type="submit" class="btn flex items-center gap-3 bg-gradient-to-r ring-1 text-white py-2 px-8 rounded-md shadow-lg hover:bg-right focus:ring-1 focus:outline-none focus:ring-primary-300 dark:bg-primary-700 dark:focus:ring-primary-800">
+        <button (click)="login()" type="submit" class="btn flex items-center gap-3 bg-gradient-to-r ring-1 text-white py-2 px-8 rounded-md shadow-lg hover:bg-right focus:ring-1 focus:outline-none focus:ring-primary-300 dark:bg-primary-700 dark:focus:ring-primary-800">
           <span>Login</span>
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
-        <button [routerLink]="['/register']" type="submit" class="btn flex items-center gap-3 bg-gradient-to-r from-primary-400 to-primary-700  text-white py-2 px-8 rounded-md shadow-lg hover:bg-right focus:outline-none">
+        <button (click)="register()" type="submit" class="btn flex items-center gap-3 bg-gradient-to-r from-primary-400 to-primary-700  text-white py-2 px-8 rounded-md shadow-lg hover:bg-right focus:outline-none">
           <span>Register</span>
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
