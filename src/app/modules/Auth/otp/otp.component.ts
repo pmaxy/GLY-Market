@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../../services/services';
 import { Router } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-otp',
@@ -22,7 +23,8 @@ export class OtpComponent {
     private authServive: AuthenticationService,
     private errorHandler: ErrorHandlerService,
     private spinner: NgxSpinnerService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private toast: ToastrService
       
     
   ){}
@@ -42,6 +44,7 @@ export class OtpComponent {
           this.router.navigate(['login']);
           this.spinner.hide();
           this.isLoading = false; // Hide overlay and spinner
+          this.toast.success('Account activated successfully', 'success')
     }, 2000);
   });
 

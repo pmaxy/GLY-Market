@@ -19,10 +19,10 @@ export class RegisterComponent {
     lastname: '',
     email: '',
     password: '',
-    role: [] as Array<'USER' | 'ADMIN' | 'MANAGER'>,
+    role: 'USER',
   }
   errorMsg: Array<string>= [];
-  roles: Array<'USER' | 'ADMIN' | 'MANAGER'> = ['USER', 'ADMIN', 'MANAGER'];
+  // roles: Array<'USER' | 'ADMIN' | 'MANAGER'> = ['USER', 'ADMIN', 'MANAGER'];
 
   constructor(
     private router: Router,
@@ -79,16 +79,16 @@ export class RegisterComponent {
 
   }
   
-  updateRole(event: Event, role: 'USER' | 'ADMIN' | 'MANAGER'): void {
-    const checked = (event.target as HTMLInputElement).checked;
-    if (checked) {
-      if (!this.registerRequest.role.includes(role)) {
-        this.registerRequest.role.push(role);
-      }
-    } else {
-      this.registerRequest.role = this.registerRequest.role.filter(r => r !== role);
-    }
-  }
+  // updateRole(event: Event, role: 'USER' | 'ADMIN' | 'MANAGER'): void {
+  //   const checked = (event.target as HTMLInputElement).checked;
+  //   if (checked) {
+  //     if (!this.registerRequest.role.includes(role)) {
+  //       this.registerRequest.role.push(role);
+  //     }
+  //   } else {
+  //     this.registerRequest.role = this.registerRequest.role.filter(r => r !== role);
+  //   }
+  // }
 
   
 

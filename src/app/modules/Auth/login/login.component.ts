@@ -42,7 +42,7 @@ export class LoginComponent {
             this.router.navigate(['userAdmin/user'])
             this.spinner.hide();
             this.isLoading = false;
-            this.toast.success("Successful Added",'Success')
+            this.toast.success("Successful login",'Success')
 
     }, 2000);
   });

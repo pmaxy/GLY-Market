@@ -7,5 +7,5 @@ export interface RegistrationRequest {
   firstname: string;
   lastname: string;
   password: string;
-  role: Array<'USER' | 'ADMIN' | 'MANAGER'>;
+  role: 'USER' | 'ADMIN' | 'MANAGER';
 }

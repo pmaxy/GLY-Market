@@ -56,16 +56,8 @@
           <input [(ngModel)]="registerRequest.password" type="password" id="password"  name="password" placeholder="••••••••" required class="shadow-[inset_6px_6px_6px_#cbced1,inset_-6px_-6px_6px_gray] w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-500 rounded-lg focus:ring-primary-500 focus:border-primary-500 hover:scale-105 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
         </div>
         <div>
-          <label class="block mb-2 text-sm font-medium text-primary-300 dark:text-white">Role</label>
-          <div *ngFor="let availableRole of roles" class="flex items-center mb-2">
-            <input
-              type="checkbox"
-              [checked]="registerRequest.role.includes(availableRole)"
-              (change)="updateRole($event, availableRole)"
-              class="mr-2 w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600"
-            />
-            <label class="text-sm text-gray-500 dark:text-white">{{ availableRole }}</label>
-          </div>
+          <label for="role" class="block mb-2 text-sm font-medium text-primary-300 dark:text-white">Role</label>
+          <input [(ngModel)]="registerRequest.role" type="text" id="role" name="role" placeholder="ADMIN" required class="shadow-[inset_6px_6px_6px_#cbced1,inset_-6px_-6px_6px_gray] w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-500 rounded-lg focus:ring-primary-500 focus:border-primary-500 hover:scale-105 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
         </div>
         
         <div class="flex items-start">
