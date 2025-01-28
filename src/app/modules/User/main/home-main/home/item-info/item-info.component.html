@@ -4,11 +4,11 @@
         <div class="flex flex-col grow items-start max-md:mt-10 max-md:max-w-full">
           <img
             loading="lazy"
-            [src]="data.src"
+            [src]="data.imageUrl"
             alt="Savana Honey product image"
             class="object-contain self-stretch w-full aspect-[1.09] max-md:max-w-full bg-neutral-100"
           />
-          <div class="mt-4 text-xs text-primary-500" role="status" aria-live="polite">{{data.itemsLeft}} items left</div>
+          <div class="mt-4 text-xs text-primary-500" role="status" aria-live="polite">{{data.availableQuantity}} items left</div>
           <div
           class="flex overflow-hidden flex-col items-start mt-1 w-full bg-zinc-300 rounded-[30px]"
           role="progressbar"

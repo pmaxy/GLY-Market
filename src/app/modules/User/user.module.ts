@@ -13,6 +13,9 @@ import { SettingsComponent } from './main/home-main/settings/settings.component'
 import { MaterialModule } from '../../../material.module';
 import { FormsModule } from '@angular/forms';
 import { MiniSidebarComponent } from './main/mini-sidebar/mini-sidebar.component';
+import { ProductsComponent } from './main/home-main/products/products.component';
+import { FormComponent } from './main/home-main/products/form/form.component';
+import { DeleteDialogComponent } from './main/home-main/products/delete-dialog/delete-dialog.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { MiniSidebarComponent } from './main/mini-sidebar/mini-sidebar.component
     HomeComponent,
     SettingsComponent,
     MainComponent,
-    MiniSidebarComponent
+    MiniSidebarComponent,
+    ProductsComponent,
+    FormComponent,
+    DeleteDialogComponent
 
 
 
@@ -35,7 +41,8 @@ import { MiniSidebarComponent } from './main/mini-sidebar/mini-sidebar.component
     RouterModule,
     IonicModule.forRoot(),
     MaterialModule,
-    FormsModule
+    FormsModule,
+  
     
   ]
 })

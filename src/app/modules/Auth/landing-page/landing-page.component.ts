@@ -10,8 +10,10 @@ import { AuthenticationRequest } from '../../../services/models';
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
-export class LandingPageComponent{
-
+export class LandingPageComponent implements OnInit{
+  fullText = 'Shop with GLY Shop with the Best';
+  displayedText = ''; 
+  typingSpeed = 100;
   isLoading: boolean = false;
   progressWidth: string = '0%';
   constructor(
@@ -38,6 +40,24 @@ export class LandingPageComponent{
     { src: '/assets/figma-photos/278414689-03e51e1e-9750-45a5-b75e-a1e341d4562a.jpg' },
 ];
 
+
+ngOnInit(): void {
+  this.startTypingEffect();
+}
+
+startTypingEffect(){
+  let index = 0;
+
+  const typingInterval = setInterval(()=>{
+    if(index< this.fullText.length){
+      this.displayedText+= this.fullText.charAt(index);
+      index++;
+    } else{
+      clearInterval(typingInterval);
+    }
+  }, this.typingSpeed
+);
+}
 login(){
     this.isLoading = true;
     this.ngZone.run(() => {

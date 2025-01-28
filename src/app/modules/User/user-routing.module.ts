@@ -7,6 +7,7 @@ import { SidebarComponent } from './main/sidebar/sidebar.component';
 import { MiniSidebarComponent } from './main/mini-sidebar/mini-sidebar.component';
 import { DashboardComponent } from './main/home-main/dashboard/dashboard.component';
 import { SettingsComponent } from './main/home-main/settings/settings.component';
+import { ProductsComponent } from './main/home-main/products/products.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,12 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsComponent
+      },
+      {
+        path: 'products',
+        component: ProductsComponent
       }
+
 
     ]
   }

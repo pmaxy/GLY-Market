@@ -6,69 +6,77 @@
     Loading...
   </ngx-spinner>
 </div>
-<div class="relative h-screen w-screen bg-primary-950 overflow-hidden">
-<section class="absolute top-0 left-0 w-full h-full z-0">
+<div class="relative h-screen w-full bg-primary-950 lg:overflow-hidden overflow-x-scroll ">
+  <section class="absolute top-0 left-0 w-full h-full z-0">
     <div class="leaf">
       <div class="absolute w-full h-full">
         <img class="animate-fall absolute w-17 h-17" style="left: 2%" src="/assets/figma-photos/snacks.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 85%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 85%"
+          src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
         <img class="animate-fall absolute w-17 h-17" style="left: 75%" src="/assets/figma-photos/nip.png">
         <img class="animate-fall absolute w-17 h-17" style="left: 40%" src="/assets/figma-photos/meat.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 30%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 15%" src="/assets/figma-photos/Green-Leaves-PNG-File.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 90%" src="/assets/figma-photos/Green-Leaves-PNG-File.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 5%" src="/assets/figma-photos/Realistic-Autumn-Fall-Leaves-PNG.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 10%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 25%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 35%" src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 45%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 55%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-        <img class="animate-fall absolute w-16 h-16" style="left: 60" src="/assets/figma-photos/Green-Leaves-PNG-File.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 30%"
+          src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 15%"
+          src="/assets/figma-photos/Green-Leaves-PNG-File.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 90%"
+          src="/assets/figma-photos/Green-Leaves-PNG-File.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 5%"
+          src="/assets/figma-photos/Realistic-Autumn-Fall-Leaves-PNG.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 10%"
+          src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 25%"
+          src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 35%"
+          src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 45%"
+          src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 55%"
+          src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
+        <img class="animate-fall absolute w-16 h-16" style="left: 60"
+          src="/assets/figma-photos/Green-Leaves-PNG-File.png">
 
 
 
       </div>
     </div>
-</section>
-<div class="home grid grid-cols-2 gap-12 p-32  w-full relative z-10 ">
+  </section>
+  <div class="home grid grid-cols-2 gap-12 p-32  w-full relative z-10 ">
     <div class="description text-white px-12">
       <h1 class="title text-4xl md:text-5xl font-[Tilt Neon] mb-8 leading-tight">
         <span class="gradient-text text-transparent bg-clip-text bg-gradient-to-r from-[#76a73f] to-[#908aec]">
-          Shop with GLY Shop
-        </span> with the Best
+          {{ displayedText }}
+        </span> 
       </h1>
       <p class="paragraph text-lg md:text-xl mb-8">
-        Welcome to GLY—Shop one-stop shop for convenience and quality! Place your orders today and enjoy fast, reliable delivery right to your doorstep. We offer wholesale services to meet your bulk purchasing needs, ensuring unbeatable value. Our shop is open 24/7, making shopping easy and accessible anytime, anywhere. Experience seamless service and exceptional customer care with us.
+        Welcome to GLY—Shop one-stop shop for convenience and quality! Place your orders today and enjoy fast, reliable
+        delivery right to your doorstep. We offer wholesale services to meet your bulk purchasing needs, ensuring
+        unbeatable value. Our shop is open 24/7, making shopping easy and accessible anytime, anywhere. Experience
+        seamless service and exceptional customer care with us.
       </p>
       <form id="form" autocomplete="off" class="flex items-center gap-3">
-        <button (click)="login()" type="submit" class="btn flex items-center gap-3 bg-gradient-to-r ring-1 text-white py-2 px-8 rounded-md shadow-lg hover:bg-right focus:ring-1 focus:outline-none focus:ring-primary-300 dark:bg-primary-700 dark:focus:ring-primary-800">
+        <button (click)="login()" type="submit"
+          class="btn flex items-center gap-3 bg-gradient-to-r ring-1 text-white py-2 px-8 rounded-md shadow-lg hover:bg-right focus:ring-1 focus:outline-none focus:ring-primary-300 dark:bg-primary-700 dark:focus:ring-primary-800">
           <span>Login</span>
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
-        <button (click)="register()" type="submit" class="btn flex items-center gap-3 bg-gradient-to-r from-primary-400 to-primary-700  text-white py-2 px-8 rounded-md shadow-lg hover:bg-right focus:outline-none">
+        <button (click)="register()" type="submit"
+          class="btn1 ">
           <span>Register</span>
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
       </form>
     </div>
-  
-    <div class="users-color-container">
-        <ng-container *ngFor="let item of items; let i = index">
-          <span
-            *ngIf="!item.src"
-            class="item"
-            [ngStyle]="{ '--i': i + 1 }"
-            [style.backgroundColor]="item.color"
-          ></span>
-          <img
-            *ngIf="item.src"
-            class="item"
-            [src]="item.src"
-            [ngStyle]="{ '--i': i + 1 }"
-            alt=""/>
-        </ng-container>
-      </div>
-      
+
+    <div class="users-color-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+      <ng-container *ngFor="let item of items; let i = index">
+        <span *ngIf="!item.src" class="item w-20 md-[80px] lg:w-[120px] place-self-center" [ngStyle]="{ '--i': i + 1 }"
+          [style.backgroundColor]="item.color"></span>
+        <img *ngIf="item.src" class="item w-20 md-[80px] lg:w-[120px] place-self-center" [src]="item.src"
+          [ngStyle]="{ '--i': i + 1 }" alt="" />
+      </ng-container>
+    </div>
+
+  </div>
 </div>
-</div>
-  
+

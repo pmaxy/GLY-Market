@@ -7,9 +7,14 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { ManagementService } from './services/management.service';
+import { CustomerControllerService } from './services/customer-controller.service';
 import { AdminControllerService } from './services/admin-controller.service';
+import { ProductControllerService } from './services/product-controller.service';
+import { PaymentControllerService } from './services/payment-controller.service';
+import { OrderControllerService } from './services/order-controller.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserControllerService } from './services/user-controller.service';
+import { OrderLineControllerService } from './services/order-line-controller.service';
 
 /**
  * Module that provides all services and configuration.
@@ -20,9 +25,14 @@ import { UserControllerService } from './services/user-controller.service';
   declarations: [],
   providers: [
     ManagementService,
+    CustomerControllerService,
     AdminControllerService,
+    ProductControllerService,
+    PaymentControllerService,
+    OrderControllerService,
     AuthenticationService,
     UserControllerService,
+    OrderLineControllerService,
     ApiConfiguration
   ],
 })

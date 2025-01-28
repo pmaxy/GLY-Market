@@ -6,6 +6,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { OtpComponent } from './otp/otp.component';
 import { RegisterComponent } from './register/register.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -30,7 +31,8 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
-  }
+  },
+
 ];
 
 @NgModule({

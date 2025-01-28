@@ -3,8 +3,8 @@ import { RegistrationRequest } from '../../../services/models/registration-reque
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../../../services/services/authentication.service';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ErrorHandlerService } from '../../User/error-handler.service';
 
 @Component({
   selector: 'app-register',

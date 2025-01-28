@@ -4,8 +4,8 @@ import { AuthenticationService } from '../../../services/services';
 import { Router } from '@angular/router';
 import { TokenService } from '../../../token/token.service';
 import { ToastrService } from 'ngx-toastr';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ErrorHandlerService } from '../../User/error-handler.service';
 
 @Component({
   selector: 'app-login',

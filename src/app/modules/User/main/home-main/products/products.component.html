@@ -1,0 +1,102 @@
+<div class="h-full w-Screen relative overflow-y-auto m-auto flex juustify-center items-center">
+
+  <div class="shadow-gray-300 rounded-xl  h-full w-full relative p-4 bg-gray-900">
+
+    <!-- <app-map class=""></app-map> -->
+    <div class=" py-2 flex flex-col gap-2">
+    <div class="block col-span-full justify-round items-center  bg-white rounded-lg shadow-2xl sm:flex">
+      <div class=" flex flex-row justify-between items-center align-center w-full px-2">
+       
+
+          <ul class="mx-4 border-l border-gray-500 flex flex-row justify-between gap-5 align-center items-center">
+            <li class="border-r border-gray-500 border-solid pr-1 hover:">
+
+              <button (click)="openDialog()" class="bg-primary-900 px-3  rounded-lg text-white ">Add Service</button>
+            </li>
+            <li class="border-r border-gray-900 border-solid pr-1 hover:scale-[1.02] transition-transform">
+              <fa-icon [icon] ="faFileExcel" class="text-green-900 " ></fa-icon>
+
+            </li>
+            <li class="pr-1 hover:scale-[1.02] transition-transform">
+              <fa-icon [icon] ="faFilePdf" class="text-primary-900 " ></fa-icon>
+            </li>
+
+
+          </ul>
+          <div class="pb-4 bg-white dark:bg-gray-900">
+            <label for="table-search" class="sr-only">Search</label>
+            <div class="relative mt-1">
+                <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <fa-icon [icon]="faSearch" class="text-primary-900 "></fa-icon>   
+            </div>
+                <input  (keyup)="applyFilter($event)" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search for items">
+            </div>
+          </div>
+
+      </div>
+
+      </div>
+<div class=" bg-white  h-50  rounded-lg" #table id="table">
+
+    <table class="overflow-auto" mat-table [dataSource]="dataSource" matSort class="">
+
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="No">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-headers>No </th>
+        <td mat-cell *matCellDef="let element let index=index" > {{index+1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="itemName">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-headers>Service Name </th>
+        <td mat-cell *matCellDef="let element" > {{element.name}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="availableQuantity">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-headers>Available Quantity </th>
+        <td mat-cell *matCellDef="let element" > {{element.availableQuantity}}</td>
+      </ng-container>
+      
+      <!-- Name Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="servicePrice">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> Service Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price }} </td>
+      </ng-container>
+      <ng-container matColumnDef="categoryName">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> category Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.categoryName }} </td>
+      </ng-container>
+      <ng-container matColumnDef="categoryDescription">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> category Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.categoryDescription }} </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef > Action </th>
+        <td mat-cell *matCellDef="let element">
+          <ul class="flex flex-row gap-5">
+              <li><button (click)="deleteDialog(element.vendorId)"><fa-icon [icon]="faTrashCan" class="text-primary-900 "></fa-icon> </button></li>
+              <li><button (click)="updateData(element)"><fa-icon [icon]="faPenToSquare" class="text-blue-900 "></fa-icon> </button></li>
+              <!-- <li><button (click)="openDialog()"><fa-icon [icon]="faEye" class="text-grey-900 "></fa-icon> </button></li> -->
+            </ul>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
+  </div>
+</div>
+

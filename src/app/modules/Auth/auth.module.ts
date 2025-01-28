@@ -16,6 +16,7 @@ import { CodeInputModule } from 'angular-code-input';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 
+
 @NgModule({
   declarations: [
     LandingPageComponent,
@@ -23,6 +24,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     OtpComponent,
     PasswordResetComponent,
     RegisterComponent,
+
     
   
   ],
@@ -37,7 +39,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ToastrModule,
     HttpClientModule,
     CodeInputModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+  
 
   ],
   providers: [provideHttpClient()],

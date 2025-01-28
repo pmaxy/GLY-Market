@@ -2,7 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { skipUntil } from 'rxjs';
 import { AuthenticationService } from '../../../services/services';
 import { Router } from '@angular/router';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { ErrorHandlerService } from '../../User/error-handler.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
