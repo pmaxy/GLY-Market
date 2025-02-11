@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gly-market-deployment
+  labels:
+    app: gly-market
+spec:
+  replicas: 1
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      name: gly-market
+      labels:
+        app: gly-market
+    spec:
+      containers:
+        - name: gly-market
+          image: acromnichannel.azurecr.io/billing/gly-market:#{Build.BuildId}#
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "100m"
+            limits:
+              memory: "1024Mi"
+              cpu: "200m"
+          ports:
+            - containerPort: 8080
+
+  selector:
+    matchLabels:
+      app: gly-market
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gly-market-service
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+  selector:
+    app: gly-market
