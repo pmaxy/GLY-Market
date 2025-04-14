@@ -1,17 +1,23 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, NgZone, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, NgZone,ElementRef,  ViewChild, AfterViewInit, OnInit, } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthenticationService } from '../../../services/services';
 import { TokenService } from '../../../token/token.service';
 import { AuthenticationRequest } from '../../../services/models';
+import { Dropdown, DropdownInterface, DropdownOptions, InstanceOptions } from 'flowbite';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
-export class LandingPageComponent implements OnInit{
-  fullText = 'Shop with GLY Shop with the Best';
+export class LandingPageComponent implements OnInit, AfterViewInit{
+  @ViewChild('dropdownMenu') dropdownMenuRef!: ElementRef;
+  @ViewChild('dropdownBtn') dropdownBtnRef!: ElementRef;
+  @ViewChild('myDropdown') myDropdown?: ElementRef;
+
+  fullText = 'Shop with AAI+  Your One-Stop Hub for Smart Tools & Solutions';
   displayedText = ''; 
   typingSpeed = 100;
   isLoading: boolean = false;
@@ -45,6 +51,30 @@ ngOnInit(): void {
   this.startTypingEffect();
 }
 
+
+
+
+ngAfterViewInit() {
+  const dropdownPairs = [
+    ['dropdownDelay', 'dropdownDelayButton'],
+    ['dropdownDelay2', 'dropdownDelayButton2'],
+    ['dropdownDelay3', 'dropdownDelayButton3'],
+    ['dropdownDelay4', 'dropdownDelayButton4'],
+  ];
+
+  dropdownPairs.forEach(([menuId, buttonId]) => {
+    const menuEl = document.getElementById(menuId);
+    const buttonEl = document.getElementById(buttonId);
+
+    if (menuEl && buttonEl) {
+      new Dropdown(menuEl, buttonEl, {
+        triggerType: 'hover',
+        delay: 500,
+      });
+    }
+  });
+  
+}
 startTypingEffect(){
   let index = 0;
 
@@ -74,7 +104,6 @@ login(){
         this.isLoading = false;
     }, 2000);
    });
-
 
 }
 
