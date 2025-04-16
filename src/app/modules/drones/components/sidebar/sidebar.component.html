@@ -1,0 +1,73 @@
+<div class="w-64 bg-white shadow-lg h-full flex flex-col p-4 rounded-lg">
+
+    <!-- 🧑‍💼 Profile + Brand -->
+    <div class="bg-blue-950 p-4 rounded-xl w-full text-white mb-6 shadow-sm">
+      <div class="flex items-center gap-4">
+        <img loading="lazy"
+             class="w-12 h-12 rounded-full border-2 border-blue-500 shadow"
+             src="https://i.pravatar.cc/300"
+             alt="User profile" />
+        <div>
+          <p class="text-sm font-semibold">Hi, Pilot</p>
+          <p class="text-xs text-gray-300">Welcome back!</p>
+        </div>
+      </div>
+      <div class="mt-4 pt-2 border-t border-blue-800">
+        <p class="text-lg font-bold text-blue-400 tracking-widest">DroneOps+</p>
+      </div>
+    </div>
+  
+    <!-- 🔍 Search (Optional) -->
+    
+    <div class="mb-5">
+      <input type="text" placeholder="🔎 Search..."
+        class="w-full px-4 py-2 rounded-md border border-blue-200 bg-blue-50 text-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+    </div>
+
+  
+    <!-- 📂 Navigation -->
+    <nav class="flex-1 space-y-2 text-sm font-medium text-gray-700">
+      <a [routerLink]="['']"
+         routerLinkActive="bg-blue-100 text-blue-700"
+         class="flex items-center gap-3 p-2 rounded-md transition hover:bg-blue-50 hover:text-blue-700">
+        <fa-icon [icon]="['fas', 'chart-pie']" class="text-blue-600 w-5 h-5"></fa-icon>
+        Overview
+      </a>
+  
+      <a [routerLink]="['geodron']"
+         routerLinkActive="bg-blue-100 text-blue-700"
+         class="flex items-center gap-3 p-2 rounded-md transition hover:bg-blue-50 hover:text-blue-700">
+        <fa-icon [icon]="['fas', 'map-marked-alt']" class="text-green-600 w-5 h-5"></fa-icon>
+        Geospatial
+      </a>
+  
+      <a [routerLink]="['ceremony']"
+         routerLinkActive="bg-blue-100 text-blue-700"
+         class="flex items-center gap-3 p-2 rounded-md transition hover:bg-blue-50 hover:text-blue-700">
+        <fa-icon [icon]="['fas', 'camera-retro']" class="text-pink-600 w-5 h-5"></fa-icon>
+        Ceremonies
+      </a>
+    </nav>
+  
+    <!-- ⚙️ Settings & Logout -->
+    <div class="mt-auto pt-4 border-t border-blue-100 space-y-2 text-sm text-gray-700">
+      <a [routerLink]="['home']"
+         class="flex items-center gap-3 p-2 rounded-md transition hover:bg-blue-50 hover:text-blue-700">
+        <fa-icon [icon]="['fas', 'user']" class="text-blue-600 w-5 h-5"></fa-icon>
+        My Profile
+      </a>
+  
+      <a [routerLink]="['home']"
+         class="flex items-center gap-3 p-2 rounded-md transition hover:bg-blue-50 hover:text-blue-700">
+        <fa-icon [icon]="['fas', 'cog']" class="text-blue-600 w-5 h-5"></fa-icon>
+        Settings
+      </a>
+  
+      <button (click)="logout()"
+              class="mt-4 w-full flex items-center gap-3 text-red-600 hover:bg-red-100 p-2 rounded-md transition text-left">
+        <fa-icon [icon]="['fas', 'right-from-bracket']" class="w-5 h-5"></fa-icon>
+        Logout
+      </button>
+    </div>
+  </div>
+  

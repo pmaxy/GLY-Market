@@ -1,0 +1,36 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, EventEmitter, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-topbar',
+  templateUrl: './topbar.component.html',
+  styleUrl: './topbar.component.css'
+})
+export class TopbarComponent {
+  @Output() toggleSidebar = new EventEmitter<void>();
+  isDropdownOpen = false;
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  handleMobileSearchClick() {
+    this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
+      if (result.matches) {
+        // Show a search modal or toggle sidebar for simplicity
+        this.toggleSidebar.emit();
+      }
+    });
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  closeDropdown(): void {
+    this.isDropdownOpen = false;
+  }
+
+  logout(): void {
+    // Replace with actual logout logic
+    console.log('Logging out...');
+  }
+}

@@ -1,0 +1,27 @@
+<div class="space-y-6">
+    <h2 class="text-2xl font-bold text-gray-800 capitalize">Available {{ selectedType }} Drones</h2>
+  
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let drone of filteredDrones" class="bg-white shadow-md hover:shadow-lg rounded-lg overflow-hidden transition">
+        <img [src]="drone.image" alt="{{ drone.name }}" class="w-full h-48 object-cover">
+        <div class="p-4 space-y-2">
+          <h3 class="text-lg font-semibold text-primary-700">{{ drone.name }}</h3>
+          <p class="text-sm text-gray-600">{{ drone.description }}</p>
+  
+          <ul class="text-xs text-gray-500 mt-2 list-disc pl-5 space-y-1">
+            <li *ngFor="let spec of drone.specs">{{ spec }}</li>
+          </ul>
+  
+          <button class="mt-4 inline-block bg-primary-600 text-white text-sm py-2 px-4 rounded hover:bg-primary-700 transition">
+            Select Drone
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Empty state -->
+    <div *ngIf="filteredDrones.length === 0" class="text-center text-gray-500 py-8">
+      <p>No drones available for this category yet.</p>
+    </div>
+  </div>
+  
