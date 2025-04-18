@@ -16,12 +16,14 @@ export class LandingPageComponent implements OnInit, AfterViewInit{
   @ViewChild('dropdownMenu') dropdownMenuRef!: ElementRef;
   @ViewChild('dropdownBtn') dropdownBtnRef!: ElementRef;
   @ViewChild('myDropdown') myDropdown?: ElementRef;
-
+  isMenuOpen = false;
+  openDropdownIndex: number | null = null;
   fullText = 'Shop with AAI+  Your One-Stop Hub for Smart Tools & Solutions';
   displayedText = ''; 
   typingSpeed = 100;
   isLoading: boolean = false;
   progressWidth: string = '0%';
+currentYear: any;
   constructor(
     private router: Router,
     private spinner: NgxSpinnerService,
@@ -45,6 +47,43 @@ export class LandingPageComponent implements OnInit, AfterViewInit{
     { src: '', color: '#fcd659' },
     { src: '/assets/figma-photos/278414689-03e51e1e-9750-45a5-b75e-a1e341d4562a.jpg' },
 ];
+
+
+menuItems = [
+  {
+    label: 'Earth Data',
+    links: [
+      { text: 'Satellite Maps', href: '#' },
+      { text: 'NDVI Analysis', href: '#' },
+      { text: 'Soil Health', href: '#' }
+    ]
+  },
+  {
+    label: 'Drone Service',
+    links: [
+      { text: 'Hire a Drone', href: '#' },
+      { text: 'Drone Pricing', href: '#' },
+      { text: 'Drone Gallery', href: '#' }
+    ]
+  },
+  {
+    label: 'Market Place',
+    links: [
+      { text: 'Buy Inputs', href: '#' },
+      { text: 'Sell Produce', href: '#' },
+      { text: 'Agro Deals', href: '#' }
+    ]
+  },
+  {
+    label: 'Community',
+    links: [
+      { text: 'Forums', href: '#' },
+      { text: 'Events', href: '#' },
+      { text: 'Mentorship', href: '#' }
+    ]
+  }
+];
+
 
 
 ngOnInit(): void {
@@ -120,6 +159,15 @@ register(){
     }, 2000);
   });
 
+}
+
+toggleMenu() {
+  this.isMenuOpen = !this.isMenuOpen;
+  this.openDropdownIndex = null;
+}
+
+toggleDropdown(index: number) {
+  this.openDropdownIndex = this.openDropdownIndex === index ? null : index;
 }
 
 }

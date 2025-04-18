@@ -1,10 +1,5 @@
 <div class="loading-overlay" *ngIf="isLoading" [class.active]="isLoading">
-  <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-spin-fade-rotating">
-    <div class="progress-bar">
-      <div class="progress" [style.width]="progressWidth"></div> <!-- Dynamically set the width -->
-    </div>
-    Loading...
-  </ngx-spinner>
+  <app-spinner></app-spinner>
 </div>
 <div class="relative h-screen w-screen bg-primary-950 overflow-hidden">
      <!-- Background Section -->
@@ -22,7 +17,7 @@
           <img class="animate-fall absolute w-16 h-16" style="left: 35%" src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png">
           <img class="animate-fall absolute w-16 h-16" style="left: 45%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
           <img class="animate-fall absolute w-16 h-16" style="left: 55%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 60" src="/assets/figma-photos/Green-Leaves-PNG-File.png">
+          <img class="animate-fall absolute w-16 h-16" style="left: 60%" src="/assets/figma-photos/Green-Leaves-PNG-File.png">
 
         </div>
       </div>

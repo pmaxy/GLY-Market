@@ -20,46 +20,30 @@ module.exports = {
             900: '#082d25',
             950: '#041713'
           },
-          
-          
-          
+               
           
         },
         fontFamily: {
-          'body': [
-        'Poppins', 
-        'ui-sans-serif', 
-        'system-ui', 
-        '-apple-system', 
-        'system-ui', 
-        'Segoe UI', 
-        'Roboto', 
-        'Helvetica Neue', 
-        'Arial', 
-        'Noto Sans', 
-        'sans-serif', 
-        'Apple Color Emoji', 
-        'Segoe UI Emoji', 
-        'Segoe UI Symbol', 
-        'Noto Color Emoji'
-      ],
-          'sans': [
-        'Poppins', 
-        'ui-sans-serif', 
-        'system-ui', 
-        '-apple-system', 
-        'system-ui', 
-        'Segoe UI', 
-        'Roboto', 
-        'Helvetica Neue', 
-        'Arial', 
-        'Noto Sans', 
-        'sans-serif', 
-        'Apple Color Emoji', 
-        'Segoe UI Emoji', 
-        'Segoe UI Symbol', 
-        'Noto Color Emoji'
-      ]
+          sans: [
+            'Avenir Next',
+            'Avenir',
+            'Segoe UI',
+            'Roboto',
+            'Helvetica Neue',
+            'Arial',
+            'Noto Sans',
+            'sans-serif',
+          ],
+          body: [
+            'Avenir Next',
+            'Avenir',
+            'Segoe UI',
+            'Roboto',
+            'Helvetica Neue',
+            'Arial',
+            'Noto Sans',
+            'sans-serif',
+          ],
         }
       },
 

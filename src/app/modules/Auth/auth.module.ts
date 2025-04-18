@@ -14,9 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { CodeInputModule } from 'angular-code-input';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
-
-
+import { GsapScrollDirective } from '../../gsap-scroll.directive';
+import { SpinnerComponent } from './spinner/spinner.component';
 @NgModule({
   declarations: [
     LandingPageComponent,
@@ -24,6 +23,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     OtpComponent,
     PasswordResetComponent,
     RegisterComponent,
+    GsapScrollDirective,
+    SpinnerComponent
+
 
     
   

@@ -3,6 +3,17 @@
 @tailwind components;
 @tailwind utilities;
 /* Ensure loading overlay fades in and out smoothly */
+/* Hides scrollbar while allowing scroll */
+html, body {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -71,4 +82,87 @@
       transform: translateY(100vh);
     }
   }
-  
+ /* Root theme variables (you can place this in your global styles) */
+:root {
+  --toast-font-size: 12px;
+  --toast-padding: 10px 14px;
+  --toast-max-width: 260px;
+  --toast-border-radius: 6px;
+  --toast-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+  /* Theming: adjust based on your app palette */
+  --toast-success-bg: #e6ffed;
+  --toast-success-text: #2e7d32;
+
+  --toast-error-bg: #fdecea;
+  --toast-error-text: #c62828;
+
+  --toast-info-bg: #e3f2fd;
+  --toast-info-text: #1565c0;
+
+  --toast-warning-bg: #fff4e5;
+  --toast-warning-text: #ef6c00;
+}
+
+/* Container holding all toasts */
+.toast-container {
+  font-size: var(--toast-font-size) !important;
+  max-width: var(--toast-max-width) !important;
+  padding: 8px 12px !important;
+  z-index: 1060; /* Keeps it above other content */
+}
+
+/* Base toast box */
+.toast {
+  min-height: auto !important;
+  padding: var(--toast-padding) !important;
+  border-radius: var(--toast-border-radius) !important;
+  box-shadow: var(--toast-shadow);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: inherit;
+  word-break: break-word;
+}
+
+/* Toast message */
+.toast-message {
+  line-height: 1.4;
+  flex: 1;
+  font-weight: 400;
+}
+
+/* Title (if used) */
+.toast-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* Specific variants */
+.toast-success {
+  background-color: var(--toast-success-bg) !important;
+  color: var(--toast-success-text) !important;
+}
+
+.toast-error {
+  background-color: var(--toast-error-bg) !important;
+  color: var(--toast-error-text) !important;
+}
+
+.toast-info {
+  background-color: var(--toast-info-bg) !important;
+  color: var(--toast-info-text) !important;
+}
+
+.toast-warning {
+  background-color: var(--toast-warning-bg) !important;
+  color: var(--toast-warning-text) !important;
+}
+
+/* Custom toast class if applied manually */
+.custom-toast {
+  font-size: var(--toast-font-size);
+  padding: var(--toast-padding);
+  max-width: var(--toast-max-width);
+  border-radius: var(--toast-border-radius);
+}

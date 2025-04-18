@@ -42,13 +42,17 @@ export class LoginComponent {
             this.router.navigate(['userAdmin/user'])
             this.spinner.hide();
             this.isLoading = false;
-            this.toast.success("Successful login",'Success')
+            this.toast.success("Successful login",'Success', {
+              toastClass: 'custom-toast'
+            })
 
     }, 2000);
   });
       },
       error: (err) => {
-        this.errorHandler.handleErrorResponse(err);
+        this.toast.error("error login",'Success', {
+          toastClass: 'custom-toast'
+        })
       }
     }
 
