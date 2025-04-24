@@ -166,3 +166,23 @@ body::-webkit-scrollbar {
   max-width: var(--toast-max-width);
   border-radius: var(--toast-border-radius);
 }
+.mask-water-edge {
+  -webkit-mask-image: url('/assets/figma-photos/water-wave.svg');
+  mask-image: url('/assets/figma-photos/water-wave.svg');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: bottom;
+  mask-position: bottom;
+}
+.mask-water-edge2 {
+  -webkit-mask-image: url('/assets/figma-photos/water-wave2.svg');
+  mask-image: url('/assets/figma-photos/water-wave2.svg');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: bottom;
+  mask-position: bottom;
+}

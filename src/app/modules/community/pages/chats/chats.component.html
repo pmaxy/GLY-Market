@@ -1,0 +1,73 @@
+<div class="flex h-[calc(100vh-4rem)] bg-white rounded-lg shadow-lg overflow-hidden">
+
+    <!-- 📋 Sidebar (Mobile toggleable) -->
+    <div class="w-full sm:w-1/3 border-r border-gray-200 overflow-y-auto p-4 space-y-4 hidden sm:block"
+         [class.hidden]="mobileView && selectedChat">
+      <div *ngFor="let chat of chats" 
+           (click)="selectChat(chat)" 
+           [class.bg-primary-50]="chat === selectedChat"
+           class="flex items-center gap-3 p-3 rounded-md cursor-pointer hover:bg-primary-100 transition duration-300 ease-in-out">
+        <img [src]="chat.profilePic" class="w-12 h-12 rounded-full border-2 border-primary-300" alt="profile" />
+        <div class="flex-1">
+          <div class="flex justify-between text-sm">
+            <p class="font-semibold">{{ chat.name }}</p>
+            <span class="text-gray-400">{{ chat.lastMessageTime }}</span>
+          </div>
+          <p class="text-xs text-gray-500 truncate">{{ chat.lastMessage }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 💬 Chat Window -->
+    <div class="flex-1 flex flex-col w-full sm:w-2/3" 
+         [class.hidden]="mobileView && !selectedChat">
+      
+      <!-- 🔙 Mobile back button -->
+      <div class="flex items-center gap-4 p-4 bg-gray-100 border-b sm:hidden">
+        <button (click)="backToList()" class="text-primary-600 text-sm font-semibold">&larr; Chats</button>
+        <div class="flex items-center gap-2">
+          <img [src]="selectedChat?.profilePic" class="w-10 h-10 rounded-full" />
+          <div>
+            <p class="text-sm font-medium">{{ selectedChat?.name }}</p>
+            <p class="text-xs text-gray-400">Online</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- 🧑‍💼 Desktop Top Bar -->
+      <div class="hidden sm:flex items-center gap-4 p-4 bg-gray-100 border-b">
+        <img [src]="selectedChat?.profilePic" class="w-10 h-10 rounded-full" />
+        <div>
+          <p class="font-medium">{{ selectedChat?.name }}</p>
+          <p class="text-xs text-gray-400">Online</p>
+        </div>
+      </div>
+  
+      <!-- 💬 Messages -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+        <div *ngFor="let msg of selectedChat?.messages" [ngClass]="msg.from === 'me' ? 'text-right' : 'text-left'">
+          <div [ngClass]="msg.from === 'me' ? 'ml-auto bg-primary-500 text-white' : 'mr-auto bg-white border' "
+               class="inline-block px-5 py-3 rounded-2xl max-w-xs text-sm shadow-md">
+            {{ msg.text }}
+          </div>
+          <div class="text-xs text-gray-400 mt-1">
+            {{ msg.time }}
+          </div>
+        </div>
+      </div>
+  
+      <!-- ✍️ Input -->
+      <div class="flex items-center gap-3 border-t p-4 bg-white">
+        <input [(ngModel)]="newMessage"
+               (keydown.enter)="sendMessage()"
+               type="text"
+               placeholder="Type a message..."
+               class="flex-1 border rounded-full px-6 py-3 text-sm outline-none focus:ring-2 ring-primary-400 shadow-md" />
+        <button (click)="sendMessage()"
+                class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-full text-sm transition ease-in-out duration-200">
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+  

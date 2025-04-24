@@ -1,0 +1,54 @@
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <!-- Profile Header -->
+    <div class="flex items-center space-x-6">
+      <img [src]="user.avatar" alt="User Avatar" class="w-24 h-24 rounded-full border-2 border-gray-300" />
+      <div>
+        <h2 class="text-2xl font-semibold text-gray-800">{{ user.name }}</h2>
+        <p class="text-gray-600">{{ user.title }}</p>
+        <p class="text-gray-500">{{ user.location }}</p>
+      </div>
+    </div>
+  
+    <!-- Bio -->
+    <div class="mt-6">
+      <h3 class="text-lg font-medium text-gray-700">About Me</h3>
+      <p class="mt-2 text-gray-600">{{ user.bio }}</p>
+    </div>
+  
+    <!-- Contact Information -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <h4 class="text-sm font-medium text-gray-500">Email</h4>
+        <p class="text-gray-700">{{ user.email }}</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-medium text-gray-500">Phone</h4>
+        <p class="text-gray-700">{{ user.phone }}</p>
+      </div>
+    </div>
+  
+    <!-- Social Links -->
+    <div class="mt-6">
+      <h4 class="text-sm font-medium text-gray-500">Social Profiles</h4>
+      <div class="flex space-x-4 mt-2">
+        <a *ngIf="user.social.linkedin" [href]="user.social.linkedin" target="_blank" class="text-blue-600 hover:underline">LinkedIn</a>
+        <a *ngIf="user.social.twitter" [href]="user.social.twitter" target="_blank" class="text-blue-400 hover:underline">Twitter</a>
+        <a *ngIf="user.social.github" [href]="user.social.github" target="_blank" class="text-gray-800 hover:underline">GitHub</a>
+      </div>
+    </div>
+  
+    <!-- CV Download -->
+    <div class="mt-6" *ngIf="user.cv">
+      <h4 class="text-sm font-medium text-gray-500">Curriculum Vitae</h4>
+      <button (click)="downloadCV()" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        Download CV
+      </button>
+    </div>
+  
+    <!-- Edit Profile Button -->
+    <div class="mt-6">
+      <button (click)="editProfile()" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Edit Profile
+      </button>
+    </div>
+  </div>

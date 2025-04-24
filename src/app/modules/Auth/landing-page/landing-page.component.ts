@@ -13,6 +13,9 @@ import { Dropdown, DropdownInterface, DropdownOptions, InstanceOptions } from 'f
   styleUrl: './landing-page.component.css'
 })
 export class LandingPageComponent implements OnInit, AfterViewInit{
+onGetInvolvedClick() {
+throw new Error('Method not implemented.');
+}
   @ViewChild('dropdownMenu') dropdownMenuRef!: ElementRef;
   @ViewChild('dropdownBtn') dropdownBtnRef!: ElementRef;
   @ViewChild('myDropdown') myDropdown?: ElementRef;
@@ -51,6 +54,25 @@ currentYear: any;
 
 menuItems = [
   {
+    label: 'Community',
+    links: [
+      { text: 'Chats', href: '/chatroom' },
+      { text: 'Events', href: '/chatroom/events' },
+      { text: 'Opportunities', href: '/chatroom/opportunity' },
+      { text: 'Education', href: '/chatroom/education' },
+      { text: 'News', href: '/chatroom/newsfeed' }
+    ]
+  },
+
+  {
+    label: 'Drone Service',
+    links: [
+      { text: 'Booking', href: '/dronesuser/book' },
+      { text: 'Services', href: '/dronesuser/service' },
+
+    ]
+  },
+  {
     label: 'Earth Data',
     links: [
       { text: 'Satellite Maps', href: '#' },
@@ -59,27 +81,11 @@ menuItems = [
     ]
   },
   {
-    label: 'Drone Service',
-    links: [
-      { text: 'Hire a Drone', href: '#' },
-      { text: 'Drone Pricing', href: '#' },
-      { text: 'Drone Gallery', href: '#' }
-    ]
-  },
-  {
     label: 'Market Place',
     links: [
       { text: 'Buy Inputs', href: '#' },
       { text: 'Sell Produce', href: '#' },
       { text: 'Agro Deals', href: '#' }
-    ]
-  },
-  {
-    label: 'Community',
-    links: [
-      { text: 'Forums', href: '#' },
-      { text: 'Events', href: '#' },
-      { text: 'Mentorship', href: '#' }
     ]
   }
 ];
@@ -112,7 +118,10 @@ ngAfterViewInit() {
       });
     }
   });
-  
+
+}
+droneservice(){
+
 }
 startTypingEffect(){
   let index = 0;

@@ -150,7 +150,7 @@ body {
   }
   
   .btn1:active:after {
-    background: transparent;
+    /* background: transparent; */
   }
   
   .btn1:active {

@@ -5,16 +5,18 @@
 <div class="relative h-full max-w-screen grid grid-rows-[repeat(auto-fit,minmax(100px,1fr))] grid-rows-5">
 
   <section
-    class="nav max-w-screen h-full  row-start-1 row-end-2 bg-gradient-to-r from-[#2b2399] to-[#76a73f] h-full relative z-30">
+    class=" nav max-w-screen h-full  row-start-1 row-end-2 bg-gradient-to-r from-[#2b2399] to-[#76a73f] h-full relative z-30">
     <!-- Top bar: Availability and Socials -->
     <div class="prom-sos flex flex-col sm:flex-row justify-between px-6 sm:px-14 py-2 gap-2 sm:gap-0">
       <div class="prom">
         <p class="text-gray-100 text-center sm:text-left">we are available 24/7</p>
       </div>
       <ul class="flex flex-wrap justify-center sm:justify-start gap-3">
-        <li><a href="https://www.linkedin.com/in/patrick-wanjiru-2b5ba71a8/"><img class="w-5 h-5" src="/assets/figma-photos/linkldn.png" alt=""></a></li>
+        <li><a href="https://www.linkedin.com/in/patrick-wanjiru-2b5ba71a8/"><img class="w-5 h-5"
+              src="/assets/figma-photos/linkldn.png" alt=""></a></li>
         <li><a href="#"><img class="w-5 h-5" src="/assets/figma-photos/ins.png" alt=""></a></li>
-        <li><a href="https://x.com/Patrick06200175mm"><img class="w-5 h-5" src="/assets/figma-photos/xtwt.png" alt=""></a></li>
+        <li><a href="https://x.com/Patrick06200175mm"><img class="w-5 h-5" src="/assets/figma-photos/xtwt.png"
+              alt=""></a></li>
         <li><a href="#"><img class="w-5 h-5" src="/assets/figma-photos/whasapp.png" alt=""></a></li>
         <li><a href="#"><img class="w-5 h-5" src="/assets/figma-photos/tiktok.png" alt=""></a></li>
         <li><a href="#"><img class="w-5 h-5" src="/assets/figma-photos/sms.png" alt=""></a></li>
@@ -22,7 +24,7 @@
     </div>
 
     <!-- Main section with logo, contact info, and nav -->
-    <div class="soc bg-[url('/assets/figma-photos/grass2.png')] bg-cover bg-center w-full bg-no-repeat relative">
+    <div class="soc bg-[url('/assets/figma-photos/earthi.png')] bg-cover bg-center w-full h-full bg-no-repeat relative">
 
       <!-- Logo and Contacts -->
       <div
@@ -57,7 +59,7 @@
       </div>
 
       <!-- Nav & Search -->
-     <div
+      <div
         class="svc flex flex-col lg:flex-row justify-between px-6 sm:px-14 py-4 gap-4 bg-transparent sticky top-0 z-70">
 
         <!-- Wrapper -->
@@ -98,31 +100,34 @@
               </ng-container>
             </div>
           </div>
-<!-- Mobile Floating Menu Overlay -->
-<div *ngIf="isMenuOpen" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm flex lg:hidden">
-  <!-- Slide-in menu panel -->
-  <div class="w-64 bg-gray-900/50  text-white p-6 shadow-lg h-full overflow-y-auto">
-    <ul class="space-y-4">
-      <li *ngFor="let item of menuItems; let i = index">
-        <button (click)="toggleDropdown(i)" class="w-full text-left flex justify-between items-center text-lg font-medium">
-          {{ item.label }}
-          <svg class="w-4 h-4 transform transition-transform" [ngClass]="{ 'rotate-180': openDropdownIndex === i }" fill="none" viewBox="0 0 10 6">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-          </svg>
-        </button>
+          <!-- Mobile Floating Menu Overlay -->
+          <div *ngIf="isMenuOpen" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm flex lg:hidden">
+            <!-- Slide-in menu panel -->
+            <div class="w-64 bg-gray-900/50  text-white p-6 shadow-lg h-full overflow-y-auto">
+              <ul class="space-y-4">
+                <li *ngFor="let item of menuItems; let i = index">
+                  <button (click)="toggleDropdown(i)"
+                    class="w-full text-left flex justify-between items-center text-lg font-medium">
+                    {{ item.label }}
+                    <svg class="w-4 h-4 transform transition-transform"
+                      [ngClass]="{ 'rotate-180': openDropdownIndex === i }" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                    </svg>
+                  </button>
 
-        <div *ngIf="openDropdownIndex === i" class="mt-2 pl-2 space-y-2">
-          <a *ngFor="let link of item.links" [href]="link.href" class="block text-sm hover:text-green-400">
-            {{ link.text }}
-          </a>
-        </div>
-      </li>
-    </ul>
-  </div>
+                  <div *ngIf="openDropdownIndex === i" class="mt-2 pl-2 space-y-2">
+                    <a *ngFor="let link of item.links" [href]="link.href" class="block text-sm hover:text-green-400">
+                      {{ link.text }}
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-  <!-- Click outside to close -->
-  <div class="flex-1" (click)="toggleMenu()"></div>
-</div>
+            <!-- Click outside to close -->
+            <div class="flex-1" (click)="toggleMenu()"></div>
+          </div>
 
         </nav>
 
@@ -154,190 +159,158 @@
       </div>
     </div>
   </section>
-  <section appGsapScroll animationType="fade-up" [delay]="0.1"
-    class="bg-gradient-to-r from-[#f4f4f4] to-[#e5f9f0] py-12 px-6 sm:px-16 w-full z-20 ">
-    <div
-      class="max-w-screen-xl mx-auto bg-[url('/assets/figma-photos/grass2.png')] bg-cover bg-center w-full bg-no-repeat ">
-      <h2 class="text-3xl sm:text-4xl font-bold text-center text-primary-900 mb-10">
-        Our Amazing Customers
-      </h2>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Card 1 -->
-        <div
-          class="bg-gradient-to-br from-[#a9f3e3] to-[#7eedd5] rounded-xl shadow-md p-6 hover:scale-105 transform transition duration-300 ease-in-out">
-          <div class="flex items-center justify-between">
-            <div class="text-4xl font-bold text-[#082d25]">1,250+</div>
-            <img src="/assets/figma-photos/earth1.png" alt="Users" class="w-10 h-10">
-          </div>
-          <p class="mt-4 text-sm font-medium text-gray-700">Registered Users</p>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="bg-gradient-to-br from-[#a9f3e3] to-[#7eedd5] rounded-xl shadow-md p-6 hover:scale-105 transform transition duration-300 ease-in-out">
-          <div class="flex items-center justify-between">
-            <div class="text-4xl font-bold text-[#082d25]">980</div>
-            <img src="/assets/figma-photos/earth1.png" alt="Verified" class="w-10 h-10">
-          </div>
-          <p class="mt-4 text-sm font-medium text-gray-700">Verified Customers</p>
-        </div>
-
-        <!-- Card 3 -->
-        <div
-          class="bg-gradient-to-br from-[#a9f3e3] to-[#7eedd5] rounded-xl shadow-md p-6 hover:scale-105 transform transition duration-300 ease-in-out">
-          <div class="flex items-center justify-between">
-            <div class="text-4xl font-bold text-[#082d25]">320+</div>
-            <img src="/assets/figma-photos/earth1.png" alt="Feedback" class="w-10 h-10">
-          </div>
-          <p class="mt-4 text-sm font-medium text-gray-700">Customer Feedbacks</p>
-        </div>
-
-        <!-- Card 4 -->
-        <div
-          class="bg-gradient-to-br from-[#a9f3e3] to-[#7eedd5] rounded-xl shadow-md p-6 hover:scale-105 transform transition duration-300 ease-in-out">
-          <div class="flex items-center justify-between">
-            <div class="text-4xl font-bold text-[#082d25]">50+</div>
-            <img src="/assets/figma-photos/earth1.png" alt="Locations" class="w-10 h-10">
-          </div>
-          <p class="mt-4 text-sm font-medium text-gray-700">Locations Served</p>
-        </div>
 
 
-
-      </div>
-    </div>
-  </section>
-  <section class="row-start-2 row-end-3 h-full z-0 ">
-
-    <div class="relative h-full w-full bg-primary-950 ">
-      <section class="absolute top-0 left-0 w-full h-[600px] z-0">
-        <div class="leaf">
-          <div class="absolute w-full h-full z-0">
-            <!-- <img class="animate-fall  w-17 h-17 z-0" style="left: 2%" src="/assets/figma-photos/earth3.png"> -->
-            <img class="absolute animate-fall  w-16 h-16 z-0" style="left: 85%"
-              src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-
-            <img class="animate-fall absolute w-16 h-16 z-0" style="left: 30%"
-              src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-            <img class="animate-fall absolute w-16 h-16 z-0 " style="left: 15%"
-              src="/assets/figma-photos/Green-Leaves-PNG-File.png">
-            <img class="animate-fall absolute w-16 h-16 z-0 " style="left: 70%"
-              src="/assets/figma-photos/Green-Leaves-PNG-File.png">
-            <img class="animate-fall absolute w-16 h-16 z-0 " style="left: 5%"
+  <section class="relative row-start-2 row-end-3 h-full z-0">
+    <!-- Background Animation Layer -->
+    <div class="h-full w-full bg-primary-950 overflow-hidden">
+      <div class="leaf">
+        <section class="absolute top-0 left-0 w-full h-[600px] z-0 pointer-events-none">
+          <div class="absolute w-full h-full">
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 5%"
               src="/assets/figma-photos/Realistic-Autumn-Fall-Leaves-PNG.png">
-            <img class="animate-fall absolute w-16 h-16 z-0 " style="left: 10%"
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 10%"
               src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-            <img class="animate-fall absolute w-16 h-16 z-0 " style="left: 25%"
-              src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-            <img class="animate-fall absolute w-16 h-16 z-0 " style="left: 35%"
-              src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png">
-            <img class="animate-fall absolute w-16 h-16 z-0 " style="left: 45%"
-              src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-            <img class="animate-fall absolute w-16 h-16 z-0 " style="left: 55%"
-              src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-            <img class="animate-fall absolute w-16 h-16 z-0 " style="left: 60%"
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 15%"
               src="/assets/figma-photos/Green-Leaves-PNG-File.png">
-
-
-
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 25%"
+              src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 30%"
+              src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 35%"
+              src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png">
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 45%"
+              src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 55%"
+              src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 60%"
+              src="/assets/figma-photos/Green-Leaves-PNG-File.png">
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 65%"
+              src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 70%"
+              src="/assets/figma-photos/Green-Leaves-PNG-File.png">
           </div>
-        </div>
-      </section>
-      <div class="home grid grid-cols-2 gap-12 p-32 bg-gray-950/50 backdrop-blur-sm w-full relative z-10 ">
-        <div class="description text-white px-12">
-          <h1 class="title text-4xl md:text-5xl font-[Tilt Neon] mb-8 leading-tight">
-            <span class="gradient-text text-transparent bg-clip-text bg-gradient-to-r from-[#76a73f] to-[#908aec]">
+
+        </section>
+      </div>
+
+      <!-- Main Content Section -->
+      <div
+        class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 px-6 md:px-20 py-24 bg-gray-950/60 backdrop-blur-md">
+
+        <!-- Intro + CTA -->
+        <div class="text-white flex flex-col justify-center px-4 lg:px-12">
+          <h1 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#76a73f] to-[#908aec]">
               {{ displayedText }}
             </span>
           </h1>
-          <p class="paragraph text-xl md:text-xl mb-8 font-[sans Avenir] ">
-            Welcome to AAI+, your go-to for high-quality geospatial products, drone equipment, and printing solutions.
-            From custom maps to large-format prints and drone accessories, we’ve got everything you need to make smart,
-            informed decisions.
-
-            We offer bulk and wholesale options, fast delivery, and 24/7 access through our online store. Whether you’re
-            planning, printing, or surveying—shop smarter with AAI+.
+          <p class="text-lg md:text-xl leading-relaxed mb-10 font-light">
+            <strong>AAI+</strong> powers smarter, greener decisions.
+            <br><br>
+            Explore our all-in-one hub for climate maps, drone surveys, and high-impact prints — built for planners,
+            responders, and communities shaping a sustainable future.
+            <br><br>
+            Fast delivery. Bulk discounts. Always online.
           </p>
-          <form id="form" autocomplete="off" class="flex items-center gap-3">
+
+
+          <form class="flex flex-wrap gap-4">
             <button (click)="login()" type="submit"
-              class="btn flex items-center gap-3 bg-gradient-to-r ring-1 text-white py-2 px-8 rounded-md shadow-lg hover:bg-right focus:ring-1 focus:outline-none focus:ring-primary-300 dark:bg-primary-700 dark:focus:ring-primary-800">
+              class="btn flex items-center gap-2 bg-gradient-to-r ring-1 text-white py-3 px-6 rounded-md shadow-lg hover:bg-right focus:ring-1 focus:outline-none">
               <span>Login</span>
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </button>
-            <button (click)="register()" type="submit" class="btn1 ">
+            <button (click)="register()" type="submit" class="btn1 flex items-center gap-2">
               <span>Register</span>
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </button>
           </form>
         </div>
 
-        <div class="users-color-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+        <!-- Animated User Items -->
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-6 justify-center items-center">
           <ng-container *ngFor="let item of items; let i = index">
-            <span *ngIf="!item.src" class="item w-20 md-[80px] lg:w-[120px] place-self-center"
-              [ngStyle]="{ '--i': i + 1 }" [style.backgroundColor]="item.color"></span>
-            <img *ngIf="item.src" class="item w-20 md-[80px] lg:w-[120px] place-self-center" [src]="item.src"
-              [ngStyle]="{ '--i': i + 1 }" alt="" />
+            <span *ngIf="!item.src" class="item w-30 h-2\30 rounded-lg shadow-md" [ngStyle]="{ '--i': i + 1 }"
+              [style.backgroundColor]="item.color"></span>
+            <img *ngIf="item.src" loading="lazy" [src]="item.src"
+              class="item w-30 h-30 object-cover rounded-lg shadow-md" [ngStyle]="{ '--i': i + 1 }" alt="User Icon" />
           </ng-container>
         </div>
-
       </div>
     </div>
+    <!-- <div class="absolute bottom-0 left-0 w-full top-0 z-0 pointer-events-none">
+      <img src="/assets/figma-photos/water-wave6.svg" alt="Wave Edge" class="w-full h-full  object-cover" />
+    </div> -->
   </section>
-  <section appGsapScroll animationType="fade-up" [delay]="0.1"
-    class="bg-gradient-to-r from-[#2b2399] to-[#76a73f] z-10">
-    <div
-      class="relative grid grid-cols-1 md:grid-cols-2 gap-6 items-center px-4 md:px-12 py-10 w-full max-w-screen-xl mx-auto">
 
-      <!-- Text Section with Overlay for Better Contrast -->
-      <div class="relative z-10">
-        <h2 class="text-2xl md:text-4xl font-semibold text-white mb-4 leading-tight">Data Center</h2>
-        <p class="text-base md:text-lg text-gray-100 mb-6 leading-relaxed">
-          Our state-of-the-art data centers provide secure and reliable infrastructure, ensuring 24/7 uptime and
-          high-performance computing power. With advanced cooling systems, energy efficiency, and seamless scalability,
-          we're built for the future of digital services.
+  <section class="relative bg-gradient-to-r from-[#2b2399] to-[#76a73f] w-full z-10 overflow-hidden">
+    <!-- Main Content -->
+    <div
+      class="relative max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-6 md:px-12 py-20 z-10">
+
+      <!-- Text Content -->
+      <div class="z-10 text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+          Geospatial Intelligence Hub
+        </h2>
+        <p class="text-base md:text-lg text-gray-100 mb-8 leading-relaxed">
+          We power smarter land use, disaster planning, and climate resilience.
+          <br><br>
+          Our platform delivers on-demand access to custom maps, aerial data, and analytics tools — helping planners,
+          communities, and organizations make informed, sustainable decisions.
         </p>
-        <button class="btn1">
+        <button class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-md shadow-md transition duration-300">
           Learn More
         </button>
       </div>
 
-      <!-- Image Section -->
+      <!-- Image Content -->
       <div class="flex justify-center">
-        <img src="/assets/figma-photos/earth1.png" alt="Earth" class="w-full max-w-md md:max-w-lg object-contain">
+        <img src="/assets/figma-photos/earth1.png" alt="Earth"
+          class="w-full max-w-md md:max-w-lg object-contain drop-shadow-xl">
       </div>
+    </div>
 
+    <!-- 🌊 Water Wave Overlay -->
+    <div class="absolute bottom-0 left-0 w-full top-0 z-0 pointer-events-none">
+      <img src="/assets/figma-photos/water-wave2.svg" alt="Wave Edge" class="w-full h-full  object-cover" />
     </div>
   </section>
+
+
   <section class="relative bg-primary-950  z-0">
     <!-- Falling Leaves Animation Background -->
     <section class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
       <div class="absolute w-full h-full py-14">
         <!-- Falling Leaves -->
-        <img class="animate-fall absolute w-16 h-16" style="left: 70%"
-          src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 30%"
-          src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 15%"
-          src="/assets/figma-photos/Green-Leaves-PNG-File.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 90%"
-          src="/assets/figma-photos/Green-Leaves-PNG-File.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 5%"
-          src="/assets/figma-photos/Realistic-Autumn-Fall-Leaves-PNG.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 10%"
-          src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 25%"
-          src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 35%"
-          src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 45%"
-          src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 55%"
-          src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" alt="Falling leaf">
-        <img class="animate-fall absolute w-16 h-16" style="left: 60%"
-          src="/assets/figma-photos/Green-Leaves-PNG-File.png" alt="Falling leaf">
+        <div class="leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 20%"
+            src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 30%"
+            src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 15%"
+            src="/assets/figma-photos/Green-Leaves-PNG-File.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 70%"
+            src="/assets/figma-photos/Green-Leaves-PNG-File.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 5%"
+            src="/assets/figma-photos/Realistic-Autumn-Fall-Leaves-PNG.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 10%"
+            src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 25%"
+            src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 35%"
+            src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 45%"
+            src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 55%"
+            src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" alt="Falling leaf">
+          <img class="animate-fall absolute w-16 h-16" style="left: 60%"
+            src="/assets/figma-photos/Green-Leaves-PNG-File.png" alt="Falling leaf">
+        </div>
       </div>
     </section>
+
 
     <!-- Content Section with Backdrop -->
     <div class="relative bg-gray-950/50 backdrop-blur-sm  z-10">
@@ -365,40 +338,46 @@
       </div>
     </div>
   </section>
-  <section appGsapScroll animationType="fade-up" [delay]="0.1"
-    class="bg-gradient-to-r from-[#2b2399] to-[#76a73f] z-10">
+  <section class="relative bg-gradient-to-r from-[#2b2399] to-[#76a73f] text-white z-10 overflow-hidden">
+    <!-- Main Content -->
     <div
-      class="relative grid grid-cols-1 md:grid-cols-2 gap-6 items-center px-4 md:px-12 py-10 w-full max-w-screen-xl mx-auto">
-
-      <!-- Text Section with Overlay for Better Contrast -->
-      <div class="relative z-10 text-center md:text-left">
-        <h2 class="text-2xl md:text-4xl font-semibold text-white mb-4 leading-tight">Welcome to Our Marketplace</h2>
-        <p class="text-base md:text-lg text-gray-100 mb-6 leading-relaxed">
-          Find a wide range of products and services or start selling your own. Our marketplace connects buyers and
-          sellers in a secure and easy-to-use environment. Whether you’re looking for the best deals or want to reach a
-          larger audience, you’re in the right place.
+      class="relative z-10 max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10 px-6 md:px-12 py-20 md:py-24">
+      <!-- Text Content -->
+      <div class="text-center md:text-left space-y-6">
+        <h2 class="text-3xl md:text-5xl font-bold leading-tight">
+          Welcome to Our Marketplace
+        </h2>
+        <p class="text-lg md:text-xl text-gray-100 font-light leading-relaxed">
+          Discover a wide selection of products and services or launch your own store. Our marketplace empowers both
+          buyers and sellers with a secure, user-friendly platform.
+          Whether you're seeking unbeatable deals or expanding your reach, you're in the right place.
         </p>
         <div class="flex justify-center md:justify-start">
-          <button class="btn1">
-            Explore Now
-          </button>
+          <button class="btn1">Explore Now</button>
         </div>
       </div>
 
-      <!-- Image Section -->
+      <!-- Image -->
       <div class="flex justify-center">
-        <img src="/assets/figma-photos/onlinem.png" alt="Marketplace"
-          class="w-full max-w-md md:max-w-lg object-contain shadow-xl rounded-lg">
+        <img loading="lazy" src="/assets/figma-photos/onlinem.png" alt="Marketplace illustration"
+          class="w-full max-w-xs sm:max-w-sm md:max-w-lg object-contain rounded-xl shadow-lg" />
       </div>
+    </div>
 
+    <!-- 🌊 Water Wave Overlay -->
+    <div class="absolute bottom-0 left-0  top-0 w-full z-0">
+      <img src="/assets/figma-photos/water-wave.svg" alt="Wave Edge" class="w-full h-full object-cover" />
     </div>
   </section>
-  <section appGsapScroll animationType="fade-up" [delay]="0.1" class="relative bg-primary-950 z-0">
+
+
+
+  <section class="relative bg-primary-950 z-10">
     <!-- Background Animation (Optional) -->
-    <section class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+    <section class="absolute top-0 left-0 w-full h-full z-0 pointer-events-auto">
       <div class="absolute w-full h-full py-14">
-        <!-- Optional Falling Animation, Remove if not suitable -->
-        <img class="animate-fall absolute w-16 h-16" style="left: 70%"
+        <!-- Optional Falling Animation for Seasonal Appeal -->
+        <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 70%"
           src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" alt="Falling leaf">
       </div>
     </section>
@@ -407,23 +386,33 @@
     <div class="relative bg-gray-950/50 backdrop-blur-sm z-10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center px-4 md:px-12 py-10 max-w-screen mx-auto">
 
-        <!-- Image -->
+        <!-- Image Section -->
         <div class="flex justify-center">
-          <img src="/assets/figma-photos/onlinem1.png" alt="Marketplace Preview"
+          <img loading="lazy" src="/assets/figma-photos/onlinem1.png" alt="Marketplace Preview"
             class="w-full max-w-md md:max-w-lg object-contain shadow-xl rounded-lg">
         </div>
 
-        <!-- Text Content -->
+        <!-- Text Content Section -->
         <div>
-          <h2 class="text-2xl md:text-4xl font-semibold mb-4 text-white text-center md:text-left">Start Selling Today
+          <h2 class="text-2xl md:text-4xl font-semibold mb-4 text-white text-center md:text-left">
+            Empowering Communities with Geospatial Intelligence and Sustainable Solutions
           </h2>
           <p class="text-base md:text-lg text-gray-300 mb-6 leading-relaxed text-center md:text-left">
-            Ready to grow your business? Sign up today and start selling on our marketplace. Reach a larger audience,
-            manage your products, and connect with customers—all in one place.
+            Our business is committed to driving environmental sustainability and smarter decision-making through
+            cutting-edge geospatial intelligence, high-quality mapping solutions, and drone services. By providing
+            accessible, localized climate maps, disaster preparedness plans, and land-use analysis, we enable
+            communities, businesses, and local governments to make informed decisions that promote resilience and
+            sustainability.
+          </p>
+          <p class="text-base md:text-lg text-gray-300 mb-6 leading-relaxed text-center md:text-left">
+            With a focus on supporting sustainable land management, climate adaptation, and environmental monitoring, we
+            provide affordable access to crucial data and expert consulting. Whether it's for urban planning,
+            reforestation efforts, or eco-friendly product development, our solutions are designed to ensure long-term
+            environmental and social impact.
           </p>
           <div class="flex justify-center md:justify-start">
-            <button class="btn1">
-              Get Started
+            <button (click)="onGetInvolvedClick()" class="btn1">
+              Get Involved and Make a Difference
             </button>
           </div>
         </div>
@@ -431,6 +420,153 @@
       </div>
     </div>
   </section>
+  <section class="bg-[url('/assets/figma-photos/earthi.png')] bg-cover bg-center w-full bg-no-repeat  z-20 ">
+    <div class="bg-primary-100/20 backdrop-blur-sm w-full h-full py-12 px-6 sm:px-16 w-full">
+      <div class="max-w-screen-xl mx-auto  ">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center text-primary-900 mb-10">
+          Our Amazing Customers
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Card 1 -->
+          <div
+            class="bg-gradient-to-br from-[#a9f3e3]/80 to-[#7eedd5]/80 rounded-xl shadow-md p-6 hover:scale-105 transform transition duration-300 ease-in-out">
+            <div class="flex items-center justify-between">
+              <div class="text-4xl font-bold text-[#082d25]">1,250+</div>
+              <img src="/assets/figma-photos/earth1.png" alt="Users" class="w-10 h-10">
+            </div>
+            <p class="mt-4 text-sm font-medium text-gray-700">Registered Users</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="bg-gradient-to-br from-[#a9f3e3]/80 to-[#7eedd5]/80 rounded-xl shadow-md p-6 hover:scale-105 transform transition duration-300 ease-in-out">
+            <div class="flex items-center justify-between">
+              <div class="text-4xl font-bold text-[#082d25]">980</div>
+              <img src="/assets/figma-photos/earth1.png" alt="Verified" class="w-10 h-10">
+            </div>
+            <p class="mt-4 text-sm font-medium text-gray-700">Verified Customers</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="bg-gradient-to-br from-[#a9f3e3]/80 to-[#7eedd5]/80 rounded-xl shadow-md p-6 hover:scale-105 transform transition duration-300 ease-in-out">
+            <div class="flex items-center justify-between">
+              <div class="text-4xl font-bold text-[#082d25]">320+</div>
+              <img src="/assets/figma-photos/earth1.png" alt="Feedback" class="w-10 h-10">
+            </div>
+            <p class="mt-4 text-sm font-medium text-gray-700">Customer Feedbacks</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="bg-gradient-to-br from-[#a9f3e3]/80 to-[#7eedd5]/80 rounded-xl shadow-md p-6 hover:scale-105 transform transition duration-300 ease-in-out">
+            <div class="flex items-center justify-between">
+              <div class="text-4xl font-bold text-[#082d25]">50+</div>
+              <img src="/assets/figma-photos/earth1.png" alt="Locations" class="w-10 h-10">
+            </div>
+            <p class="mt-4 text-sm font-medium text-gray-700">Locations Served</p>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="relative bg-no-repeat bg-cover bg-center  bg-[url('/assets/figma-photos/earthi2.png')] text-gray-800 overflow-hidden z-10">
+    <!-- Content container with bottom padding to make space for the wave -->
+    <div class=" py-20 relative z-10 pb-32">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <!-- Heading -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-extrabold tracking-tight sm:text-5xl text-gray-50">
+            Smart Solutions for a Sustainable Future
+          </h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-100">
+            We combine innovation, data, and design to deliver intelligent, eco-friendly geospatial solutions.
+          </p>
+        </div>
+
+        <!-- Grid: Features -->
+        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Feature Card 1 -->
+          <div
+            class="rounded-2xl bg-primary-50/80 shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 p-8">
+            <div class="mb-4">
+              <img src="/assets/figma-photos/earth1.png" alt="Custom Maps" class="w-10 h-10">
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">Custom Geospatial Mapping</h3>
+            <p class="text-gray-600">Tailored printed and digital maps for climate planning, agriculture, urban design,
+              and conservation.</p>
+          </div>
+
+          <!-- Feature Card 2 -->
+          <div
+            class="rounded-2xl bg-primary-50/80 shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 p-8">
+            <div class="mb-4">
+              <img src="/assets/figma-photos/earth1.png" alt="Drone Services" class="w-10 h-10">
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">Aerial & Drone Services</h3>
+            <p class="text-gray-600">High-quality drone-based imagery, 3D terrain models, and surveillance for smarter,
+              data-driven decisions.</p>
+          </div>
+
+          <!-- Feature Card 3 -->
+          <div
+            class="rounded-2xl bg-primary-50/80 shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 p-8">
+            <div class="mb-4">
+              <img src="/assets/figma-photos/earth1.png" alt="Training & Education" class="w-10 h-10">
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">Training & Capacity Building</h3>
+            <p class="text-gray-600">Workshops, digital training, and community engagement to spread environmental
+              awareness and resilience.</p>
+          </div>
+
+          <!-- Feature Card 4 -->
+          <div
+            class="rounded-2xl bg-primary-50/80 shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 p-8">
+            <div class="mb-4">
+              <img src="/assets/figma-photos/earth1.png" alt="Data Access" class="w-10 h-10">
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">Accessible Climate Data</h3>
+            <p class="text-gray-600">Real-time geospatial dashboards and printable reports for local governments and
+              project planners.</p>
+          </div>
+
+          <!-- Feature Card 5 -->
+          <div
+            class="rounded-2xl bg-primary-50/80 shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 p-8">
+            <div class="mb-4">
+              <img src="/assets/figma-photos/earth1.png" alt="Eco Products" class="w-10 h-10">
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">Eco-Friendly Print Solutions</h3>
+            <p class="text-gray-600">Durable, environmentally conscious print products including maps, reports, and
+              signage.</p>
+          </div>
+
+          <!-- Feature Card 6 -->
+          <div
+            class="rounded-2xl bg-primary-50/80 shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 p-8">
+            <div class="mb-4">
+              <img src="/assets/figma-photos/earth1.png" alt="Consulting" class="w-10 h-10">
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">Advisory & Consulting</h3>
+            <p class="text-gray-600">Expert advice on sustainable planning, land use, conservation strategies, and
+              operational efficiency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🌊 Water wave shape at bottom -->
+    <div class="absolute bottom-0 left-0 w-full top-0 z-0 m-auto pointer-events-none">
+      <img src="/assets/figma-photos/water-wave2.svg" alt="Wave Edge" class=" w-full h-full object-cover" />
+    </div>
+  </section>
+
   <footer class="bg-gradient-to-r from-[#2b2399] to-[#76a73f] text-white py-10 px-6 sm:px-16">
     <div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
       <!-- About -->

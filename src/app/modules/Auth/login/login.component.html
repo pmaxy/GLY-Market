@@ -1,55 +1,56 @@
-<div class="loading-overlay" *ngIf="isLoading" [class.active]="isLoading">
+<!-- Loading Spinner Overlay -->
+<div class="loading-overlay fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center" *ngIf="isLoading" [class.active]="isLoading">
   <app-spinner></app-spinner>
 </div>
-<div class="relative h-screen w-screen bg-primary-950 overflow-hidden">
-     <!-- Background Section -->
-    <section class="absolute top-0 left-0 w-full h-full z-0">
-      <div class="leaf">
-        <div class="absolute w-full h-full">
-     
-          <img class="animate-fall absolute w-16 h-16" style="left: 85%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 30%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 15%" src="/assets/figma-photos/Green-Leaves-PNG-File.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 90%" src="/assets/figma-photos/Green-Leaves-PNG-File.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 5%" src="/assets/figma-photos/Realistic-Autumn-Fall-Leaves-PNG.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 10%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 25%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 35%" src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 45%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 55%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-          <img class="animate-fall absolute w-16 h-16" style="left: 60%" src="/assets/figma-photos/Green-Leaves-PNG-File.png">
 
-        </div>
+<!-- Main Container with Fall Leaves Background -->
+<div class="relative h-screen w-screen bg-primary-950 overflow-hidden">
+
+  <!-- Animated Falling Leaves Background -->
+  <section class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+    <div class="leaf absolute w-full h-full">
+      <img *ngFor="let leaf of leafImages; let i = index"
+        [src]="leaf"
+        class="animate-fall absolute w-16 h-16 opacity-70"
+        [ngStyle]="{ left: leafPositions[i] }"
+        alt="Leaf" />
+    </div>
+  </section>
+
+  <!-- Login Form Section -->
+  <div class="relative z-10 flex items-center justify-center h-full px-4">
+    <div class="w-full max-w-md p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 text-white">
+
+      <h1 class="text-2xl font-bold text-center text-primary-200 mb-6">Sign in to your account</h1>
+
+      <!-- Error Messages -->
+      <div *ngIf="errorMsg.length" class="bg-red-100 text-red-800 p-3 rounded-md mb-4 text-sm space-y-1">
+        <p *ngFor="let msg of errorMsg">{{ msg }}</p>
       </div>
-    </section>
-  
-    <!-- Form Section -->
-    <div class="relative z-10 flex items-center justify-center h-full  ">
-      <div class="w-full max-w-md p-6 bg-gray-50 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 shadow-[inset_6px_6px_6px_#cbced1,inset_-6px_-6px_6px_gray] bg-transparent backdrop-blur-xl ">
-        <h1 class="text-xl font-bold leading-tight tracking-tight text-primary-200 dark:text-white md:text-2xl">
-          Sign in to your account
-        </h1>
-        <div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
-          <p *ngFor="let msg of errorMsg">{{msg}}</p>
+
+      <!-- Login Form -->
+      <form class="space-y-4" (ngSubmit)="login()">
+        <div>
+          <label for="email" class="block mb-2 text-sm font-medium">Email</label>
+          <input [(ngModel)]="authRequest.email" name="email" id="email" type="email" required placeholder="example@email.com"
+            class="w-full p-3 rounded-md bg-white/10 text-white border border-white/20 focus:ring-2 focus:ring-primary-400">
         </div>
-        <div class="space-y-4">
-          <div>
-            <label for="email" class="block mb-2 text-sm font-medium text-primary-300 dark:text-white">Your email</label>
-            <input [(ngModel)]="authRequest.email" class="form-control" type="email" id="email" placeholder="example@email.com" required class="shadow-[inset_6px_6px_6px_#cbced1,inset_-6px_-6px_6px_gray] w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-500 rounded-lg focus:ring-primary-500 focus:border-primary-500 hover:scale-105 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-          </div>
-          <div>
-            <label for="password" class="block mb-2 text-sm font-medium text-primary-300 dark:text-white">Password</label>
-            <input [(ngModel)]="authRequest.password" type="password" id="password" placeholder="••••••••" required class="shadow-[inset_6px_6px_6px_#cbced1,inset_-6px_-6px_6px_gray] w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-500 rounded-lg focus:ring-primary-500 focus:border-primary-500 hover:scale-105 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-          </div>
-          <button (click)="login()" type="button" class="btn1 w-full px-5 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-lg focus:ring-1 focus:outline-none focus:ring-primary-300 dark:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
-          <div>
-            Don't have an account?&nbsp;
-            <button (click)="register()" type="button" class="btn btn-link">
-              Register
-            </button>
-          </div>
+
+        <div>
+          <label for="password" class="block mb-2 text-sm font-medium">Password</label>
+          <input [(ngModel)]="authRequest.password" name="password" id="password" type="password" required placeholder="••••••••"
+            class="w-full p-3 rounded-md bg-white/10 text-white border border-white/20 focus:ring-2 focus:ring-primary-400">
         </div>
-      </div>
+
+        <button type="submit" class="w-full py-3 btn1">
+          Sign in
+        </button>
+
+        <div class="text-sm text-center text-white mt-4">
+          Don't have an account?
+          <button type="button" (click)="register()" class="text-primary-400 hover:underline ml-1">Register</button>
+        </div>
+      </form>
     </div>
   </div>
-  
+</div>
