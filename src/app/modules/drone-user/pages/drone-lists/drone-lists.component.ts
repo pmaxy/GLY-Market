@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common'; 
+
 interface Drone {
   name: string;
   type: 'geospatial' | 'ceremony' | 'site';
@@ -16,7 +18,6 @@ interface Drone {
 export class DroneListsComponent implements OnInit {
   selectedType: string = '';
   filteredDrones: Drone[] = [];
-
   allDrones: Drone[] = [
     {
       name: 'DJI Phantom 4 RTK',
@@ -52,7 +53,7 @@ export class DroneListsComponent implements OnInit {
     this.filteredDrones = this.allDrones.filter(drone => drone.type === this.selectedType);
   }
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,private location: Location,private routepath:Router) {}
 
   ngOnInit(): void {
     // Subscribe to route params to get the selected service type
@@ -60,5 +61,8 @@ export class DroneListsComponent implements OnInit {
       this.selectedType = params.get('type') || 'geospatial'; // Default to 'geospatial' if no type is provided
       this.filterDrones(); // Filter drones based on the selected type
     });
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

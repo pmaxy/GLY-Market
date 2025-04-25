@@ -1,21 +1,21 @@
 <div class="w-64 bg-white shadow-lg h-full flex flex-col p-4 rounded-lg">
     <!-- 🧑‍💼 Profile + Branding -->
-    <div [ngClass]="{'bg-primary-950': userType === 'user', 'bg-primary-900': userType === 'drone', 'bg-blue-950': userType === 'pilot'}"
+    <div [ngClass]="{'bg-primary-950': userType === 'user', 'bg-primary-900': userType === 'drone', 'bg-primary-950': userType === 'pilot'}"
          class="p-4 rounded-xl w-full text-white mb-6 shadow-sm">
       <div class="flex items-center gap-4">
         <img loading="lazy" class="w-12 h-12 rounded-full border-2"
-             [ngClass]="{'border-primary-500': userType === 'user', 'border-blue-500': userType === 'drone', 'border-blue-500': userType === 'pilot'}"
+             [ngClass]="{'border-primary-500': userType === 'user', 'border-primary-500': userType === 'drone', 'border-primary-500': userType === 'pilot'}"
              src="https://i.pravatar.cc/300" alt="User profile" />
         <div>
-          <p class="text-sm font-semibold" [ngClass]="{'text-primary-400': userType === 'user', 'text-blue-400': userType === 'drone', 'text-blue-400': userType === 'pilot'}">
+          <p class="text-sm font-semibold" [ngClass]="{'text-primary-400': userType === 'user', 'text-primary-400': userType === 'drone', 'text-primary-400': userType === 'pilot'}">
             Hi, {{ userName }}
           </p>
           <p class="text-xs text-gray-300">Welcome back!</p>
         </div>
       </div>
       <div class="mt-4 pt-2 border-t"
-           [ngClass]="{'border-primary-800': userType === 'user', 'border-blue-800': userType === 'drone', 'border-blue-800': userType === 'pilot'}">
-        <p class="text-lg font-bold" [ngClass]="{'text-primary-400': userType === 'user', 'text-blue-400': userType === 'drone', 'text-blue-400': userType === 'pilot'}">
+           [ngClass]="{'border-primary-800': userType === 'user', 'border-primary-800': userType === 'drone', 'border-primary-800': userType === 'pilot'}">
+        <p class="text-lg font-bold" [ngClass]="{'text-primary-400': userType === 'user', 'text-primary-400': userType === 'drone', 'text-primary-400': userType === 'pilot'}">
           {{ sidebarTitle }}
         </p>
       </div>
@@ -84,22 +84,22 @@
   
       <ng-container *ngIf="userType === 'pilot'">
         <a [routerLink]="['overview']"
-           routerLinkActive="bg-blue-100 text-blue-700"
-           class="flex items-center gap-3 p-2 rounded-md transition hover:bg-blue-50 hover:text-blue-700">
-          <fa-icon [icon]="['fas', 'chart-pie']" class="text-blue-600 w-5 h-5"></fa-icon>
+           routerLinkActive="bg-primary-100 text-primary-700"
+           class="flex items-center gap-3 p-2 rounded-md transition hover:bg-primary-50 hover:text-primary-700">
+          <fa-icon [icon]="['fas', 'chart-pie']" class="text-primary-600 w-5 h-5"></fa-icon>
           Overview
         </a>
     
         <a [routerLink]="['geodron']"
-           routerLinkActive="bg-blue-100 text-blue-700"
-           class="flex items-center gap-3 p-2 rounded-md transition hover:bg-blue-50 hover:text-blue-700">
+           routerLinkActive="bg-primary-100 text-primary-700"
+           class="flex items-center gap-3 p-2 rounded-md transition hover:bg-primary-50 hover:text-primary-700">
           <fa-icon [icon]="['fas', 'map-marked-alt']" class="text-green-600 w-5 h-5"></fa-icon>
           Geospatial
         </a>
     
         <a [routerLink]="['ceremony']"
-           routerLinkActive="bg-blue-100 text-blue-700"
-           class="flex items-center gap-3 p-2 rounded-md transition hover:bg-blue-50 hover:text-blue-700">
+           routerLinkActive="bg-primary-100 text-primary-700"
+           class="flex items-center gap-3 p-2 rounded-md transition hover:bg-primary-50 hover:text-primary-700">
           <fa-icon [icon]="['fas', 'camera-retro']" class="text-pink-600 w-5 h-5"></fa-icon>
           Ceremonies
         </a>

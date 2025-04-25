@@ -58,4 +58,6 @@ export class ChatsComponent {
       this.newMessage = '';
     }
   }
+
+  
 }

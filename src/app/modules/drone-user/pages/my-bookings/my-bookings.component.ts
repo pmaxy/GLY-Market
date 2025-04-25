@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { faBan, faEye } from '@fortawesome/free-solid-svg-icons';
 
 export interface Booking {
   service: string;
@@ -18,7 +19,8 @@ export interface Booking {
 export class MyBookingsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['service', 'date', 'location', 'status', 'actions'];
   dataSource: MatTableDataSource<Booking> = new MatTableDataSource();
-
+  faEye = faEye;
+  faBan = faBan;
   bookings: Booking[] = [
     {
       service: 'Geospatial Mapping',

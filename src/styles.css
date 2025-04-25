@@ -5,6 +5,8 @@
 /* Ensure loading overlay fades in and out smoothly */
 /* Hides scrollbar while allowing scroll */
 html, body {
+
+  
   overflow: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE and Edge */

@@ -1,0 +1,15 @@
+/* Transition for Sidebar */
+.fixed {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* For desktop, make sure translate-x does not apply */
+  .translate-x-0 {
+    transform: translateX(0);
+  }
+  
+  .-translate-x-full {
+    transform: translateX(-100%);
+  }
+  
+  /* Prevent unwanted layout shift when sidebar is hidden */

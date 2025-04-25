@@ -7,16 +7,22 @@ import { Component, HostListener } from '@angular/core';
 })
 export class DashboardComponent {
 
-  isSidebarVisible = false;
-  isDesktop = window.innerWidth >= 768;
+  isSidebarVisible = false;  // Initially hidden
+  isDesktop = window.innerWidth > 768;
 
+  // Toggle sidebar visibility
   toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isDesktop = event.target.innerWidth >= 768;
-    if (this.isDesktop) this.isSidebarVisible = false;
+    this.isDesktop = event.target.innerWidth > 768;
+    if (this.isDesktop) {
+      // Optionally hide the sidebar on desktop resize if needed
+      this.isSidebarVisible = false;
+    }
   }
+
+  
 }

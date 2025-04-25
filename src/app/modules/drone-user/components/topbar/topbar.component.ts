@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -10,7 +11,7 @@ export class TopbarComponent {
   @Output() toggleSidebar = new EventEmitter<void>();
   isDropdownOpen = false;
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private router:Router) {}
 
   handleMobileSearchClick() {
     this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
@@ -29,8 +30,9 @@ export class TopbarComponent {
     this.isDropdownOpen = false;
   }
 
-  logout(): void {
-    // Replace with actual logout logic
-    console.log('Logging out...');
+  logout(){
+    localStorage.clear();
+    this.router.navigate([''])
+
   }
 }

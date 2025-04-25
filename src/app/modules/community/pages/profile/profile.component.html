@@ -31,8 +31,8 @@
     <div class="mt-6">
       <h4 class="text-sm font-medium text-gray-500">Social Profiles</h4>
       <div class="flex space-x-4 mt-2">
-        <a *ngIf="user.social.linkedin" [href]="user.social.linkedin" target="_blank" class="text-blue-600 hover:underline">LinkedIn</a>
-        <a *ngIf="user.social.twitter" [href]="user.social.twitter" target="_blank" class="text-blue-400 hover:underline">Twitter</a>
+        <a *ngIf="user.social.linkedin" [href]="user.social.linkedin" target="_blank" class="text-primary-600 hover:underline">LinkedIn</a>
+        <a *ngIf="user.social.twitter" [href]="user.social.twitter" target="_blank" class="text-primary-400 hover:underline">Twitter</a>
         <a *ngIf="user.social.github" [href]="user.social.github" target="_blank" class="text-gray-800 hover:underline">GitHub</a>
       </div>
     </div>
@@ -40,7 +40,7 @@
     <!-- CV Download -->
     <div class="mt-6" *ngIf="user.cv">
       <h4 class="text-sm font-medium text-gray-500">Curriculum Vitae</h4>
-      <button (click)="downloadCV()" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+      <button (click)="downloadCV()" class="mt-2 px-4 py-2 bg-primary-600 text-white rounded hover:bg-primary-700">
         Download CV
       </button>
     </div>

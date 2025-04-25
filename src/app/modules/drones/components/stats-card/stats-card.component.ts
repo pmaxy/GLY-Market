@@ -9,6 +9,6 @@ export class StatsCardComponent {
   @Input() label = '';
   @Input() value = '';
   @Input() icon = '';
-  @Input() color = 'bg-blue-100';
+  @Input() color = 'bg-primary-100';
 
 }
