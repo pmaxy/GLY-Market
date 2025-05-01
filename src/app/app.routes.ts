@@ -11,7 +11,7 @@ export const routes: Routes = [
     {
         path: 'userAdmin',
         loadChildren: () => import('./modules/User/user.module').then(m => m.UserModule),
-        canActivate: [authGuard]
+        // canActivate: [authGuard]
     },
     {
         path: 'chatroom',
@@ -26,6 +26,11 @@ export const routes: Routes = [
     {
         path: 'dronesuser',
         loadChildren: () => import('./modules/drone-user/drone-user.module').then(m => m.DroneUserModule),
+        
+    },
+    {
+        path: 'geoportal',
+        loadChildren: () => import('./modules/geospatial/geospatial.module').then(m => m.GeospatialModule),
         
     }
     

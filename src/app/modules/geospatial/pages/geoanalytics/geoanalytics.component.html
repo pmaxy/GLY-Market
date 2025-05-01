@@ -1,0 +1,38 @@
+<!-- analytics.component.html -->
+<div class="space-y-6">
+  <h2 class="text-2xl font-bold">Geospatial Analytics</h2>
+
+  <!-- Climate Change Trends Chart -->
+  <div class="bg-white p-4 rounded-md shadow-md">
+    <h3 class="font-semibold">Climate Change Trends</h3>
+    <p class="text-sm mb-4">Visualize the impact of climate change over the years.</p>
+    <div class="h-64">
+      <apx-chart
+        [series]="climateChangeOptions.series"
+        [chart]="climateChangeOptions.chart"
+        [xaxis]="climateChangeOptions.xaxis"
+        [yaxis]="climateChangeOptions.yaxis"
+        [dataLabels]="climateChangeOptions.dataLabels"
+        [title]="climateChangeOptions.title"
+        class="w-full h-full">
+      </apx-chart>
+    </div>
+  </div>
+
+  <!-- Urban Growth Forecast Chart -->
+  <div class="bg-white p-4 rounded-md shadow-md">
+    <h3 class="font-semibold">Urban Growth Forecast</h3>
+    <p class="text-sm mb-4">Analyze the future of urban growth based on current trends.</p>
+    <div class="h-64">
+      <apx-chart
+        [series]="urbanGrowthOptions.series"
+        [chart]="urbanGrowthOptions.chart"
+        [xaxis]="urbanGrowthOptions.xaxis"
+        [yaxis]="urbanGrowthOptions.yaxis"
+        [dataLabels]="urbanGrowthOptions.dataLabels"
+        [title]="urbanGrowthOptions.title"
+        class="w-full h-full">
+      </apx-chart>
+    </div>
+  </div>
+</div>

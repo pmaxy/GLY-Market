@@ -1,83 +1,51 @@
 <div class="overflow-hidden px-8 pt-14 pb-10 h-full bg-white max-md:px-5">
-    <div class="flex gap-5 max-md:flex-col">
-      <div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
-        <div class="flex flex-col grow items-start max-md:mt-10 max-md:max-w-full">
-          <img
-            loading="lazy"
-            [src]="data.imageUrl"
-            alt="Savana Honey product image"
-            class="object-contain self-stretch w-full aspect-[1.09] max-md:max-w-full bg-neutral-100"
-          />
-          <div class="mt-4 text-xs text-primary-500" role="status" aria-live="polite">{{data.availableQuantity}} items left</div>
-          <div
-          class="flex overflow-hidden flex-col items-start mt-1 w-full bg-zinc-300 rounded-[30px]"
-          role="progressbar"
-          [attr.aria-valuenow]="data.progressWidth"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          <div
-            class="flex shrink-0 h-2 bg-primary-500 rounded-[30px]"
-            [style.width.px]="data.progressWidth"
-          ></div>
-        </div>
-        </div>
-      </div>
-      <div class="flex flex-col  w-6/12 max-md:ml-0 max-md:w-full">
-        <form 
-          class="flex flex-col w-full text-xl max-md:mt-10 max-md:max-w-full"
-          (ngSubmit)="onSubmit()"
-        >
-          <div class="flex flex-col items-start pl-2 text-sm text-slate-700 max-md:max-w-full">
-            <h1 class="text-base font-bold">{{data.title}}</h1>
-            <p class="mt-2.5 text-xs">
-              package your application into containers, ensuring
-              <br />
-              that it works the same way in development, testing, and production
-            </p>
-            <div class="mt-2 text-primary-500">ksh.{{data.price}}</div>
-            <label for="notes" class="sr-only">Add notes for your order</label>
-            <textarea
-              id="notes"
-              [(ngModel)]="productState.notes"
-              name="notes"
-              class="self-stretch px-3 pt-2 pb-1 mt-5 rounded-xl bg-neutral-100 text-stone-400 max-md:pr-5 max-md:pb-28 max-md:mt-10 max-md:max-w-full"
-              placeholder="Add notes"
-              aria-label="Add notes for your order"
-            ></textarea>
-          </div>
-          <div
-            class="flex overflow-hidden flex-wrap gap-5 justify-between items-start px-2.5 py-0.5 mt-5 text-center text-black whitespace-nowrap bg-neutral-100 rounded-[30px] max-md:max-w-full"
-            role="group"
-            aria-label="Quantity selector"
-          >
-            <button
-              type="button"
-              (click)="decrementQuantity()"
-              class="px-2.5 pb-7 mt-1.5 w-6 h-6 bg-white rounded-[50px]"
-              aria-label="Decrease quantity"
-            >
-              -
-            </button>
-            <div class="text-slate-700" role="status" aria-live="polite">
-              {{productState.quantity}}
-            </div>
-            <button
-              type="button"
-              (click)="incrementQuantity()"
-              class="px-2.5 pb-2 mt-1.5 bg-white h-[31px] rounded-[50px] w-[31px]"
-              aria-label="Increase quantity"
-            >
-              +
-            </button>
-          </div>
-          <button
-            type="submit"
-            class="overflow-hidden px-16 pt-1 pb-1 mt-5 font-bold text-center text-white rounded-xl bg-primary-900 max-md:px-5 max-md:mr-2.5 max-md:max-w-full"
-          >
-            Add to Cart
-          </button>
-        </form>
+  <div class="flex gap-5 max-md:flex-col">
+    <!-- Product Image and Stock Progress -->
+    <div class="flex flex-col w-6/12 max-md:w-full">
+      <img
+        loading="lazy"
+        [src]="data.src"
+        alt="{{data.title}} product image"
+        class="object-contain self-stretch w-full aspect-[1.09] max-md:max-w-full bg-neutral-100"
+      />
+      <div class="mt-4 text-xs text-primary-500" role="status" aria-live="polite">{{data.itemsLeft}} items left</div>
+
+      <div class="flex overflow-hidden flex-col items-start mt-1 w-full bg-zinc-300 rounded-[30px]">
+        <div
+          class="flex shrink-0 h-2 bg-primary-500 rounded-[30px]"
+          [style.width.px]="data.progressWidth"
+        ></div>
       </div>
     </div>
+
+    <!-- Product Details and Add to Cart Form -->
+    <div class="flex flex-col w-6/12 max-md:w-full">
+      <form class="flex flex-col w-full text-xl max-md:mt-10 max-md:max-w-full" (ngSubmit)="onSubmit()">
+        <h1 class="text-base font-bold">{{data.title}}</h1>
+        <p class="mt-2.5 text-xs">Details about the product...</p>
+        <div class="mt-2 text-primary-500">Ksh.{{data.price}}</div>
+
+        <label for="notes" class="sr-only">Add notes for your order</label>
+        <textarea
+          id="notes"
+          [(ngModel)]="productState.notes"
+          name="notes"
+          class="self-stretch px-3 pt-2 pb-1 mt-5 rounded-xl bg-neutral-100 text-stone-400"
+          placeholder="Add notes"
+        ></textarea>
+
+        <!-- Quantity Selector -->
+        <div class="flex overflow-hidden flex-wrap gap-5 justify-between items-start mt-5">
+          <button type="button" (click)="decrementQuantity()" class="px-2.5 pb-7 mt-1.5 w-6 h-6 bg-white rounded-[50px]">-</button>
+          <div class="text-slate-700">{{productState.quantity}}</div>
+          <button type="button" (click)="incrementQuantity()" class="px-2.5 pb-2 mt-1.5 bg-white h-[31px] rounded-[50px]">+</button>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button type="submit" class="overflow-hidden px-16 pt-1 pb-1 mt-5 font-bold text-center text-white rounded-xl bg-primary-900">
+          Add to Cart
+        </button>
+      </form>
+    </div>
   </div>
+</div>

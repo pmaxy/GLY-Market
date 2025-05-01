@@ -1,3 +1,4 @@
+
 <div class="w-64 bg-white shadow-lg h-full flex flex-col p-4 rounded-lg">
 
     <!-- 🧑‍💼 Profile + Brand -->
@@ -70,7 +71,7 @@
          Settings
       </a>
   
-      <button (click)="logout()"
+      <button (click)="logout.emit()"
               class="mt-4 w-full flex items-center gap-3 text-red-600 hover:bg-red-100 p-2 rounded-md transition text-left">
               <fa-icon [icon]="faRightFromBracket" class="w-5 h-5"></fa-icon>
               Logout

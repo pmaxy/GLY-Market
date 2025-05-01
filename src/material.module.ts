@@ -21,6 +21,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgApexchartsModule } from 'ng-apexcharts';
 @NgModule({
   exports: 
   [
@@ -41,7 +42,8 @@ MatDialogModule,
 FormsModule,
 ReactiveFormsModule,
 MatAutocompleteModule,
-MatTooltipModule
+MatTooltipModule,
+NgApexchartsModule
   ]
     
   

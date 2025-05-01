@@ -16,6 +16,10 @@ import { ChatsComponent } from './pages/chats/chats.component';
 import { MaterialModule } from '../../../material.module';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CodeInputModule } from 'angular-code-input';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AuthModule } from '../Auth/auth.module';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
@@ -31,13 +35,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EventsComponent,
     EducationComponent,
     ChatsComponent,
-    DashboardComponent
+    DashboardComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
     CommunityRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    CodeInputModule,
+    NgxSpinnerModule,
+
   ]
 })
 export class CommunityModule { }

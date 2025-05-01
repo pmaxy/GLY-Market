@@ -11,17 +11,17 @@ import { ProductsComponent } from './main/home-main/products/products.component'
 
 const routes: Routes = [
   {
-    path: 'user',
+    path: '',
     component: MainComponent,
     children:[
-      {
-        path: 'header',
-        component: HeaderComponent
-      },
       {
         path: '',
         pathMatch: 'full',
         component: HomeComponent
+      },
+      {
+        path: 'header',
+        component: HeaderComponent
       },
       {
         path: 'home',
@@ -38,11 +38,6 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
-      },
-      {
-        path: 'home',
-        pathMatch: 'full',
-        component: HomeComponent
       },
       {
         path: 'settings',

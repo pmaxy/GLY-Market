@@ -1,39 +1,35 @@
+<div class="loading-overlay" *ngIf="isLoading" [class.active]="isLoading">
+  <app-spinner></app-spinner>
+</div>
 <div class="flex flex-col md:flex-row h-screen bg-gray-50 relative">
-  <!-- Overlay (mobile) -->
-  <div
-    *ngIf="isSidebarVisible && !isDesktop"
-    class="fixed inset-0 bg-black bg-opacity-40 z-30"
-    (click)="toggleSidebar()"
-  ></div>
+    <!-- Overlay (mobile) -->
+    <div
+      *ngIf="isSidebarVisible && !isDesktop"
+      class="fixed inset-0 bg-black bg-opacity-40 z-30"
+      (click)="toggleSidebar()"
 
-  <!-- Sidebar -->
-  <div
+    ></div>
+  
+    <!-- Sidebar -->
+    <div
     class="fixed md:static top-0 left-0 h-full w-64 bg-white shadow-lg z-40 transition-transform duration-300 ease-in-out"
     [ngClass]="{
-      'translate-x-0': isSidebarVisible || isDesktop,
-      '-translate-x-full': !isSidebarVisible && !isDesktop
-    }"
-    style="transition: transform 0.3s ease-in-out;"
-  >
-    <app-sidebar></app-sidebar>
+        'translate-x-0': isSidebarVisible || isDesktop,
+        '-translate-x-full': !isSidebarVisible && !isDesktop
+      }"
+    >
+      <app-sidebar
+      (logout)="logout()"
+      ></app-sidebar>
+    </div>
+  
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col overflow-hidden z-10 sm:ml-64 md:ml-2 lg:ml-2">
+      <app-topbar (toggleSidebar)="toggleSidebar()" (logout)="logout()"></app-topbar>
+      <main class="flex-1 overflow-y-auto p-4">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
   </div>
-
-  <!-- Main content -->
-  <div class="flex-1 flex flex-col overflow-hidden z-10 sm:ml-64 md:ml-0 lg:ml-0">
-    <!-- Hamburger button for toggling sidebar -->
-    <button 
-      *ngIf="!isDesktop" 
-      class="md:hidden p-2 rounded-md hover:bg-primary-800 transition-colors"
-      (click)="toggleSidebar()"
-      aria-label="Toggle Sidebar">
-      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-
-    <app-topbar (toggleSidebar)="toggleSidebar()"></app-topbar>
-    <main class="flex-1 overflow-y-auto p-4">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-</div>
+  
+  

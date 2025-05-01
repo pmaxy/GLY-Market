@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { faHome, faTachometerAlt, faBoxOpen, faCog, faRightFromBracket, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+
 // import { ToastrService } from 'ngx-toastr';
 // import { ServiceService } from '../../Content/service.service';
 
@@ -11,6 +13,13 @@ import { Router } from '@angular/router';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  faHome = faHome;
+  faDashboard = faTachometerAlt;
+  faProducts = faBoxOpen;
+  faSettings = faCog;
+  faLogout = faRightFromBracket;
+  faProfile = faUserCircle;
+
   isHidden1=true
   isHidden=true
   isHidden2=true
@@ -41,4 +50,11 @@ export class SidebarComponent {
     this.router.navigate(['/Login'])
     // this.toast.success('Logged out successfully')
 
-}}
+}
+logout(){
+  localStorage.clear();
+  this.router.navigate([''])
+
+}
+
+}

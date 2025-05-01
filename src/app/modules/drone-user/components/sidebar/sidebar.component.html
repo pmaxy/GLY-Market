@@ -47,7 +47,7 @@
 
   <!-- 🚪 Logout -->
   <div class="mt-auto pt-4 border-t border-primary-100">
-    <button (click)="logout()"
+    <button (click)="logout.emit()"
       class="w-full flex items-center gap-3 text-red-600 hover:bg-red-100 p-2 rounded-md transition text-left">
       <fa-icon [icon]="faRightFromBracket" class="text-red-600 w-5 h-5"></fa-icon>
       Logout

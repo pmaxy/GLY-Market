@@ -1,70 +1,82 @@
-<div class="flex flex-col overflow-y-auto scrollbar-hide h-full" >
-    
-    <div class="flex flex-row  w-full px-4 py-6  gap-5  ">
-        <div *ngFor="let item of items; let i = index" class="w-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)]  " >
-            <img 
-            class="itemn w-6 h-6 p-1 bg-primary-700 rounded-md"
-            [src]="item.src"
-            [ngStyle]="{ '--i': i + 1 }"
-            alt=""/>
-            <p class="text-xl text-[#8A5289]">{{item.name}}</p>
-            <p class="">{{item.amount}}</p>
-        </div>
-      
-    </div>
-    <div class="w-full bg-primary-500 px-4 py-6 rounded-sm"></div>
-    <div 
-    class="grid gap-4 px-4 py-6"
+<div class="flex flex-col h-full w-full overflow-y-auto overflow-x-hidden scrollbar-hide">
+
+  <!-- 🏷 Product Cards Grid -->
+  <div
+    class="grid gap-6 px-4 sm:px-6 py-6"
     [ngClass]="{
-      'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6': isMiniSidebarOpen,
-      'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4': !isMiniSidebarOpen
+      'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6': isMiniSidebarOpen,
+      'grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4': !isMiniSidebarOpen
     }"
   >
-    <button 
-      class="overflow-hidden px-2 py-2.5 bg-white rounded-xl max-w-[200px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+    <button
+      class="bg-white rounded-2xl shadow-md border border-primary-100 hover:shadow-lg hover:border-primary-300 transition p-4 flex flex-col justify-between w-full"
       role="article"
       *ngFor="let list of lists"
       (click)="openDialog(list)"
     >
-      <div class="flex flex-col pb-2.5 bg-gray-100 rounded-md">
+      <!-- 🖼 Image with Stock Badge -->
+      <div class="relative flex items-center justify-center bg-primary-50 rounded-lg mb-4 overflow-hidden p-3">
         <img
-        [src]="list.imageUrl"
-          [alt]="list.name"
+          [src]="list.src"
+          [alt]="list.title"
           class="object-contain w-full aspect-[1.15]"
           loading="lazy"
         />
+        <span
+          class="absolute top-2 right-2 text-[10px] font-medium px-2 py-1 rounded-full bg-white text-gray-700 shadow border border-gray-200"
+        >
+          {{ list.itemsLeft }} left
+        </span>
       </div>
-      <h2 class="z-10 -mt-1.5 text-base font-bold text-slate-700">
-        {{ list.name }}
-      </h2>
-      <div class="mt-1 text-sm text-zinc-500">
-        ksh.{{ list.price }}
-      </div>
-      <div class="mt-1 text-xs text-zinc-500">
-        {{ list.availableQuantity}} items left
-      </div>
-      <div
-        class="flex overflow-hidden flex-col items-start mt-1 w-full bg-zinc-300 rounded-[30px]"
-        role="progressbar"
-        [attr.aria-valuenow]="list.progressWidth"
-        aria-valuemin="0"
-        aria-valuemax="100"
-      >
-        <div
-          class="flex shrink-0 h-2 bg-primary-500 rounded-[30px]"
-          [style.width.px]="list.progressWidth"
-        ></div>
-      </div>
+
+      <!-- ✍️ Text Content -->
+      <h2 class="text-base font-bold text-slate-800 truncate">{{ list.title }}</h2>
+      <div class="mt-2 text-sm text-primary-800 font-medium">Ksh.{{ list.price }}</div>
+
+      <!-- 📊 Progress Bar -->
+<!-- 📊 Progress Bar -->
+<!-- 📊 Stock Progress Display -->
+<div class="flex items-center justify-between gap-2 mt-2">
+  <!-- Progress Bar Container -->
+  <div class="relative flex-1 h-2 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">
+    <!-- Inner Progress Bar -->
+    <div
+      class="h-full transition-all duration-300"
+      [ngClass]="{
+        'bg-green-500': list.progressWidth > 50,
+        'bg-yellow-500': list.progressWidth <= 50 && list.progressWidth > 20,
+        'bg-red-500': list.progressWidth <= 20
+      }"
+      [style.width.%]="list.progressWidth"
+    ></div>
+
+    <!-- Floating Quantity Number (only if width > 15%) -->
+    <div
+      *ngIf="list.progressWidth > 15"
+      class="absolute inset-0 flex items-center pl-2 text-white text-xs font-semibold"
+    >
+      
+    </div>
+  </div>
+
+  <!-- Outside Label if progress is too small -->
+  <div
+    *ngIf="list.progressWidth <= 15"
+    class="text-xs text-gray-600 dark:text-gray-300 font-medium whitespace-nowrap ml-2"
+  >
+    
+  </div>
+</div>
+
+
+
+      <!-- 🛒 Add to Cart Button -->
       <button
-        class="px-3 py-1 mt-2 m-auto w-full text-base font-bold text-center text-white rounded-xl bg-primary-900 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-        (click)="addToCart()"
-        aria-label="Add to Cart"
+        class="mt-5 px-5 py-3 text-sm font-semibold text-white bg-primary-700 hover:bg-primary-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 transition"
+        (click)="addToCart(list)"
       >
         Add to Cart
       </button>
     </button>
   </div>
-  
-  
-
 </div>

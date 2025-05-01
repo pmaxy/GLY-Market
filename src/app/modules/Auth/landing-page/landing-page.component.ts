@@ -13,9 +13,7 @@ import { Dropdown, DropdownInterface, DropdownOptions, InstanceOptions } from 'f
   styleUrl: './landing-page.component.css'
 })
 export class LandingPageComponent implements OnInit, AfterViewInit{
-onGetInvolvedClick() {
-throw new Error('Method not implemented.');
-}
+
   @ViewChild('dropdownMenu') dropdownMenuRef!: ElementRef;
   @ViewChild('dropdownBtn') dropdownBtnRef!: ElementRef;
   @ViewChild('myDropdown') myDropdown?: ElementRef;
@@ -27,6 +25,7 @@ throw new Error('Method not implemented.');
   isLoading: boolean = false;
   progressWidth: string = '0%';
 currentYear: any;
+i: any;
   constructor(
     private router: Router,
     private spinner: NgxSpinnerService,
@@ -73,19 +72,19 @@ menuItems = [
     ]
   },
   {
-    label: 'Earth Data',
+    label: 'EarthPortal',
     links: [
-      { text: 'Satellite Maps', href: '#' },
-      { text: 'NDVI Analysis', href: '#' },
-      { text: 'Soil Health', href: '#' }
+      { text: 'Geodata', href: '/geoportal' },
+      { text: 'GeoAnalytics', href: '/geoportal/geoanalytics' },
+      { text: 'GeoPlanning', href: '/geoportal/geoplanning' },
+      { text: 'GeoReports', href: '/geoportal/georeports' }
     ]
   },
   {
     label: 'Market Place',
     links: [
-      { text: 'Buy Inputs', href: '#' },
-      { text: 'Sell Produce', href: '#' },
-      { text: 'Agro Deals', href: '#' }
+      { text: 'Buy Inputs', href: '/userAdmin' },
+      { text: 'Sell Produce', href: '/userAdmin' },
     ]
   }
 ];
@@ -94,8 +93,11 @@ menuItems = [
 
 ngOnInit(): void {
   this.startTypingEffect();
+  this.clickRoute()
 }
+clickRoute(){
 
+}
 
 
 
@@ -170,10 +172,72 @@ register(){
 
 }
 
+marketclick() {
+  
+  this.isLoading = true;
+  this.ngZone.run(() => {
+    this.spinner.show();
+  setTimeout(() => {
+  this.router.navigate(['/userAdmin'])
+  this.spinner.hide();
+  this.isLoading = false;},2000)})
+}
+  droneclick() {
+    this.isLoading = true;
+    this.ngZone.run(() => {
+      this.spinner.show();
+    setTimeout(() => {
+    this.router.navigate(['/dronesuser'])
+    this.spinner.hide();
+    this.isLoading = false;},2000)})
+  }
+  geoclick() {
+ 
+    this.isLoading = true;
+    this.ngZone.run(() => {
+      this.spinner.show();
+    setTimeout(() => {
+    this.router.navigate(['/geoportal'])
+    this.spinner.hide();
+    this.isLoading = false;},2000)})
+  }
+  
+  onGetInvolvedClick() {
+    
+    this.isLoading = true;
+    this.ngZone.run(() => {
+      this.spinner.show();
+    setTimeout(() => {
+    this.router.navigate(['/chatroom'])
+    this.spinner.hide();
+    this.isLoading = false;},2000)})
+    
+  }
+
+  currentRoute: string | null = null;
+
+  navigateWithSpinner(route: string) {
+    this.isLoading = true;
+    this.currentRoute = route;
+  
+    this.ngZone.run(() => {
+      this.spinner.show();
+      setTimeout(() => {
+        this.router.navigate([route]).finally(() => {
+          this.spinner.hide();
+          this.isLoading = false;
+          this.currentRoute = null;
+        });
+      }, 500); // Delay for UX smoothness
+    });
+  }
+  
+
 toggleMenu() {
   this.isMenuOpen = !this.isMenuOpen;
   this.openDropdownIndex = null;
 }
+
 
 toggleDropdown(index: number) {
   this.openDropdownIndex = this.openDropdownIndex === index ? null : index;

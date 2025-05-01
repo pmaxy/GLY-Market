@@ -7,11 +7,11 @@
 <div class="relative h-screen w-screen bg-primary-950 overflow-hidden">
 
   <!-- Animated Falling Leaves Background -->
-  <section class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+  <section class="absolute top-0 left-0 w-full h-full z-10 pointer-events-none bg-primary-950/50">
     <div class="leaf absolute w-full h-full">
       <img *ngFor="let leaf of leafImages; let i = index"
         [src]="leaf"
-        class="animate-fall absolute w-16 h-16 opacity-70"
+        class="animate-fall absolute w-16 h-16 opacity-70 "
         [ngStyle]="{ left: leafPositions[i] }"
         alt="Leaf" />
     </div>
@@ -53,4 +53,8 @@
       </form>
     </div>
   </div>
+  <div class="absolute bottom-0 left-0 w-full top-0 z-0 pointer-events-none ">
+    <img src="/assets/figma-photos/water-wave5.svg" alt="Wave Edge" class="w-full h-full  object-cover" />
+  </div>
 </div>
+

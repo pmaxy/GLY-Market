@@ -1,42 +1,97 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+
 interface OrderItem {
   id: number;
-  name: string;
+  title: string;
   price: number;
   quantity: number;
-  image: string;
+  src: string;
 }
+
+
+
 @Component({
   selector: 'app-mini-sidebar',
-  // standalone: true,
-  // imports: [],
-  
   templateUrl: './mini-sidebar.component.html',
   styleUrl: './mini-sidebar.component.css'
 })
-export class MiniSidebarComponent {
+export class MiniSidebarComponent implements OnInit {
   @Input() isOpen1 = false; 
-  orderItems: OrderItem[] = [
-    {
-      id: 1,
-      name: "Elgon 2l Milk",
-      price: 400,
-      quantity: 1,
-      image: "https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/74e93a1524228a81f52957d5cd84812a09bf6623290d3103b067596e31f89676?apiKey=1cda1be9d1894bb2995be32d30ac20e2&"
-    },
-    {
-      id: 2,
-      name: "Elgon 2l Milk",
-      price: 400,
-      quantity: 1,
-      image: "https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/724a75cc88aa5b15c546e00845cb11b0cfb8d5bfe1d0b65b119bec2c9f185bba?apiKey=1cda1be9d1894bb2995be32d30ac20e2&"
-    },
-    {
-      id: 3,
-      name: "Elgon 2l Milk",
-      price: 400,
-      quantity: 2,
-      image: "https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/1ee6e5c2e0a1492d42b4ba76bcdb0403cafe7e797247cc6b02744108fbe1fbff?apiKey=1cda1be9d1894bb2995be32d30ac20e2&"
+  orderItems: OrderItem[] = [];
+
+  ngOnInit(): void {
+    // Retrieve the cart from localStorage when the component initializes
+    this.loadCartFromLocalStorage();
+  }
+
+  // Load cart from localStorage
+  loadCartFromLocalStorage(): void {
+const cart: OrderItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
+
+this.orderItems = cart.map((item: OrderItem): OrderItem => ({
+  id: item.id,
+  title: item.title, // assuming `title` is used in dialog data
+  price: item.price,
+  quantity: item.quantity,
+  src: item.src
+}));
+
+  }
+
+  updateItemQuantity(item: OrderItem, increment: boolean): void {
+    // Retrieve the cart from localStorage
+    const cart: OrderItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
+  
+    // Find the specific item in the cart
+    const cartItem = cart.find((cartItem: OrderItem) => cartItem.id === item.id);
+  
+    if (cartItem) {
+      // Update the quantity based on whether increment is true or false
+      if (increment) {
+        cartItem.quantity++;
+      } else {
+        if (cartItem.quantity > 1) {
+          cartItem.quantity--;
+        }
+      }
+  
+      // Save the updated cart back to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+  
+      // Refresh the orderItems array
+      this.loadCartFromLocalStorage();
     }
-  ];
+  }
+  
+
+  // Delete an item from the cart
+  deleteItemFromCart(item: OrderItem): void {
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart = cart.filter((cartItem: OrderItem) => cartItem.id === item.id);
+
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    this.loadCartFromLocalStorage(); // Refresh the orderItems array
+  }
+
+  getSubtotal(): number {
+    return this.orderItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  }
+  
+  getTax(): number {
+    return this.getSubtotal() * 0.10; // Assuming 10% tax
+  }
+
+
+  
+  getDiscount(): number {
+    return 20; // Assuming a fixed discount for now
+  }
+  
+  getTotal(): number {
+    return this.getSubtotal() + this.getTax() - this.getDiscount();
+  }
+  
+  
 }

@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class TopbarComponent {
   @Output() toggleSidebar = new EventEmitter<void>();
+  @Output() logout = new EventEmitter<void>();
+
   isDropdownOpen = false;
 
   constructor(private breakpointObserver: BreakpointObserver, private router:Router) {}
@@ -30,9 +32,5 @@ export class TopbarComponent {
     this.isDropdownOpen = false;
   }
 
-  logout(){
-    localStorage.clear();
-    this.router.navigate([''])
 
-  }
 }

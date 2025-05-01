@@ -16,6 +16,7 @@ import { MiniSidebarComponent } from './main/mini-sidebar/mini-sidebar.component
 import { ProductsComponent } from './main/home-main/products/products.component';
 import { FormComponent } from './main/home-main/products/form/form.component';
 import { DeleteDialogComponent } from './main/home-main/products/delete-dialog/delete-dialog.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -39,9 +40,9 @@ import { DeleteDialogComponent } from './main/home-main/products/delete-dialog/d
     UserRoutingModule,
     UserRoutingModule,
     RouterModule,
-    IonicModule.forRoot(),
     MaterialModule,
     FormsModule,
+    FontAwesomeModule
   
     
   ]

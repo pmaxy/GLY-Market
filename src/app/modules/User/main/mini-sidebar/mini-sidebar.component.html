@@ -1,134 +1,67 @@
-<div
-class="flex hidden overflow-y-auto scrollbar-hide h-full flex-col mx-auto w-[380px] bg-white max-w-[380px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
-role="main"
-[class.hidden]="!isOpen1"
-aria-label="Order Details Page"
->
-<header
-  class="flex  gap-10  pr-20 pl-4 w-full text-center bg-white shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
->
-  <img
-    loading="lazy"
-    src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/98ea8ef070c3c17131d4e209f39c8b76599088cefe5412695c8c1512662085ae?apiKey=1cda1be9d1894bb2995be32d30ac20e2&"
-    class="object-contain shrink-0 aspect-[1.05] rounded-[50px] w-[50px]"
-    alt="Customer profile"
-  />
-  <div class="flex flex-col self-start">
-    <h1 class="self-center text-xl text-slate-700">pat's order</h1>
-    <p class="mt-2.5 text-base text-zinc-300">order number #005</p>
-  </div>
-</header>
+<div class="flex flex-col h-full overflow-y-auto scrollbar-hide px-4 pt-4 pb-6 bg-gray-50 dark:bg-gray-900 transition-colors">
 
-<div
-  class="flex flex-col justify-center px-2.5 py-2.5 mt-2 w-full text-xl text-center bg-white shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-slate-700"
->
-  <div
-    class="flex overflow-hidden gap-5 justify-between px-4 pt-3 pb-4 bg-neutral-100 rounded-[30px]"
-    role="button"
-    tabindex="0"
-  >
-    <div>COUNTER NO</div>
-    <img
-      loading="lazy"
-      src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/cfbddb8beb42be4368ab5ab1ffd9f734da35273de4d8d8ad11ab5e2c42bc19c5?apiKey=1cda1be9d1894bb2995be32d30ac20e2&"
-      class="object-contain shrink-0 self-start mt-1 aspect-square shadow-[0px_4px_4px_rgba(0,0,0,0.25)] w-[18px]"
-      alt=""
-    />
-  </div>
-</div>
-
-<section
-  class="flex flex-col self-center px-1.5 py-3.5 mt-1 w-full text-center bg-white max-w-[370px]"
-  aria-label="Order Items" *ngFor="let item of orderItems"
->
-  <div
-    class="flex overflow-hidden gap-2 justify-between items-start   pb-1 pl-1 bg-white rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
-  >
-    <img
-      loading="lazy"
-      [src]="item.image"
-      alt="{{ item.name }}"
-      class="w-20"
-    />
-    <div class="flex flex-col items-start my-auto">
-      <h2 class="self-stretch text-md font-bold text-slate-700">{{ item.name }}</h2>
-      <p class=" text-base text-zinc-300">ksh.{{ item.price }}</p>
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/1dc04d0b88a7e6d47e5b5385983d221fccc2415b05c21f4ac6612e33ce3fe7a2?apiKey=1cda1be9d1894bb2995be32d30ac20e2&"
-        class="object-contain  aspect-[0.95] rounded-[50px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] w-[19px]"
-        alt=""
-      />
+  <!-- 🧾 Header -->
+  <header class="flex items-center gap-4 p-4 rounded-xl bg-white shadow dark:bg-gray-800">
+    <img src="https://i.pravatar.cc/300" class="w-14 h-14 rounded-full border-2 border-primary-500 shadow" alt="Customer" />
+    <div>
+      <h1 class="text-xl font-bold text-gray-800 dark:text-white">Pat's Order</h1>
+      <p class="text-sm text-gray-500 dark:text-gray-300">Order #005</p>
     </div>
-    <div
-      class="flex  gap-5 self-end px-1.5 py-1.5 text-xl text-black whitespace-nowrap bg-neutral-100 rounded-[30px]"
-      role="group"
-      aria-label="Quantity selector"
-    >
-      <button
-        class="px-3 pb-7 flex justify-center w-4 h-4 bg-white rounded-[50px]"
-        aria-label="Decrease quantity"
-      >
-        -
-      </button>
-      <div class="self-start text-slate-700" aria-label="Current quantity">
-        1
+  </header>
+
+  <!-- 🏷️ Counter Info -->
+  <div class="mt-4 p-4 bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200 rounded-xl flex justify-between items-center shadow-sm">
+    <span class="text-lg font-semibold text-primary-800">Counter No</span>
+    <img src="counter-icon.png" class="w-5 h-5" alt="Counter Icon" />
+  </div>
+
+  <!-- 🍔 Order Items -->
+  <ng-container *ngFor="let item of orderItems">
+    <section class="mt-4 p-4 bg-white rounded-xl shadow-sm flex items-start gap-4 dark:bg-gray-800">
+      <img [src]="item.src" class="w-20 h-20 object-cover rounded-lg shadow-md" alt="{{ item.title }}" />
+      <div class="flex flex-col flex-1">
+        <div class="text-md font-semibold text-gray-800 dark:text-white truncate">{{ item.title }}</div>
+        <div class="text-sm text-gray-500 dark:text-gray-300">ksh. {{ item.price }}</div>
+        <div class="flex items-center gap-3 mt-3">
+          <button
+            (click)="updateItemQuantity(item, false)"
+            class="w-8 h-8 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-full text-xl font-bold text-gray-800 dark:text-white flex items-center justify-center shadow-sm"
+            aria-label="Decrease quantity">-</button>
+          <span class="text-base text-gray-800 dark:text-white">{{ item.quantity }}</span>
+          <button
+            (click)="updateItemQuantity(item, true)"
+            class="w-8 h-8 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-full text-xl font-bold text-gray-800 dark:text-white flex items-center justify-center shadow-sm"
+            aria-label="Increase quantity">+</button>
+        </div>
       </div>
-      <button
-        class="px-3 pb-7 flex justify-center bg-white w-4 h-4 rounded-[50px]"
-        aria-label="Increase quantity"
-      >
-        +
-      </button>
-    </div>
-  </div>
+    </section>
+  </ng-container>
 
-</section>
+  <!-- 📊 Order Summary -->
+  <section class="mt-6 p-5 bg-white rounded-xl shadow-sm dark:bg-gray-800">
+    <div class="flex justify-between text-gray-700 dark:text-gray-100">
+      <span>Subtotal</span>
+      <span>{{ getSubtotal() }}</span>
+    </div>
+    <div class="flex justify-between mt-2 text-gray-500 dark:text-gray-300">
+      <span>Tax (10%)</span>
+      <span>{{ getTax() }}</span>
+    </div>
+    <div class="flex justify-between mt-2 text-gray-500 dark:text-gray-300">
+      <span>Discount</span>
+      <span>{{ getDiscount() }}</span>
+    </div>
+    <hr class="my-4 border-gray-300 dark:border-gray-700" />
+    <div class="flex justify-between text-lg font-bold text-gray-800 dark:text-white">
+      <span>Total</span>
+      <span>{{ getTotal() }}</span>
+    </div>
+  </section>
 
-<section
-  class="flex flex-col items-start self-center px-2.5 py-4 mt-3 w-full text-xl whitespace-nowrap bg-white shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
-  aria-label="Order Summary"
->
-  <div class="flex gap-1 justify-between w-full max-w-[355px]">
-    <div class="flex flex-col self-start">
-      <p class="text-slate-700">Subtotal</p>
-      <p class="mt-4 text-zinc-300">Tax(10%)</p>
-      <p class="mt-2 text-zinc-500">Discount</p>
-    </div>
-    <div class="flex flex-col text-center">
-      <div class="flex gap-5 justify-between text-slate-700">
-        <span>ksh</span>
-        <span>900</span>
-      </div>
-      <div class="flex gap-5 justify-between mt-4 text-zinc-300">
-        <span>ksh</span>
-        <span>90</span>
-      </div>
-      <div class="flex gap-5 justify-between mt-2 text-zinc-500">
-        <span>ksh</span>
-        <span>20</span>
-      </div>
-    </div>
-  </div>
-  <div
-    class="shrink-0 self-stretch mt-2.5 h-px border border-solid bg-zinc-300 border-zinc-300"
-    role="separator"
-  ></div>
-  <div
-    class="flex gap-5 justify-between mt-3 w-full max-w-[354px] text-slate-700"
-  >
-    <p>TOTAL</p>
-    <div class="flex gap-10 text-center">
-      <span>ksh</span>
-      <span>970</span>
-    </div>
-  </div>
-</section>
+  <!-- ✅ Place Order Button -->
+  <button
+    class="mt-6 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-600 transition text-white py-3 rounded-xl text-lg font-semibold shadow-lg w-full">
+    Place Order
+  </button>
 
-<button
-  class="overflow-hidden px-16 py-9 mt-6 w-full text-xl font-bold text-center text-white bg-primary-900"
-  aria-label="Place Order"
->
-  Place Order
-</button>
 </div>

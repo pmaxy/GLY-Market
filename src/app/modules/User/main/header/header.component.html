@@ -1,27 +1,54 @@
-<div class="flex pl-10 pr-10 flex-row m-auto gap-2  justify-between items-center px-1 w-full bg-white min-h-[60px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] max-md:max-w-full">
-    <div class="gap-4 flex flex flex-row pr-5">
-        <button 
-        class="flex overflow-hidden flex-col grow shrink  px-1 py-1 my-auto w-6"
-        aria-label="Menu"
+<div class="w-full bg-primary-950 px-4 sm:px-6 py-3 shadow-md border-b border-primary-800 flex items-center justify-between gap-4">
+  
+    <!-- Left: Sidebar Toggle + Logo -->
+    <div class="flex items-center space-x-3">
+      <button
+        class="p-2 rounded-md hover:bg-primary-800 transition-colors"
+        aria-label="Toggle Sidebar"
         (click)="onToggleSidebar()"
-        >
-        <div class="w-8 border border-black border-solid min-h-[1px]"></div>
-        <div class="mt-2 w-8 border border-black border-solid min-h-[1px]"></div>
-        <div class="mt-2 w-8 border border-black border-solid min-h-[1px]"></div>
+      >
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <h1 class="text-xl font-bold text-primary-400 tracking-wide">GLY SHOP</h1>
+    </div>
+  
+    <!-- Center: Search -->
+    <div class="hidden md:flex items-center w-full max-w-md">
+      <div class="flex items-center w-full bg-primary-900 border border-primary-700 rounded-md overflow-hidden">
+        <input
+          type="search"
+          placeholder="Search..."
+          class="w-full px-4 py-2 text-sm text-white placeholder-gray-400 bg-transparent focus:outline-none focus:ring-2 focus:ring-primary-500"
+        />
+        <button class="p-2 text-gray-300 hover:bg-primary-800 transition" aria-label="Search">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z" />
+          </svg>
         </button>
-        <div class="grow shrink  my-auto text-xl text-center font-bold text-slate-700">
-        GLY SHOP
-        </div>
+      </div>
     </div>
-    <div class="flex overflow-hidden flex-col grow shrink justify-center items-start self-stretch relative px-1 py-1 ">
-      <input type="search" name=""  id="" class=" focus:ring-primary-100  my-auto border border-solid border-gray-300 w-full rounded-[30px]  max-md:pr-5 max-md:max-w-full" >
-      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/d658eb025026eae992a8e379ef856fc06230ebc6020cb7ae6e4dc86a69e657fb?apiKey=1cda1be9d1894bb2995be32d30ac20e2&" alt="" class="object-contain aspect-[0.86] w-[18px] absolute left-1" />
+  
+    <!-- Right: Icons and Cart -->
+    <div class="flex items-center gap-10 ">
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/44c2fa92d56e40abc94c02fb2ad6e7838ff2cd762012cec36b9b030d872e7a25"
+        alt="Icon1"
+        class="bg-primary-50 hover:bg-gray-200 p-1 rounded-md b w-6 h-6 object-contain"
+      />
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/81b045278c138ff12d7a84374aebaae41df525c16e678ebf6291c9b4f606e7c3"
+        alt="Icon2"
+        class="bg-primary-50 hover:bg-gray-200 p-1 rounded-md w-6 h-6 object-contain"
+      />
+      <button (click)="onToggleMiniSidebar()" aria-label="Toggle Mini Sidebar" class="bg-primary-50 hover:bg-gray-200 p-1 rounded-md">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/0355823216579687e5cc13ab06567b85b2cc3de893b631d485f95d70effb1243"
+          alt="Cart"
+          class="w-6 h-6 object-contain"
+        />
+      </button>
     </div>
-    <div class="flex flex-row gap-12 ">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/44c2fa92d56e40abc94c02fb2ad6e7838ff2cd762012cec36b9b030d872e7a25?apiKey=1cda1be9d1894bb2995be32d30ac20e2&" alt="" class="object-contain shrink-0 self-stretch my-auto aspect-[0.89] w-[30px]" />
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/81b045278c138ff12d7a84374aebaae41df525c16e678ebf6291c9b4f606e7c3?apiKey=1cda1be9d1894bb2995be32d30ac20e2&" alt="" class="object-contain shrink-0 self-stretch my-auto aspect-[0.9] w-[20px]" />
-        <button (click)="onToggleMiniSidebar()">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/1cda1be9d1894bb2995be32d30ac20e2/0355823216579687e5cc13ab06567b85b2cc3de893b631d485f95d70effb1243?apiKey=1cda1be9d1894bb2995be32d30ac20e2&" alt="" class="object-contain shrink-0 self-stretch my-auto aspect-[1.31] w-[30px]" />
-        </button>
-    </div>
-</div>
+  </div>
+  

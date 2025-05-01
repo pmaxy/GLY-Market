@@ -8,16 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-  isSidebarOpen = false; // Sidebar starts closed
-  isMiniSidebarOpen= false
+  isSidebarOpen = true;
+  isMiniSidebarOpen = false;
 
   toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen; // Toggle the sidebar state
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 
-  toggleMiniSidebar(){
+  toggleMiniSidebar() {
     this.isMiniSidebarOpen = !this.isMiniSidebarOpen;
-
   }
   
   

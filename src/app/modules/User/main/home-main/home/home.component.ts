@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ItemInfoComponent } from './item-info/item-info.component';
 import { ProductControllerService } from '../../../../../services/services';
@@ -6,89 +6,131 @@ import { ProductRequest } from '../../../../../services/models';
 
 @Component({
   selector: 'app-home',
-  // standalone: true,
-  // imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-productRequest: ProductRequest={id: 0 , name:'', availableQuantity: 0, categoryId: 0, description: '', price:0 } 
-lists: any[] = [];
-@Input() isMiniSidebarOpen = true;
-constructor(private dialog:MatDialog, private productsService: ProductControllerService){
+  productRequest: ProductRequest = {
+    id: 0, name: '', availableQuantity: 0, categoryId: 0, description: '', price: 0
+  };
 
+  @Input() isMiniSidebarOpen = true;
+  cart: any[] = [];
+  // Max quantity for progress calculation
+  maxStock = 200;
 
+  lists: any[] = [];
 
-}
+  items = [
+    { src: "/assets/figma-photos/earth.png", name: "Bread", amount: 122 },
+    { src: "/assets/figma-photos/earth.png", name: "Milk", amount: 90 },
+    { src: "/assets/figma-photos/earth.png", name: "Eggs", amount: 35 },
+    { src: "/assets/figma-photos/earth.png", name: "Butter", amount: 80 }
+  ];
 
-ngOnInit(): void {
-    this.getProduct()
-  
-}
+  constructor(
+    private dialog: MatDialog,
+    private productsService: ProductControllerService
+  ) {}
 
-
-getProduct(){
-  this.productsService.findAll({
-  }).subscribe({
-    next: (res)=>{
-      console.log(res)
-      this.lists=res
-
+  ngOnInit(): void {
+    this.getProduct();
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      this.cart = JSON.parse(storedCart); // Parse cart from JSON string
     }
-  })
-  {
-    
-  }
-}
 
-
-  items=[
-    {src:"/assets/figma-photos/snacks.png",name:"Bread", amount: 122 },
-    {src:"/assets/figma-photos/snacks.png",name:"Bread", amount: 122 },
-    {src:"/assets/figma-photos/snacks.png",name:"Bread", amount: 122 },
-    {src:"/assets/figma-photos/snacks.png",name:"Bread", amount: 122 },
-    {src:"/assets/figma-photos/snacks.png",name:"Bread", amount: 122 },
-    {src:"/assets/figma-photos/snacks.png",name:"Bread", amount: 122 },
-    {src:"/assets/figma-photos/snacks.png",name:"Bread", amount: 122 },
-    {src:"/assets/figma-photos/snacks.png",name:"Bread", amount: 122 },
-    {src:"/assets/figma-photos/snacks.png",name:"Bread", amount: 122 }
-  ]
-  addToCart(): void {
-    console.log('Item added to cart');
+    this.getProduct(); // Fetch products
   }
 
-  // lists=[
-  //   {src:"/assets/figma-photos/snacks.png", title:'Silver Watch', price: 800, itemsLeft: 200 , progressWidth:116},
-  //   {src:"/assets/figma-photos/cake.png", title:'Cake Pie', price: 400, itemsLeft: 70 , progressWidth:120},
-  //   {src:"/assets/figma-photos/meat.png", title:'Meat', price: 500, itemsLeft: 50 , progressWidth:130},
-  //   {src:"/assets/figma-photos/barsoap.png", title:'BarSoap', price: 250, itemsLeft: 20 , progressWidth:106},
-  //   {src:"/assets/figma-photos/plate.png", title:'Plate', price: 100, itemsLeft: 100 , progressWidth:100},
-  //   {src:"/assets/figma-photos/oranges.png", title:'oranges', price: 20, itemsLeft: 40 , progressWidth:12},
-  //   {src:"/assets/figma-photos/persil.png", title:'persil', price: 260, itemsLeft: 30 , progressWidth:112},
-  //   {src:"/assets/figma-photos/plate2.png", title:'Ice', price: 50, itemsLeft: 20 , progressWidth:110},
-  //   {src:"/assets/figma-photos/snacks.png", title:'Silver Watch', price: 800, itemsLeft: 200 , progressWidth:116},
-  //   {src:"/assets/figma-photos/cake.png", title:'Cake Pie', price: 400, itemsLeft: 70 , progressWidth:120},
-  //   {src:"/assets/figma-photos/meat.png", title:'Meat', price: 500, itemsLeft: 50 , progressWidth:130},
-  //   {src:"/assets/figma-photos/barsoap.png", title:'BarSoap', price: 250, itemsLeft: 20 , progressWidth:106},
-  //   {src:"/assets/figma-photos/plate.png", title:'Plate', price: 100, itemsLeft: 100 , progressWidth:100},
-  //   {src:"/assets/figma-photos/oranges.png", title:'oranges', price: 20, itemsLeft: 40 , progressWidth:12},
-  //   {src:"/assets/figma-photos/persil.png", title:'persil', price: 260, itemsLeft: 30 , progressWidth:112},
-  //   {src:"/assets/figma-photos/plate2.png", title:'Ice', price: 50, itemsLeft: 20 , progressWidth:110},
-  // ]
+  getProduct(): void {
+    this.productsService.findAll({}).subscribe({
+      next: (res: any[]) => {
+        this.lists = res.map(product => ({
+          ...product,
+          progressWidth: this.calculateStockProgress(product.availableQuantity),
+          itemsLeft: product.availableQuantity,
+          src: product.imageUrl || '/assets/default.png', // fallback
+          title: product.name,
+          price: product.price
+        }));
+      },
+      error: err => {
+        console.error('Failed to fetch products', err);
+        // fallback mock
+        this.lists = this.getMockProducts();
+      }
+    });
+  }
 
+  getMockProducts(): any[] {
+    const mock = [
+      { src: "/assets/figma-photos/drone.jpg", title: 'Silver Watch', price: 800, itemsLeft: 200 },
+      { src: "/assets/figma-photos/earth.png", title: 'Cake Pie', price: 400, itemsLeft: 70 },
+      { src: "/assets/figma-photos/globe-hands.png", title: 'Meat', price: 500, itemsLeft: 50 },
+      { src: "/assets/figma-photos/DJI Phantom 4 RTK.jpg", title: 'BarSoap', price: 250, itemsLeft: 20 },
+      { src: "/assets/figma-photos/earth.png", title: 'Plate', price: 100, itemsLeft: 100 },
+      { src: "/assets/figma-photos/drone.jpg", title: 'Oranges', price: 20, itemsLeft: 40 },
+      { src: "/assets/figma-photos/honey.png", title: 'Ice', price: 50, itemsLeft: 20 },
+      {src:"/assets/figma-photos/drone.jpg", title:'Silver Watch', price: 800, itemsLeft: 200 },
+      {src:"/assets/figma-photos/earth.png", title:'Cake Pie', price: 400, itemsLeft: 70 },
+      {src:"/assets/figma-photos/globe-hands.png", title:'Meat', price: 500, itemsLeft: 50 },
+      {src:"/assets/figma-photos/DJI Phantom 4 RTK.jpg", title:'BarSoap', price: 250, itemsLeft: 20 },
+      {src:"/assets/figma-photos/earth.png", title:'Plate', price: 100, itemsLeft: 100 },
+      {src:"/assets/figma-photos/DJI Phantom 4 RTK.jpg", title:'oranges', price: 20, itemsLeft: 40 },
+      {src:"/assets/figma-photos/earth.png", title:'persil', price: 260, itemsLeft: 30 },
+      {src:"/assets/figma-photos/honey.png", title:'Ice', price: 50, itemsLeft: 20 },
+      {src:"/assets/figma-photos/DJI Phantom 4 RTK.jpg", title:'Silver Watch', price: 800, itemsLeft: 200 },
+      {src:"/assets/figma-photos/earth.png", title:'Cake Pie', price: 400, itemsLeft: 70 },
+      {src:"/assets/figma-photos/drone.jpg", title:'Meat', price: 500, itemsLeft: 50 },
+      {src:"/assets/figma-photos/DJI Phantom 4 RTK.jpg", title:'BarSoap', price: 250, itemsLeft: 20 },
+      {src:"/assets/figma-photos/globe-hands.png", title:'Plate', price: 100, itemsLeft: 100 },
+      {src:"/assets/figma-photos/drone.jpg", title:'oranges', price: 20, itemsLeft: 40 } ,
+       {src:"/assets/figma-photos/earth.png", title:'persil', price: 260, itemsLeft: 30 },
+      {src:"/assets/figma-photos/honey.png", title:'Ice', price: 50, itemsLeft: 20 },
+    ];
+    return mock.map(product => ({
+      ...product,
+      progressWidth: this.calculateStockProgress(product.itemsLeft)
+    }));
+  }
 
+  calculateStockProgress(available: number): number {
+    if (!available || available <= 0) return 0;
+    return Math.min(Math.round((available / this.maxStock) * 100), 100);
+  }
+  
 
+  addToCart(product: any): void {
+    const existing = this.cart.find(item => item.title === product.title);
 
+    if (existing) {
+      existing.quantity += 1;  // Increase quantity
+    } else {
+      this.cart.push({ ...product, quantity: 1 });  // Add new item to cart
+    }
 
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(this.cart));
 
-  openDialog(data:any){
-    const dialogOpen= this.dialog.open(ItemInfoComponent,{
-        enterAnimationDuration:'200ms',
-        exitAnimationDuration:'200ms',
-        width:'90%',
-        height:'90%',
-        data,
-        panelClass: "custom-dialog"
-      })     
-     }
+    console.log('Cart:', this.cart); // Debugging purpose
+  }
+
+  clearCart(): void {
+    this.cart = [];  // Clear cart array
+    localStorage.removeItem('cart');  // Remove cart from localStorage
+    console.log('Cart cleared');
+  }
+
+  openDialog(data: any): void {
+    const dialogRef = this.dialog.open(ItemInfoComponent, {
+      enterAnimationDuration: '200ms',
+      exitAnimationDuration: '200ms',
+      width: '90%',
+      height: '90%',
+      data, // pass the product data to the dialog
+      panelClass: 'custom-dialog'
+    });
+  }
+  
 }

@@ -1,0 +1,77 @@
+<!-- geospatial-sidebar.component.html -->
+<div class="w-72 bg-white shadow-xl h-full flex flex-col p-4 rounded-lg border border-gray-200">
+  <!-- 🌍 Profile & Branding -->
+  <div class="bg-primary-950 p-4 rounded-xl text-white mb-6">
+    <div class="flex items-center gap-4">
+      <img src="https://i.pravatar.cc/300" alt="Profile" class="w-12 h-12 rounded-full border-2 border-primary-500 shadow" />
+      <div>
+        <p class="text-sm font-semibold">Hi, GeoUser</p>
+        <p class="text-xs text-gray-300">Spatial Intelligence</p>
+      </div>
+    </div>
+    <div class="mt-4 pt-2 border-t border-primary-800">
+      <p class="text-lg font-bold tracking-wide text-primary-400">GeoDashboard</p>
+    </div>
+  </div>
+
+  <!-- 📁 Main Navigation -->
+  <div class="space-y-2 text-sm font-medium text-gray-700">
+    <!-- Maps & Data Section -->
+    <a [routerLink]="['geodata']" routerLinkActive="text-primary-700"
+       class="flex items-center gap-3 p-2 rounded-md transition hover:bg-primary-50 hover:text-primary-700">
+      <fa-icon [icon]="faMap" class="text-blue-600 w-5 h-5"></fa-icon>
+      Maps & Data
+    </a>
+
+    <!-- Planning Tools Section -->
+    <a [routerLink]="['geoplanning']" routerLinkActive="text-primary-700"
+       class="flex items-center gap-3 p-2 rounded-md transition hover:bg-primary-50 hover:text-primary-700">
+      <fa-icon [icon]="faDraftingCompass" class="text-purple-600 w-5 h-5"></fa-icon>
+      Planning Tools
+    </a>
+
+    <!-- Analytics Section -->
+    <a [routerLink]="['geoanalytics']" routerLinkActive="text-primary-700"
+       class="flex items-center gap-3 p-2 rounded-md transition hover:bg-primary-50 hover:text-primary-700">
+      <fa-icon [icon]="faChartBar" class="text-orange-500 w-5 h-5"></fa-icon>
+      Analytics
+    </a>
+
+    <!-- Reports Section -->
+    <a [routerLink]="['georeports']" routerLinkActive="text-primary-700"
+       class="flex items-center gap-3 p-2 rounded-md transition hover:bg-primary-50 hover:text-primary-700">
+      <fa-icon [icon]="faFileAlt" class="text-teal-600 w-5 h-5"></fa-icon>
+      Reports
+    </a>
+  </div>
+
+  <!-- 🗺️ Map Layer Toggles -->
+  <div class="mt-6">
+    <p class="text-xs font-bold text-gray-500 mb-2">📡 Map Layers</p>
+    <div class="space-y-2 text-sm">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" [(ngModel)]="layers.roads" class="accent-primary-600" />
+        Roads & Highways
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" [(ngModel)]="layers.population" class="accent-primary-600" />
+        Population Density
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" [(ngModel)]="layers.terrain" class="accent-primary-600" />
+        Terrain / Elevation
+      </label>
+    </div>
+  </div>
+
+  <!-- 🧭 Basemap Selector -->
+  <div class="mt-6">
+    <p class="text-xs font-bold text-gray-500 mb-2">🧭 Basemap</p>
+    <select [(ngModel)]="selectedBasemap"
+            class="w-full p-2 rounded-md border border-primary-200 text-sm bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500">
+      <option value="streets">Streets</option>
+      <option value="satellite">Satellite</option>
+      <option value="topo">Topographic</option>
+    </select>
+  </div>
+</div>

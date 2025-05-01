@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class TopbarComponent {
  @Output() toggleSidebar = new EventEmitter<void>();
   @Output() clickOutside = new EventEmitter<void>();
+  @Output() logout = new EventEmitter<void>();
 
   constructor(private _elementRef: ElementRef, private router:Router) {}
 
@@ -22,9 +23,6 @@ export class TopbarComponent {
     this.isDesktop = event.target.innerWidth > 768;
   }
 
-  onToggleSidebar() {
-    this.toggleSidebar.emit();  // Emit event to parent to toggle sidebar visibility
-  }
   isDropdownOpen = false;
 
   toggleDropdown() {
@@ -35,10 +33,7 @@ export class TopbarComponent {
     this.isDropdownOpen = false;
   }
 
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['']);
-  }
+
 
   handleMobileSearchClick() {
     console.log('📱 Triggering mobile search...');
