@@ -31,6 +31,11 @@ export class TopbarComponent {
   closeDropdown(): void {
     this.isDropdownOpen = false;
   }
-
-
+  onNavigate(route?: string): void {
+    this.closeDropdown();
+    this.isDropdownOpen = false;
+    if (route) {
+      this.router.navigate([route]);
+    }
+  }
 }

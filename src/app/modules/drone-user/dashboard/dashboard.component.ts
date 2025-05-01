@@ -1,6 +1,7 @@
 import { Component, HostListener, NgZone } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,7 @@ export class DashboardComponent {
 
   isSidebarVisible = false;
   isDesktop = window.innerWidth >= 768;
-
+  showSidebar = true;
   @HostListener('window:resize', ['$event'])
     isLoading: boolean = false;
   constructor(
@@ -19,11 +20,20 @@ export class DashboardComponent {
     private spinner: NgxSpinnerService,
     private ngZone: NgZone,
   ){
-  
-  }
-  onResize() {
-    this.isDesktop = window.innerWidth >= 768;
-  }
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)
+      ).subscribe(() => {
+        if (!this.isDesktop) {
+          this.showSidebar = false;
+          this.isSidebarVisible = false;
+        }
+      });
+      
+    }
+    onSidebarClose(): void {
+      this.showSidebar = false;
+      this.isSidebarVisible = false; // Also hide the animated sidebar
+    }
   
 
   toggleSidebar() {
@@ -39,6 +49,16 @@ export class DashboardComponent {
     this.spinner.hide();
     this.isLoading = false;},2000)})
 
+  }
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isDesktop = event.target.innerWidth > 768;
+    if (this.isDesktop) {
+      // Optionally hide the sidebar on desktop resize if needed
+      this.isSidebarVisible = false;
+    }
   }
 
 }

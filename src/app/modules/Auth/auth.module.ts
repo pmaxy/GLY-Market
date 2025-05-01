@@ -45,9 +45,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
   
 
   ],
-  exports: [
- SpinnerComponent
-  ],
   providers: [provideHttpClient()],
 })
 export class AuthModule { }

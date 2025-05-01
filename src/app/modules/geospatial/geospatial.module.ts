@@ -12,6 +12,8 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ClickOutsideDirective } from '../../click-outside-directive';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     GeoreportsComponent,
     GeoplanningComponent,
     TopbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    SpinnerComponent,
+    
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,6 @@
+<div class="loading-overlay" *ngIf="isLoading" [class.active]="isLoading">
+  <app-spinner></app-spinner>
+</div>
 <div class="relative h-screen w-screen bg-gray-100 dark:bg-gray-900">
     <!-- Navbar -->
     <app-header
@@ -18,14 +21,18 @@
       
       <!-- Sidebar -->
       <app-sidebar
+      (closeSidebar)="onSidebarClose()" 
       [isOpen]="isSidebarOpen"
-      class="absolute md:relative transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 border-r z-50"
+      class="absolute md:relative bg-white dark:bg-gray-800 border-r z-50 h-full transition-transform duration-300 ease-in-out"
       [ngClass]="{
-        'w-0 overflow-hidden': !isSidebarOpen,
-        'w-64': isSidebarOpen
+        'translate-x-0 w-64': isSidebarOpen,
+        '-translate-x-full w-0 overflow-hidden': !isSidebarOpen
       }"
+      
+      (logout)="logout()"
     ></app-sidebar>
-  
+
+
       <!-- Main Content -->
       <div
       class="transition-all duration-300 ease-in-out px-4 py-6 h-full flex-1 w-full"

@@ -11,6 +11,8 @@ export class TopbarComponent {
  @Output() toggleSidebar = new EventEmitter<void>();
   @Output() clickOutside = new EventEmitter<void>();
   @Output() logout = new EventEmitter<void>();
+  @Output() closeSidebar = new EventEmitter<void>();
+
 
   constructor(private _elementRef: ElementRef, private router:Router) {}
 
@@ -38,5 +40,13 @@ export class TopbarComponent {
   handleMobileSearchClick() {
     console.log('📱 Triggering mobile search...');
     // Show mobile search input, modal, etc.
+  }
+
+  onNavigate(route?: string): void {
+    this.closeDropdown();
+    this.isDropdownOpen = false;
+    if (route) {
+      this.router.navigate([route]);
+    }
   }
 }

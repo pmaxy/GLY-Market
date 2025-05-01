@@ -1,6 +1,7 @@
 import { Component, HostListener, NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,13 +13,28 @@ export class DashboardComponent {
   isSidebarVisible = false;  // Initially hidden
   isDesktop = window.innerWidth > 768;
   isLoading: boolean = false;
-constructor(
-  private router: Router,
-  private spinner: NgxSpinnerService,
-  private ngZone: NgZone,
-){
+  showSidebar = true;
 
-}
+  constructor(
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private ngZone: NgZone,
+  ) {
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      if (!this.isDesktop) {
+        this.showSidebar = false;
+        this.isSidebarVisible = false;
+      }
+    });
+
+  }
+  onSidebarClose(): void {
+    this.showSidebar = false;
+    this.isSidebarVisible = false; // Also hide the animated sidebar
+  }
   // Toggle sidebar visibility
   toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
@@ -32,17 +48,19 @@ constructor(
       this.isSidebarVisible = false;
     }
   }
-  logout(){
+  logout() {
     this.isLoading = true
     this.ngZone.run(() => {
-    this.spinner.show();
-    setTimeout(() => {
-    this.router.navigate([''])
-    localStorage.clear();
-    this.spinner.hide();
-    this.isLoading = false;},2000)})
+      this.spinner.show();
+      setTimeout(() => {
+        this.router.navigate([''])
+        localStorage.clear();
+        this.spinner.hide();
+        this.isLoading = false;
+      }, 2000)
+    })
 
   }
 
-  
-  }
+
+}

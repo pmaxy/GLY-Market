@@ -9,7 +9,8 @@ import { faCalendarCheck, faCogs, faUserCircle, faRightFromBracket } from '@fort
 })
 export class SidebarComponent {
     @Output() logout = new EventEmitter<void>();
-  
+    @Output() closeSidebar = new EventEmitter<void>();
+
   faCalendarCheck = faCalendarCheck;
   faCogs = faCogs;
   faUserCircle = faUserCircle;
@@ -18,6 +19,12 @@ export class SidebarComponent {
     private router:Router
   ){
 
+  }
+
+  onNavigate() {
+    if (window.innerWidth <= 768) {
+      this.closeSidebar.emit();
+    }
   }
 
 

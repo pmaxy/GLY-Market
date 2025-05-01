@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faHome, faTachometerAlt, faBoxOpen, faCog, faRightFromBracket, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,6 +13,8 @@ import { faHome, faTachometerAlt, faBoxOpen, faCog, faRightFromBracket, faUserCi
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+    @Output() logout = new EventEmitter<void>();
+    @Output() closeSidebar = new EventEmitter<void>();
   faHome = faHome;
   faDashboard = faTachometerAlt;
   faProducts = faBoxOpen;
@@ -51,10 +53,11 @@ export class SidebarComponent {
     // this.toast.success('Logged out successfully')
 
 }
-logout(){
-  localStorage.clear();
-  this.router.navigate([''])
 
+onNavigate() {
+  if (window.innerWidth <= 768) {
+    this.closeSidebar.emit();
+  }
 }
 
 }

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class TopbarComponent {
  @Output() toggleSidebar = new EventEmitter<void>();
   @Output() clickOutside = new EventEmitter<void>();
+  @Output() logout = new EventEmitter<void>();
+
 
   constructor(private _elementRef: ElementRef, private router:Router) {}
 
@@ -35,13 +37,19 @@ export class TopbarComponent {
     this.isDropdownOpen = false;
   }
 
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['']);
-  }
+
 
   handleMobileSearchClick() {
     console.log('📱 Triggering mobile search...');
     // Show mobile search input, modal, etc.
+  }
+
+
+  onNavigate(route?: string): void {
+    this.closeDropdown();
+    this.isDropdownOpen = false;
+    if (route) {
+      this.router.navigate([route]);
+    }
   }
 }

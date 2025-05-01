@@ -20,6 +20,7 @@ import { CodeInputModule } from 'angular-code-input';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuthModule } from '../Auth/auth.module';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ClickOutsideDirective } from '../../click-outside-directive';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     EducationComponent,
     ChatsComponent,
     DashboardComponent,
-    SpinnerComponent
+    SpinnerComponent,
+ 
   ],
   imports: [
     CommonModule,

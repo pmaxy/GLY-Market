@@ -22,7 +22,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ClickOutsideDirective } from './app/click-outside-directive';
 @NgModule({
+  declarations:[
+    ClickOutsideDirective
+  ],
   exports: 
   [
     MatCardModule,
@@ -43,7 +47,8 @@ FormsModule,
 ReactiveFormsModule,
 MatAutocompleteModule,
 MatTooltipModule,
-NgApexchartsModule
+NgApexchartsModule,
+
   ]
     
   

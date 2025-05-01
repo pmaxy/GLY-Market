@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { faChartBar, faCog, faDraftingCompass, faFile, faFileAlt, faMap, faRightFromBracket, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,19 +7,22 @@ import { faChartBar, faCog, faDraftingCompass, faFile, faFileAlt, faMap, faRight
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+
+  @Output() logout = new EventEmitter<void>();
+  @Output() sidebarClose = new EventEmitter<void>();
+  @Output() closeSidebar = new EventEmitter<void>();
+
   faMap = faMap;
   faCog = faCog;
   faFile = faFile;
   faChartBar = faChartBar;
   faUserCircle = faUserCircle;
   faRightFromBracket = faRightFromBracket;
-  faDraftingCompass=faDraftingCompass;
-  faFileAlt =faFileAlt
+  faDraftingCompass = faDraftingCompass;
+  faFileAlt = faFileAlt
 
-  logout(): void {
-    // your logout logic here
-    console.log("Logging out...");
-  }
+
+
 
   layers = {
     roads: true,
@@ -42,4 +45,11 @@ export class SidebarComponent {
     this.lat = lat;
     this.lng = lng;
   }
+
+onNavigate() {
+  if (window.innerWidth <= 768) {
+    this.closeSidebar.emit();
+  }
+}
+
 }

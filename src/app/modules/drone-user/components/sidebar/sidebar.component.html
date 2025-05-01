@@ -22,24 +22,24 @@
   </div>
 
   <!-- 📂 Navigation -->
-  <nav class="flex-1 space-y-2 text-sm font-medium text-gray-700">
+  <nav  class="flex-1 space-y-2 text-sm font-medium text-gray-700">
     <a [routerLink]="['book']"
       routerLinkActive="bg-primary-100"
-      class="flex shadow-lg bg-primary-50 items-center gap-3 p-2 rounded-md transition hover:bg-primary-100 hover:text-primary-700">
+      (click)="onNavigate()" class="flex shadow-lg bg-primary-50 items-center gap-3 p-2 rounded-md transition hover:bg-primary-100 hover:text-primary-700">
       <fa-icon [icon]="faCalendarCheck" class="text-green-500 w-5 h-5"></fa-icon>
       My Bookings
     </a>
 
     <a [routerLink]="['service']"
       routerLinkActive="bg-primary-100"
-      class="flex shadow-lg bg-primary-50 items-center gap-3 p-2 rounded-md transition hover:bg-primary-100 hover:text-primary-700">
+      (click)="onNavigate()" class="flex shadow-lg bg-primary-50 items-center gap-3 p-2 rounded-md transition hover:bg-primary-100 hover:text-primary-700">
       <fa-icon [icon]="faCogs" class="text-yellow-500 w-5 h-5"></fa-icon>
       Services
     </a>
 
     <a [routerLink]="['profile']"
       routerLinkActive="bg-primary-100"
-      class="flex shadow-lg bg-primary-50 items-center gap-3 p-2 rounded-md transition hover:bg-primary-100 hover:text-primary-700">
+      (click)="onNavigate()" class="flex shadow-lg bg-primary-50 items-center gap-3 p-2 rounded-md transition hover:bg-primary-100 hover:text-primary-700">
       <fa-icon [icon]="faUserCircle" class="text-primary-500 w-5 h-5"></fa-icon>
       Profile
     </a>

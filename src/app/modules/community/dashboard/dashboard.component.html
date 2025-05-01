@@ -18,14 +18,14 @@
         '-translate-x-full': !isSidebarVisible && !isDesktop
       }"
     >
-      <app-sidebar
+      <app-sidebar (closeSidebar)="onSidebarClose()"
       (logout)="logout()"
       ></app-sidebar>
     </div>
   
     <!-- Main content -->
     <div class="flex-1 flex flex-col overflow-hidden z-10 sm:ml-64 md:ml-2 lg:ml-2">
-      <app-topbar (toggleSidebar)="toggleSidebar()" (logout)="logout()"></app-topbar>
+      <app-topbar  (toggleSidebar)="toggleSidebar()" (logout)="logout()"></app-topbar>
       <main class="flex-1 overflow-y-auto p-4">
         <router-outlet></router-outlet>
       </main>

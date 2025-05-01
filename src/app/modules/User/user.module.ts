@@ -17,6 +17,7 @@ import { ProductsComponent } from './main/home-main/products/products.component'
 import { FormComponent } from './main/home-main/products/form/form.component';
 import { DeleteDialogComponent } from './main/home-main/products/delete-dialog/delete-dialog.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SpinnerComponent } from './main/spinner/spinner.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MiniSidebarComponent,
     ProductsComponent,
     FormComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    SpinnerComponent
 
 
 

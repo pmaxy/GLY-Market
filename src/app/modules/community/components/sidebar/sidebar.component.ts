@@ -19,6 +19,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class SidebarComponent {
   @Output() logout = new EventEmitter<void>();
+  @Output() closeSidebar = new EventEmitter<void>();
+
   faComments = faComments;
   faGraduationCap = faGraduationCap;
   faCalendarCheck = faCalendarCheck;
@@ -32,6 +34,13 @@ export class SidebarComponent {
     private router: Router,
   ) {
 
+  }
+
+
+  onNavigate() {
+    if (window.innerWidth <= 768) {
+      this.closeSidebar.emit();
+    }
   }
 
 

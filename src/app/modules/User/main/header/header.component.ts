@@ -11,6 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HeaderComponent {
   @Output() toggleSidebar = new EventEmitter<void>();
   @Output() toggleMiniSidebar = new EventEmitter<void>();
+  @Output() logout = new EventEmitter<void>();
+
 
 
   constructor(private cdr: ChangeDetectorRef){}

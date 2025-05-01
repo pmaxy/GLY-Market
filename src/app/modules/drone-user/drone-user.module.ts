@@ -10,6 +10,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { MaterialModule } from '../../../material.module';
 import { DroneListsComponent } from './pages/drone-lists/drone-lists.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ClickOutsideDirective } from '../../click-outside-directive';
 
 
 
@@ -21,7 +23,9 @@ import { DroneListsComponent } from './pages/drone-lists/drone-lists.component';
     MyBookingsComponent,
     ProfileComponent,
     ServicesComponent,
-    DroneListsComponent
+    DroneListsComponent,
+    SpinnerComponent,
+
 
   ],
   imports: [
