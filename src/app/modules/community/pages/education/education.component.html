@@ -1,24 +1,42 @@
-<section class="p-6 bg-gray-50 min-h-screen">
-    <div class="text-center mb-10">
-      <h1 class="text-3xl font-bold text-gray-800">📚 Education Hub</h1>
-      <p class="text-gray-600 max-w-xl mx-auto mt-2">Explore courses and tools that empower communities and professionals with geospatial, drone, and environmental intelligence.</p>
-    </div>
-  
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div *ngFor="let item of educationItems" class="bg-primary-50 rounded-lg shadow-md hover:shadow-lg transition overflow-hidden">
-        <img [src]="item.imageUrl" alt="{{ item.title }}" class="w-full h-40 object-cover">
-        <div class="p-4">
-          <h2 class="text-lg font-semibold text-gray-800 mb-2">{{ item.title }}</h2>
-          <p class="text-gray-600 text-sm">{{ item.description }}</p>
-          <a [href]="item.link" class="mt-4 inline-block text-primary-600 font-medium hover:underline">Learn More →</a>
-        </div>
+<section class="p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
+  <!-- 📚 Heading -->
+  <div class="text-center mb-10">
+    <h1 class="text-3xl font-bold text-gray-800 dark:text-white">📚 Education Hub</h1>
+    <p class="text-gray-600 dark:text-gray-300 max-w-xl mx-auto mt-2">
+      Explore courses and tools that empower communities and professionals with geospatial, drone, and environmental intelligence.
+    </p>
+  </div>
+
+  <!-- 🧩 Grid of Items -->
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div
+      *ngFor="let item of educationItems"
+      class="bg-primary-50 dark:bg-gray-800  rounded-lg shadow-md hover:shadow-lg transition overflow-hidden"
+    >
+      <img [src]="item.imageUrl" alt="{{ item.title }}" class="w-full h-40 object-cover">
+      <div class="p-4">
+        <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">{{ item.title }}</h2>
+        <p class="text-gray-600 dark:text-gray-300 text-sm">{{ item.description }}</p>
+        <a
+          [href]="item.link"
+          class="mt-4 inline-block text-primary-600 dark:text-primary-400 font-medium hover:underline"
+        >
+          Learn More →
+        </a>
       </div>
     </div>
-  
-    <div class="mt-12 text-center">
-      <h3 class="text-xl font-bold text-gray-700">🌍 Join the Community</h3>
-      <p class="text-gray-600 mt-2">Connect with others who are passionate about sustainability and spatial intelligence.</p>
-      <button class="mt-4 px-6 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition">Join Now</button>
-    </div>
-  </section>
-  
+  </div>
+
+  <!-- 🌍 Join CTA -->
+  <div class="mt-12 text-center">
+    <h3 class="text-xl font-bold text-gray-700 dark:text-white">🌍 Join the Community</h3>
+    <p class="text-gray-600 dark:text-gray-300 mt-2">
+      Connect with others who are passionate about sustainability and spatial intelligence.
+    </p>
+    <button
+      class="mt-4 px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md transition"
+    >
+      Join Now
+    </button>
+  </div>
+</section>

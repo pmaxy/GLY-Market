@@ -23,9 +23,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ClickOutsideDirective } from './app/click-outside-directive';
+import { ThemeService } from './app/theme.service';
 @NgModule({
   declarations:[
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    
+  
   ],
   exports: 
   [

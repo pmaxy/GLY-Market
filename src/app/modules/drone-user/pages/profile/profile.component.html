@@ -1,100 +1,115 @@
-<div class="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto">
-    <!-- Profile Header -->
-    <div class="flex items-center space-x-6 mb-6">
-      <img loading="lazy" class="w-24 h-24 rounded-full border-4 border-primary-600" [src]="userProfile.profilePicture" alt="Profile" />
-      <div>
-        <h2 class="text-2xl font-semibold text-primary-900">{{ userProfile.name }}</h2>
-        <p class="text-gray-600">{{ userProfile.email }}</p>
-        <button *ngIf="!isEditing" (click)="toggleEditMode()" class="mt-2 text-sm text-primary-600 hover:text-primary-700">Edit Profile</button>
-      </div>
-    </div>
-  
-    <!-- Profile Details (View Mode) -->
-    <div *ngIf="!isEditing">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex flex-col">
-          <label class="text-sm text-gray-600">Date of Birth</label>
-          <p class="text-gray-800">{{ userProfile.dateOfBirth | date }}</p>
-        </div>
-        <div class="flex flex-col">
-          <label class="text-sm text-gray-600">Location</label>
-          <p class="text-gray-800">{{ userProfile.location }}</p>
-        </div>
-      </div>
-      <div class="mt-4">
-        <label class="text-sm text-gray-600">Bio</label>
-        <p class="text-gray-800">{{ userProfile.bio }}</p>
-      </div>
-      <div class="mt-4">
-        <label class="text-sm text-gray-600">Phone Number</label>
-        <p class="text-gray-800">{{ userProfile.phone }}</p>
-      </div>
-      <div class="mt-4">
-        <label class="text-sm text-gray-600">Social Media Links</label>
-        <p class="text-gray-800">{{ userProfile.socialMedia }}</p>
-      </div>
-    </div>
-  
-    <!-- Edit Profile Form (Edit Mode) -->
-    <form *ngIf="isEditing" (ngSubmit)="onProfileSubmit()">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex flex-col">
-          <label for="name" class="text-sm text-gray-600">Full Name</label>
-          <input [(ngModel)]="userProfile.name" id="name" type="text" class="p-3 rounded-md border border-gray-300 mt-2 focus:ring-2 focus:ring-primary-600" placeholder="Your Name" />
-        </div>
-        <div class="flex flex-col">
-          <label for="email" class="text-sm text-gray-600">Email Address</label>
-          <input [(ngModel)]="userProfile.email" id="email" type="email" class="p-3 rounded-md border border-gray-300 mt-2 focus:ring-2 focus:ring-primary-600" placeholder="Your Email" />
-        </div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <div class="flex flex-col">
-          <label for="dob" class="text-sm text-gray-600">Date of Birth</label>
-          <input [(ngModel)]="userProfile.dateOfBirth" id="dob" type="date" class="p-3 rounded-md border border-gray-300 mt-2 focus:ring-2 focus:ring-primary-600" />
-        </div>
-        <div class="flex flex-col">
-          <label for="location" class="text-sm text-gray-600">Location</label>
-          <input [(ngModel)]="userProfile.location" id="location" type="text" class="p-3 rounded-md border border-gray-300 mt-2 focus:ring-2 focus:ring-primary-600" placeholder="Your Location" />
-        </div>
-      </div>
-      <div class="mt-4">
-        <label for="bio" class="text-sm text-gray-600">Bio</label>
-        <textarea [(ngModel)]="userProfile.bio" id="bio" rows="4" class="p-3 rounded-md border border-gray-300 mt-2 w-full focus:ring-2 focus:ring-primary-600" placeholder="Tell us something about yourself"></textarea>
-      </div>
-      <div class="mt-4">
-        <label for="phone" class="text-sm text-gray-600">Phone Number</label>
-        <input [(ngModel)]="userProfile.phone" id="phone" type="text" class="p-3 rounded-md border border-gray-300 mt-2 focus:ring-2 focus:ring-primary-600" placeholder="Your Phone Number" />
-      </div>
-      <div class="mt-4">
-        <label for="social-media" class="text-sm text-gray-600">Social Media Links</label>
-        <input [(ngModel)]="userProfile.socialMedia" id="social-media" type="text" class="p-3 rounded-md border border-gray-300 mt-2 w-full focus:ring-2 focus:ring-primary-600" placeholder="Your Social Links" />
-      </div>
-  
-      <div class="mt-4 flex justify-end">
-        <button type="submit" class="bg-primary-600 text-white py-2 px-6 rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-600">Save Changes</button>
-      </div>
-    </form>
-  
-    <!-- Password Change Form -->
-    <div class="mt-6">
-      <h3 class="text-xl font-semibold text-primary-900 mb-4">Change Password</h3>
-      <form (ngSubmit)="onPasswordChangeSubmit()">
-        <div class="flex flex-col mb-4">
-          <label for="current-password" class="text-sm text-gray-600">Current Password</label>
-          <input [(ngModel)]="userProfile.currentPassword" id="current-password" type="password" class="p-3 rounded-md border border-gray-300 mt-2 focus:ring-2 focus:ring-primary-600" placeholder="Enter current password" />
-        </div>
-        <div class="flex flex-col mb-4">
-          <label for="new-password" class="text-sm text-gray-600">New Password</label>
-          <input [(ngModel)]="userProfile.newPassword" id="new-password" type="password" class="p-3 rounded-md border border-gray-300 mt-2 focus:ring-2 focus:ring-primary-600" placeholder="Enter new password" />
-        </div>
-        <div class="flex flex-col mb-4">
-          <label for="confirm-password" class="text-sm text-gray-600">Confirm New Password</label>
-          <input [(ngModel)]="userProfile.confirmPassword" id="confirm-password" type="password" class="p-3 rounded-md border border-gray-300 mt-2 focus:ring-2 focus:ring-primary-600" placeholder="Confirm new password" />
-        </div>
-        <div class="mt-4 flex justify-end">
-          <button type="submit" class="bg-primary-600 text-white py-2 px-6 rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-600">Change Password</button>
-        </div>
-      </form>
+<div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-4xl mx-auto text-gray-800 dark:text-gray-100">
+  <!-- Profile Header -->
+  <div class="flex items-center space-x-6 mb-6">
+    <img loading="lazy" class="w-24 h-24 rounded-full border-4 border-primary-600" [src]="userProfile.profilePicture" alt="Profile" />
+    <div>
+      <h2 class="text-2xl font-semibold text-primary-900 dark:text-primary-400">{{ userProfile.name }}</h2>
+      <p class="text-gray-600 dark:text-gray-300">{{ userProfile.email }}</p>
+      <button *ngIf="!isEditing" (click)="toggleEditMode()" class="mt-2 text-sm text-primary-600 hover:text-primary-700 dark:hover:text-primary-400">Edit Profile</button>
     </div>
   </div>
-  
+
+  <!-- Profile Details (View Mode) -->
+  <div *ngIf="!isEditing">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex flex-col">
+        <label class="text-sm text-gray-600 dark:text-gray-400">Date of Birth</label>
+        <p class="text-gray-800 dark:text-gray-200">{{ userProfile.dateOfBirth | date }}</p>
+      </div>
+      <div class="flex flex-col">
+        <label class="text-sm text-gray-600 dark:text-gray-400">Location</label>
+        <p class="text-gray-800 dark:text-gray-200">{{ userProfile.location }}</p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <label class="text-sm text-gray-600 dark:text-gray-400">Bio</label>
+      <p class="text-gray-800 dark:text-gray-200">{{ userProfile.bio }}</p>
+    </div>
+    <div class="mt-4">
+      <label class="text-sm text-gray-600 dark:text-gray-400">Phone Number</label>
+      <p class="text-gray-800 dark:text-gray-200">{{ userProfile.phone }}</p>
+    </div>
+    <div class="mt-4">
+      <label class="text-sm text-gray-600 dark:text-gray-400">Social Media Links</label>
+      <p class="text-gray-800 dark:text-gray-200">{{ userProfile.socialMedia }}</p>
+    </div>
+  </div>
+
+  <!-- Edit Profile Form -->
+  <form *ngIf="isEditing" (ngSubmit)="onProfileSubmit()">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex flex-col">
+        <label for="name" class="text-sm text-gray-600 dark:text-gray-400">Full Name</label>
+        <input [(ngModel)]="userProfile.name" id="name" type="text"
+          class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 focus:ring-2 focus:ring-primary-600" />
+      </div>
+      <div class="flex flex-col">
+        <label for="email" class="text-sm text-gray-600 dark:text-gray-400">Email Address</label>
+        <input [(ngModel)]="userProfile.email" id="email" type="email"
+          class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 focus:ring-2 focus:ring-primary-600" />
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      <div class="flex flex-col">
+        <label for="dob" class="text-sm text-gray-600 dark:text-gray-400">Date of Birth</label>
+        <input [(ngModel)]="userProfile.dateOfBirth" id="dob" type="date"
+          class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 focus:ring-2 focus:ring-primary-600" />
+      </div>
+      <div class="flex flex-col">
+        <label for="location" class="text-sm text-gray-600 dark:text-gray-400">Location</label>
+        <input [(ngModel)]="userProfile.location" id="location" type="text"
+          class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 focus:ring-2 focus:ring-primary-600" />
+      </div>
+    </div>
+    <div class="mt-4">
+      <label for="bio" class="text-sm text-gray-600 dark:text-gray-400">Bio</label>
+      <textarea [(ngModel)]="userProfile.bio" id="bio" rows="4"
+        class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 w-full focus:ring-2 focus:ring-primary-600"></textarea>
+    </div>
+    <div class="mt-4">
+      <label for="phone" class="text-sm text-gray-600 dark:text-gray-400">Phone Number</label>
+      <input [(ngModel)]="userProfile.phone" id="phone" type="text"
+        class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 focus:ring-2 focus:ring-primary-600" />
+    </div>
+    <div class="mt-4">
+      <label for="social-media" class="text-sm text-gray-600 dark:text-gray-400">Social Media Links</label>
+      <input [(ngModel)]="userProfile.socialMedia" id="social-media" type="text"
+        class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 w-full focus:ring-2 focus:ring-primary-600" />
+    </div>
+
+    <div class="mt-4 flex justify-end">
+      <button type="submit"
+        class="bg-primary-600 text-white py-2 px-6 rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-600">
+        Save Changes
+      </button>
+    </div>
+  </form>
+
+  <!-- Password Change Form -->
+  <div class="mt-6">
+    <h3 class="text-xl font-semibold text-primary-900 dark:text-primary-400 mb-4">Change Password</h3>
+    <form (ngSubmit)="onPasswordChangeSubmit()">
+      <div class="flex flex-col mb-4">
+        <label for="current-password" class="text-sm text-gray-600 dark:text-gray-400">Current Password</label>
+        <input [(ngModel)]="userProfile.currentPassword" id="current-password" type="password"
+          class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 focus:ring-2 focus:ring-primary-600" />
+      </div>
+      <div class="flex flex-col mb-4">
+        <label for="new-password" class="text-sm text-gray-600 dark:text-gray-400">New Password</label>
+        <input [(ngModel)]="userProfile.newPassword" id="new-password" type="password"
+          class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 focus:ring-2 focus:ring-primary-600" />
+      </div>
+      <div class="flex flex-col mb-4">
+        <label for="confirm-password" class="text-sm text-gray-600 dark:text-gray-400">Confirm New Password</label>
+        <input [(ngModel)]="userProfile.confirmPassword" id="confirm-password" type="password"
+          class="p-3 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-800 mt-2 focus:ring-2 focus:ring-primary-600" />
+      </div>
+      <div class="mt-4 flex justify-end">
+        <button type="submit"
+          class="bg-primary-600 text-white py-2 px-6 rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-600">
+          Change Password
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

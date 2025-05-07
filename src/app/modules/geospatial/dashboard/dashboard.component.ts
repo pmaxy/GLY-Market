@@ -2,6 +2,7 @@ import { Component, HostListener, NgZone } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { filter } from 'rxjs';
+import { ThemeService } from '../../../theme.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { filter } from 'rxjs';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-
+  themeClass = '';
   isSidebarVisible = false;  // Initially hidden
   isDesktop = window.innerWidth > 768;
   showSidebar = true;
@@ -18,6 +19,7 @@ export class DashboardComponent {
     private router: Router,
     private spinner: NgxSpinnerService,
     private ngZone: NgZone,
+    private themeService: ThemeService
   ) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -28,6 +30,13 @@ export class DashboardComponent {
       }
     });
     
+  }
+
+
+  ngOnInit() {
+    this.themeService.theme$.subscribe(theme => {
+      this.themeClass = theme;
+    });
   }
   onSidebarClose(): void {
     this.showSidebar = false;

@@ -20,7 +20,8 @@ import { OverviewComponent } from './pages/overview/overview.component';
    TopbarComponent,
    CeremoniesComponent,
    GeospatialComponent,
-   OverviewComponent
+   OverviewComponent,
+   
   ],
   imports: [
     CommonModule,

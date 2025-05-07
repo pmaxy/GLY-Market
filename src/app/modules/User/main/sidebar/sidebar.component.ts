@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faHome, faTachometerAlt, faBoxOpen, faCog, faRightFromBracket, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { ThemeService } from '../../../../theme.service';
 
 // import { ToastrService } from 'ngx-toastr';
 // import { ServiceService } from '../../Content/service.service';
@@ -26,7 +27,7 @@ export class SidebarComponent {
   isHidden=true
   isHidden2=true
   @Input() isOpen = false;  
-  constructor(private router:Router,
+  constructor(private router:Router,public themeService: ThemeService
     //  private toast:ToastrService, 
     //  private service:ServiceService
     ){
@@ -34,7 +35,7 @@ export class SidebarComponent {
   //     this.sidebarVisible = visible;
   //  
   };
-  
+
   closeNav1(){
     this.isHidden1=!this.isHidden1
 
@@ -58,6 +59,10 @@ onNavigate() {
   if (window.innerWidth <= 768) {
     this.closeSidebar.emit();
   }
+}
+
+toggleTheme() {
+  this.themeService.toggleTheme();
 }
 
 }

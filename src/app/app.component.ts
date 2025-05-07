@@ -3,6 +3,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,30 @@ import { IonicModule } from '@ionic/angular';
 })
 export class AppComponent {
   title = 'point-of-sale';
+  themeClass = '';
+
+  
+  constructor(
+    private themeService: ThemeService,
+    private overlayContainer: OverlayContainer
+  ) {}
+  
+  ngOnInit() {
+    this.themeService.loadInitialTheme();
+  
+    this.themeService.theme$.subscribe(theme => {
+      this.themeClass = theme;
+  
+      const container = this.overlayContainer.getContainerElement();
+  
+      if (theme === 'dark') {
+        container.classList.add('dark');
+      } else {
+        container.classList.remove('dark');
+      }
+    });
+  }
+  
   
   // @HostListener('document:contextmenu', ['$event'])
   // onRightClick(event: MouseEvent) {
@@ -31,3 +57,5 @@ export class AppComponent {
   //   }
   // }
 }
+
+

@@ -9,13 +9,13 @@
     }"
   >
     <button
-      class="bg-white rounded-2xl shadow-md border border-primary-100 hover:shadow-lg hover:border-primary-300 transition p-4 flex flex-col justify-between w-full"
+      class="bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-primary-100 dark:border-gray-700 hover:shadow-lg hover:border-primary-300 dark:hover:border-primary-500 transition p-4 flex flex-col justify-between w-full"
       role="article"
       *ngFor="let list of lists"
       (click)="openDialog(list)"
     >
       <!-- 🖼 Image with Stock Badge -->
-      <div class="relative flex items-center justify-center bg-primary-50 rounded-lg mb-4 overflow-hidden p-3">
+      <div class="relative flex items-center justify-center bg-primary-50 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden p-3">
         <img
           [src]="list.src"
           [alt]="list.title"
@@ -23,52 +23,46 @@
           loading="lazy"
         />
         <span
-          class="absolute top-2 right-2 text-[10px] font-medium px-2 py-1 rounded-full bg-white text-gray-700 shadow border border-gray-200"
+          class="absolute top-2 right-2 text-[10px] font-medium px-2 py-1 rounded-full bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 shadow border border-gray-200 dark:border-gray-600"
         >
           {{ list.itemsLeft }} left
         </span>
       </div>
 
       <!-- ✍️ Text Content -->
-      <h2 class="text-base font-bold text-slate-800 truncate">{{ list.title }}</h2>
-      <div class="mt-2 text-sm text-primary-800 font-medium">Ksh.{{ list.price }}</div>
+      <h2 class="text-base font-bold text-slate-800 dark:text-slate-100 truncate">{{ list.title }}</h2>
+      <div class="mt-2 text-sm text-primary-800 dark:text-primary-400 font-medium">Ksh.{{ list.price }}</div>
 
       <!-- 📊 Progress Bar -->
-<!-- 📊 Progress Bar -->
-<!-- 📊 Stock Progress Display -->
-<div class="flex items-center justify-between gap-2 mt-2">
-  <!-- Progress Bar Container -->
-  <div class="relative flex-1 h-2 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">
-    <!-- Inner Progress Bar -->
-    <div
-      class="h-full transition-all duration-300"
-      [ngClass]="{
-        'bg-green-500': list.progressWidth > 50,
-        'bg-yellow-500': list.progressWidth <= 50 && list.progressWidth > 20,
-        'bg-red-500': list.progressWidth <= 20
-      }"
-      [style.width.%]="list.progressWidth"
-    ></div>
+      <div class="flex items-center justify-between gap-2 mt-2">
+        <div class="relative flex-1 h-2 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">
+          <div
+            class="h-full transition-all duration-300 p-4"
+            [ngClass]="{
+              'bg-green-500': list.progressWidth > 50,
+              'bg-yellow-500': list.progressWidth <= 50 && list.progressWidth > 20,
+              'bg-red-500': list.progressWidth <= 20
+            }"
+            [style.width.%]="list.progressWidth"
+          ></div>
 
-    <!-- Floating Quantity Number (only if width > 15%) -->
-    <div
-      *ngIf="list.progressWidth > 15"
-      class="absolute inset-0 flex items-center pl-2 text-white text-xs font-semibold"
-    >
-      
-    </div>
-  </div>
+          <!-- Floating text -->
+          <div
+            *ngIf="list.progressWidth > 15"
+            class="absolute inset-0 flex items-center pl-2 text-white text-xs font-semibold"
+          >
+            {{ list.progressWidth }}%
+          </div>
+        </div>
 
-  <!-- Outside Label if progress is too small -->
-  <div
-    *ngIf="list.progressWidth <= 15"
-    class="text-xs text-gray-600 dark:text-gray-300 font-medium whitespace-nowrap ml-2"
-  >
-    
-  </div>
-</div>
-
-
+        <!-- Outside label for small width -->
+        <div
+          *ngIf="list.progressWidth <= 15"
+          class="text-xs text-gray-600 dark:text-gray-300 font-medium whitespace-nowrap ml-2"
+        >
+          {{ list.progressWidth }}%
+        </div>
+      </div>
 
       <!-- 🛒 Add to Cart Button -->
       <button

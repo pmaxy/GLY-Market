@@ -12,6 +12,7 @@ import {
   faRightFromBracket
 } from '@fortawesome/free-solid-svg-icons';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ThemeService } from '../../../../theme.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -32,15 +33,21 @@ export class SidebarComponent {
   isLoading: boolean = false;
   constructor(
     private router: Router,
+    public themeService: ThemeService
   ) {
 
   }
+
 
 
   onNavigate() {
     if (window.innerWidth <= 768) {
       this.closeSidebar.emit();
     }
+  }
+  
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 
 

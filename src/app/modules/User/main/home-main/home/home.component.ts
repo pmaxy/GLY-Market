@@ -126,10 +126,11 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(ItemInfoComponent, {
       enterAnimationDuration: '200ms',
       exitAnimationDuration: '200ms',
-      width: '90%',
-      height: '90%',
-      data, // pass the product data to the dialog
-      panelClass: 'custom-dialog'
+      width: '50%',
+      height: '70%',
+      data, 
+      panelClass: 'custom-dialog',
+  
     });
   }
   

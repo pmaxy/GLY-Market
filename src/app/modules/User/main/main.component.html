@@ -1,41 +1,40 @@
 <div class="loading-overlay" *ngIf="isLoading" [class.active]="isLoading">
   <app-spinner></app-spinner>
 </div>
-<div class="relative h-screen w-screen bg-gray-100 dark:bg-gray-900">
-    <!-- Navbar -->
-    <app-header
-      (toggleSidebar)="toggleSidebar()"
-      (toggleMiniSidebar)="toggleMiniSidebar()"
-      class="fixed top-0 left-0 right-0 z-50"
-    ></app-header>
-  
-    <!-- Sidebar Backdrop for mobile -->
-    <div
-      *ngIf="isSidebarOpen"
-      class="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50"
-      (click)="toggleSidebar()"
-    ></div>
-  
-    <!-- Layout Container -->
-    <div class="flex pt-16 h-full relative">
-      
-      <!-- Sidebar -->
-      <app-sidebar
+
+<div class="relative h-screen w-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+  <!-- Navbar -->
+  <app-header
+    (toggleSidebar)="toggleSidebar()"
+    (toggleMiniSidebar)="toggleMiniSidebar()"
+    class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-950 border-b dark:border-gray-800"
+  ></app-header>
+
+  <!-- Sidebar Backdrop for mobile -->
+  <div
+    *ngIf="isSidebarOpen"
+    class="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50"
+    (click)="toggleSidebar()"
+  ></div>
+
+  <!-- Layout Container -->
+  <div class="flex pt-16 h-full relative">
+    
+    <!-- Sidebar -->
+    <app-sidebar
       (closeSidebar)="onSidebarClose()" 
       [isOpen]="isSidebarOpen"
-      class="absolute md:relative bg-white dark:bg-gray-800 border-r z-50 h-full transition-transform duration-300 ease-in-out"
+      class="absolute md:relative bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-r border-gray-200 dark:border-gray-700 z-50 h-full transition-transform duration-300 overflow-y-auto scrollbar-hide ease-in-out"
       [ngClass]="{
         'translate-x-0 w-64': isSidebarOpen,
         '-translate-x-full w-0 overflow-hidden': !isSidebarOpen
       }"
-      
       (logout)="logout()"
     ></app-sidebar>
 
-
-      <!-- Main Content -->
-      <div
-      class="transition-all duration-300 ease-in-out px-4 py-6 h-full flex-1 w-full"
+    <!-- Main Content -->
+    <div
+      class="transition-all duration-300 ease-in-out px-4 py-6 h-full flex-1 w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
       [ngClass]="{
         'ml-0': !isSidebarOpen,
         '': isSidebarOpen
@@ -43,10 +42,10 @@
     >
       <router-outlet></router-outlet>
     </div>
-  
-      <!-- Mini Sidebar / Order Drawer -->
-      <div
-      class="fixed top-16 right-0 h-[calc(100vh-4rem)] w-full sm:w-[380px] bg-white dark:bg-gray-900 z-60 shadow-lg transition-transform duration-300 ease-in-out overflow-hidden"
+
+    <!-- Mini Sidebar / Order Drawer -->
+    <div
+      class="fixed top-16 right-0 h-[calc(100vh-4rem)] w-full sm:w-[380px] bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 z-60 shadow-lg dark:shadow-black/40 transition-transform duration-300 ease-in-out overflow-hidden"
       [ngClass]="{
         'translate-x-0': isMiniSidebarOpen,
         'translate-x-full': !isMiniSidebarOpen
@@ -58,6 +57,5 @@
         <app-mini-sidebar></app-mini-sidebar>
       </div>
     </div>
-    </div>
   </div>
-  
+</div>

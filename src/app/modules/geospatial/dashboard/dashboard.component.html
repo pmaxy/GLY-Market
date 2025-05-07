@@ -1,32 +1,40 @@
-<div class="loading-overlay" *ngIf="isLoading" [class.active]="isLoading">
-  <app-spinner></app-spinner>
-</div>
-<div class="flex flex-col md:flex-row h-screen bg-gray-50 relative">
+<!-- app.component.html or your dashboard layout component -->
+<div [ngClass]="themeClass" class="h-screen overflow-hidden">
+  <!-- Loading overlay -->
+  <div class="loading-overlay" *ngIf="isLoading" [class.active]="isLoading">
+    <app-spinner></app-spinner>
+  </div>
+
+  <!-- Whole screen layout wrapper -->
+  <div class="flex flex-col md:flex-row h-full bg-white dark:bg-gray-900 relative text-black dark:text-white">
+    
     <!-- Overlay (mobile) -->
     <div
       *ngIf="isSidebarVisible && !isDesktop"
       class="fixed inset-0 bg-black bg-opacity-40 z-30"
-      (click)="toggleSidebar()" 
+      (click)="toggleSidebar()"
     ></div>
-  
+
     <!-- Sidebar -->
     <div
-    class="fixed md:static top-0 left-0 h-full w-72 bg-white shadow-lg z-40 transition-transform duration-300 ease-in-out"
-    [ngClass]="{
+      class="fixed md:static top-0 left-0 h-full w-72 bg-white dark:bg-gray-800 shadow-lg z-40 transition-transform duration-300 overflow-y-auto scrollbar-hide ease-in-out"
+      [ngClass]="{
         'translate-x-0': isSidebarVisible || isDesktop,
         '-translate-x-full': !isSidebarVisible && !isDesktop
       }"
     >
-      <app-sidebar    (closeSidebar)="onSidebarClose()" (logout)="logout()"  ></app-sidebar>
+      <app-sidebar (closeSidebar)="onSidebarClose()" (logout)="logout()"></app-sidebar>
     </div>
-  
-    <!-- Main content -->
-    <div class="flex-1 flex flex-col overflow-hidden z-10 sm:ml-72 md:ml-2 lg:ml-2">
+
+    <!-- Main content wrapper -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden z-10 sm:ml-72 md:ml-2 lg:ml-2">
+      <!-- Topbar -->
       <app-topbar (toggleSidebar)="toggleSidebar()" (logout)="logout()"></app-topbar>
+
+      <!-- Main scrollable content area -->
       <main class="flex-1 overflow-y-auto p-4">
         <router-outlet></router-outlet>
       </main>
     </div>
   </div>
-  
-  
+</div>

@@ -1,11 +1,12 @@
-<!-- analytics.component.html -->
-<div class="space-y-6">
-  <h2 class="text-2xl font-bold">Geospatial Analytics</h2>
+<div class="space-y-6 text-gray-800 dark:text-gray-100">
+  <h2 class="text-2xl font-bold dark:text-white">Geospatial Analytics</h2>
 
   <!-- Climate Change Trends Chart -->
-  <div class="bg-white p-4 rounded-md shadow-md">
-    <h3 class="font-semibold">Climate Change Trends</h3>
-    <p class="text-sm mb-4">Visualize the impact of climate change over the years.</p>
+  <div class="bg-white dark:bg-gray-900 p-4 rounded-md shadow-md">
+    <h3 class="font-semibold dark:text-primary-400">Climate Change Trends</h3>
+    <p class="text-sm mb-4 text-gray-600 dark:text-gray-400">
+      Visualize the impact of climate change over the years.
+    </p>
     <div class="h-64">
       <apx-chart
         [series]="climateChangeOptions.series"
@@ -20,9 +21,11 @@
   </div>
 
   <!-- Urban Growth Forecast Chart -->
-  <div class="bg-white p-4 rounded-md shadow-md">
-    <h3 class="font-semibold">Urban Growth Forecast</h3>
-    <p class="text-sm mb-4">Analyze the future of urban growth based on current trends.</p>
+  <div class="bg-white dark:bg-gray-900 p-4 rounded-md shadow-md">
+    <h3 class="font-semibold dark:text-primary-400">Urban Growth Forecast</h3>
+    <p class="text-sm mb-4 text-gray-600 dark:text-gray-400">
+      Analyze the future of urban growth based on current trends.
+    </p>
     <div class="h-64">
       <apx-chart
         [series]="urbanGrowthOptions.series"

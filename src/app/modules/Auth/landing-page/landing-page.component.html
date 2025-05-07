@@ -188,89 +188,77 @@
 
   </section>
 
-
   <section class="relative row-start-2 row-end-3 h-full z-0">
     <!-- Background Animation Layer -->
     <div class="h-full w-full bg-primary-950 overflow-hidden">
       <div class="leaf">
         <section class="absolute top-0 left-0 w-full h-[600px] z-0 pointer-events-none">
           <div class="absolute w-full h-full">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 5%"
-              src="/assets/figma-photos/Realistic-Autumn-Fall-Leaves-PNG.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 10%"
-              src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 15%"
-              src="/assets/figma-photos/Green-Leaves-PNG-File.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 25%"
-              src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 30%"
-              src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 35%"
-              src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 45%"
-              src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 55%"
-              src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 60%"
-              src="/assets/figma-photos/Green-Leaves-PNG-File.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 65%"
-              src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png">
-            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 70%"
-              src="/assets/figma-photos/Green-Leaves-PNG-File.png">
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 5%" src="/assets/figma-photos/Realistic-Autumn-Fall-Leaves-PNG.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 10%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 15%" src="/assets/figma-photos/Green-Leaves-PNG-File.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 25%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 30%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 35%" src="/assets/figma-photos/Transparent-Autumn-Leaves-Falling-PNG.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 45%" src="/assets/figma-photos/Fall-Autumn-Leaves-Transparent-PNG.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 55%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 60%" src="/assets/figma-photos/Green-Leaves-PNG-File.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 65%" src="/assets/figma-photos/Autumn-Fall-Leaves-Clip-Art-PNG.png" />
+            <img loading="lazy" class="animate-fall absolute w-16 h-16" style="left: 70%" src="/assets/figma-photos/Green-Leaves-PNG-File.png" />
           </div>
-
         </section>
       </div>
-
+  
       <!-- Main Content Section -->
-      <div
-        class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 px-6 md:px-20 py-24 bg-gray-950/60 backdrop-blur-md">
-
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 px-4 sm:px-6 md:px-20 py-16 sm:py-20 md:py-24 bg-gray-950/60 backdrop-blur-md">
+  
         <!-- Intro + CTA -->
-        <div class="text-white flex flex-col justify-center px-4 lg:px-12">
-          <h1 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+        <div class="text-white flex flex-col justify-center px-2 sm:px-4 lg:px-12">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-snug">
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#76a73f] to-[#908aec] via-[#33bcb5]">
               {{ displayedText }}
             </span>
           </h1>
-          <p class="text-lg md:text-xl leading-relaxed mb-10 font-light">
+          <p class="text-base sm:text-lg md:text-xl leading-relaxed mb-4 font-light">
             <strong>AAI+</strong> powers smarter, greener decisions.
-            <br><br>
+          </p>
+          <p class="text-base sm:text-lg md:text-xl leading-relaxed mb-4 font-light">
             Explore our all-in-one hub for climate maps, drone surveys, and high-impact prints — built for planners,
             responders, and communities shaping a sustainable future.
-            <br><br>
+          </p>
+          <p class="text-base sm:text-lg md:text-xl leading-relaxed mb-6 font-light">
             Fast delivery. Bulk discounts. Always online.
           </p>
-
-
+  
           <form class="flex flex-wrap gap-4">
             <button (click)="login()" type="submit"
-              class="btn flex items-center gap-2 bg-gradient-to-r ring-1 text-white py-3 px-6 rounded-md shadow-lg hover:bg-right focus:ring-1 focus:outline-none">
+              class="btn text-sm sm:text-base flex items-center gap-2 bg-gradient-to-r ring-1 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-md shadow-lg hover:bg-right focus:ring-1 focus:outline-none">
               <span>Login</span>
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </button>
-            <button (click)="register()" type="submit" class="btn1 flex items-center gap-2">
+            <button (click)="register()" type="submit"
+              class="btn1 text-sm sm:text-base flex items-center gap-2 py-2 sm:py-3 px-4 sm:px-6">
               <span>Register</span>
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </button>
           </form>
         </div>
-
+  
         <!-- Animated User Items -->
-        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-6 justify-center items-center">
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-6 justify-center items-center">
           <ng-container *ngFor="let item of items; let i = index">
-            <span *ngIf="!item.src" class="item w-30 h-2\30 rounded-lg shadow-md" [ngStyle]="{ '--i': i + 1 }"
-              [style.backgroundColor]="item.color"></span>
+            <span *ngIf="!item.src" class="item w-24 h-24 sm:w-28 sm:h-28 rounded-lg shadow-md"
+              [ngStyle]="{ '--i': i + 1 }" [style.backgroundColor]="item.color"></span>
             <img *ngIf="item.src" loading="lazy" [src]="item.src"
-              class="item w-30 h-30 object-cover rounded-lg shadow-md" [ngStyle]="{ '--i': i + 1 }" alt="User Icon" />
+              class="item w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-lg shadow-md" [ngStyle]="{ '--i': i + 1 }"
+              alt="User Icon" />
           </ng-container>
         </div>
       </div>
     </div>
-    <!-- <div class="absolute bottom-0 left-0 w-full top-0 z-0 pointer-events-none">
-      <img src="/assets/figma-photos/water-wave6.svg" alt="Wave Edge" class="w-full h-full  object-cover" />
-    </div> -->
   </section>
+  
+  
 
   <section class="relative bg-gradient-to-r from-[#154844] to-[#0c2220] via-[#070f14] w-full z-10 overflow-hidden">
     <!-- Main Content -->
