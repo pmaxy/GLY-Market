@@ -1,13 +1,9 @@
-<div class="loading-overlay" *ngIf="isLoading" [class.active]="isLoading">
-  <app-spinner></app-spinner>
-</div>
-
-<div class="relative h-screen w-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+<div class="h-screen w-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
   <!-- Navbar -->
   <app-header
+    class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-950 border-b dark:border-gray-800"
     (toggleSidebar)="toggleSidebar()"
     (toggleMiniSidebar)="toggleMiniSidebar()"
-    class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-950 border-b dark:border-gray-800"
   ></app-header>
 
   <!-- Sidebar Backdrop for mobile -->
@@ -17,8 +13,8 @@
     (click)="toggleSidebar()"
   ></div>
 
-  <!-- Layout Container -->
-  <div class="flex pt-16 h-full relative">
+  <!-- Content Wrapper with padding to avoid overlap -->
+  <div class="pt-12 flex h-[100vh] relative overflow-hidden">
     
     <!-- Sidebar -->
     <app-sidebar
@@ -26,26 +22,22 @@
       [isOpen]="isSidebarOpen"
       class="absolute md:relative bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-r border-gray-200 dark:border-gray-700 z-50 h-full transition-transform duration-300 overflow-y-auto scrollbar-hide ease-in-out"
       [ngClass]="{
-        'translate-x-0 w-64': isSidebarOpen,
+        'translate-x-0 w-52': isSidebarOpen,
         '-translate-x-full w-0 overflow-hidden': !isSidebarOpen
       }"
       (logout)="logout()"
     ></app-sidebar>
 
-    <!-- Main Content -->
+    <!-- Main Content (scrollable) -->
     <div
-      class="transition-all duration-300 ease-in-out px-4 py-6 h-full flex-1 w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-      [ngClass]="{
-        'ml-0': !isSidebarOpen,
-        '': isSidebarOpen
-      }"
+      class="flex-1 w-full overflow-y-auto px-4  bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
     >
       <router-outlet></router-outlet>
     </div>
 
     <!-- Mini Sidebar / Order Drawer -->
     <div
-      class="fixed top-16 right-0 h-[calc(100vh-4rem)] w-full sm:w-[380px] bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 z-60 shadow-lg dark:shadow-black/40 transition-transform duration-300 ease-in-out overflow-hidden"
+      class="fixed top-16 right-0 h-[100vh] w-full sm:w-[380px] bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 z-60 shadow-lg dark:shadow-black/40 transition-transform duration-300 ease-in-out overflow-hidden"
       [ngClass]="{
         'translate-x-0': isMiniSidebarOpen,
         'translate-x-full': !isMiniSidebarOpen

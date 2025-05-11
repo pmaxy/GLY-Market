@@ -53,25 +53,6 @@ i: any;
 
 menuItems = [
   {
-    label: 'Community',
-    links: [
-      { text: 'Chats', href: '/chatroom' },
-      { text: 'Events', href: '/chatroom/events' },
-      { text: 'Opportunities', href: '/chatroom/opportunity' },
-      { text: 'Education', href: '/chatroom/education' },
-      { text: 'News', href: '/chatroom/newsfeed' }
-    ]
-  },
-
-  {
-    label: 'Drone Service',
-    links: [
-      { text: 'Booking', href: '/dronesuser/book' },
-      { text: 'Services', href: '/dronesuser/service' },
-
-    ]
-  },
-  {
     label: 'EarthPortal',
     links: [
       { text: 'Geodata', href: '/geoportal' },
@@ -80,11 +61,34 @@ menuItems = [
       { text: 'GeoReports', href: '/geoportal/georeports' }
     ]
   },
+
   {
-    label: 'Market Place',
+    label: 'Goods Market',
     links: [
-      { text: 'Buy Inputs', href: '/userAdmin' },
-      { text: 'Sell Produce', href: '/userAdmin' },
+      { text: 'Buy Products', href: '/userAdmin' },
+      { text: 'Sell Products', href: '/userAdmin' },
+    ]
+  },
+
+
+  {
+    label: 'Services Market',
+    links: [
+      { text: 'provide service', href: '/dronesuser/book' },
+      { text: 'Get Service', href: '/dronesuser/service' },
+
+    ]
+  },
+
+
+  {
+    label: 'Community',
+    links: [
+      { text: 'Chats', href: '/chatroom' },
+      { text: 'Events', href: '/chatroom/events' },
+      { text: 'Opportunities', href: '/chatroom/opportunity' },
+      { text: 'Education', href: '/chatroom/education' },
+      { text: 'News', href: '/chatroom/newsfeed' }
     ]
   }
 ];

@@ -1,94 +1,98 @@
-<div class="p-8 bg-gray-50 dark:bg-gray-900 min-h-screen font-inter text-gray-800 dark:text-gray-100">
-  <h1 class="text-3xl font-bold mb-8 flex items-center gap-2">
-    <fa-icon [icon]="['fas', 'cog']" class="text-primary-500"></fa-icon>
-    Account Settings
-  </h1>
+<div class="bg-gray-50 dark:bg-gray-900 min-h-screen font-inter text-gray-800 dark:text-gray-100 overflow-x-hidden px-4 sm:px-6 md:px-8">
+  <div class="max-w-screen-lg mx-auto w-full">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-6 flex items-center gap-2">
+      <fa-icon [icon]="['fas', 'cog']" class="text-primary-500"></fa-icon>
+      Account Settings
+    </h1>
 
-  <div class="grid gap-8">
-    <!-- Profile -->
-    <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6">
-      <h2 class="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">👤 Profile Information</h2>
-      <div class="flex items-center gap-4 mb-6">
-        <img [src]="user.avatar" alt="Avatar" class="w-20 h-20 rounded-full border-4 border-primary-200 dark:border-primary-400 shadow" />
-        <div>
-          <input type="file" (change)="onAvatarChange($event)" accept="image/*"
-            class="block text-sm text-gray-500 dark:text-gray-300 file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-primary-100 dark:file:bg-primary-300 file:text-primary-700 file:rounded-md hover:file:bg-primary-200" />
-          <p class="text-xs mt-1 text-gray-400 dark:text-gray-500">PNG, JPG up to 2MB</p>
+    <div class="grid gap-6 md:gap-8">
+      
+      <!-- Profile -->
+      <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-4 sm:p-6 w-full">
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">👤 Profile Information</h2>
+        <div class="flex flex-col sm:flex-row items-center gap-4 mb-6">
+          <img [src]="user.avatar" alt="Avatar" class="w-20 h-20 rounded-full border-4 border-primary-200 dark:border-primary-400 shadow" />
+          <div class="w-full">
+            <input type="file" (change)="onAvatarChange($event)" accept="image/*"
+              class="w-full text-sm text-gray-500 dark:text-gray-300 file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-primary-100 dark:file:bg-primary-300 file:text-primary-700 file:rounded-md hover:file:bg-primary-200" />
+            <p class="text-xs mt-1 text-gray-400 dark:text-gray-500">PNG, JPG up to 2MB</p>
+          </div>
         </div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="text" [(ngModel)]="user.name" placeholder="Full Name" class="input-field dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
-        <input type="email" [(ngModel)]="user.email" placeholder="Email" class="input-field dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
-        <input type="tel" [(ngModel)]="user.phone" placeholder="Phone Number" class="input-field dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
-        <input type="text" [(ngModel)]="user.location" placeholder="Location" class="input-field dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
-      </div>
-      <textarea [(ngModel)]="user.bio" placeholder="Your bio..." class="input-field mt-4 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"></textarea>
-    </section>
-
-    <!-- Social Media -->
-    <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6">
-      <h2 class="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">🌐 Social Media</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <input type="url" [(ngModel)]="user.social.linkedin" placeholder="LinkedIn URL" class="input-field dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
-        <input type="url" [(ngModel)]="user.social.twitter" placeholder="Twitter URL" class="input-field dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
-        <input type="url" [(ngModel)]="user.social.github" placeholder="GitHub URL" class="input-field dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
-      </div>
-    </section>
-
-    <!-- CV Upload -->
-    <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6">
-      <h2 class="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">📄 CV Upload</h2>
-      <input type="file" (change)="onCVUpload($event)" accept=".pdf,.doc,.docx"
-        class="input-field bg-white dark:bg-gray-700 file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-secondary-100 dark:file:bg-secondary-300 file:text-secondary-700 file:rounded-md hover:file:bg-secondary-200" />
-      <div *ngIf="user.cv" class="mt-2 flex justify-between items-center text-sm text-gray-600 dark:text-gray-300">
-        <span>Uploaded CV: {{ user.name }}</span>
-        <button (click)="user.cv = null" class="text-red-600 hover:underline">Remove</button>
-      </div>
-    </section>
-
-    <!-- Password Reset -->
-    <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6">
-      <h2 class="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">🔐 Reset Password</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="password" [(ngModel)]="newPassword" placeholder="New Password" class="input-field dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
-        <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirm Password" class="input-field dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
-      </div>
-      <button class="btn-primary mt-4" (click)="resetPassword()">Reset Password</button>
-    </section>
-
-    <!-- Preferences -->
-    <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6">
-      <h2 class="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">🎛️ Preferences</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label class="block mb-2 font-medium text-gray-600 dark:text-gray-300">Language</label>
-          <select [(ngModel)]="selectedLanguage" class="input-field dark:bg-gray-700 dark:text-white">
-            <option value="en">English</option>
-            <option value="sw">Swahili</option>
-          </select>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+          <input type="text" [(ngModel)]="user.name" placeholder="Full Name" class="input-field w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
+          <input type="email" [(ngModel)]="user.email" placeholder="Email" class="input-field w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
+          <input type="tel" [(ngModel)]="user.phone" placeholder="Phone Number" class="input-field w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
+          <input type="text" [(ngModel)]="user.location" placeholder="Location" class="input-field w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
         </div>
-        <div>
-          <label class="block mb-2 font-medium text-gray-600 dark:text-gray-300">Theme</label>
-          <select [(ngModel)]="theme" class="input-field dark:bg-gray-700 dark:text-white">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-        </div>
-      </div>
-      <div class="mt-4">
-        <label class="flex items-center space-x-3">
-          <input type="checkbox" [(ngModel)]="notifications.email" class="form-checkbox rounded text-primary-600" />
-          <span>Email Notifications</span>
-        </label>
-        <label class="flex items-center space-x-3 mt-2">
-          <input type="checkbox" [(ngModel)]="notifications.sms" class="form-checkbox rounded text-primary-600" />
-          <span>SMS Notifications</span>
-        </label>
-      </div>
-    </section>
+        <textarea [(ngModel)]="user.bio" placeholder="Your bio..." class="input-field mt-4 w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"></textarea>
+      </section>
 
-    <div class="text-right">
-      <button class="btn-primary" (click)="saveSettings()">💾 Save Settings</button>
+      <!-- Social Media -->
+      <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-4 sm:p-6 w-full">
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">🌐 Social Media</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input type="url" [(ngModel)]="user.social.linkedin" placeholder="LinkedIn URL" class="input-field w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
+          <input type="url" [(ngModel)]="user.social.twitter" placeholder="Twitter URL" class="input-field w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
+          <input type="url" [(ngModel)]="user.social.github" placeholder="GitHub URL" class="input-field w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
+        </div>
+      </section>
+
+      <!-- CV Upload -->
+      <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-4 sm:p-6 w-full">
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">📄 CV Upload</h2>
+        <input type="file" (change)="onCVUpload($event)" accept=".pdf,.doc,.docx"
+          class="input-field w-full bg-white dark:bg-gray-700 file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-secondary-100 dark:file:bg-secondary-300 file:text-secondary-700 file:rounded-md hover:file:bg-secondary-200" />
+        <div *ngIf="user.cv" class="mt-2 flex justify-between items-center text-sm text-gray-600 dark:text-gray-300">
+          <span>Uploaded CV: {{ user.name }}</span>
+          <button (click)="user.cv = null" class="text-red-600 hover:underline">Remove</button>
+        </div>
+      </section>
+
+      <!-- Password Reset -->
+      <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-4 sm:p-6 w-full">
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">🔐 Reset Password</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="password" [(ngModel)]="newPassword" placeholder="New Password" class="input-field w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
+          <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirm Password" class="input-field w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" />
+        </div>
+        <button class="btn-primary mt-4 w-full sm:w-auto" (click)="resetPassword()">Reset Password</button>
+      </section>
+
+      <!-- Preferences -->
+      <section class="bg-white dark:bg-gray-800 shadow rounded-2xl p-4 sm:p-6 w-full">
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">🎛️ Preferences</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block mb-2 font-medium text-gray-600 dark:text-gray-300">Language</label>
+            <select [(ngModel)]="selectedLanguage" class="input-field w-full dark:bg-gray-700 dark:text-white">
+              <option value="en">English</option>
+              <option value="sw">Swahili</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-2 font-medium text-gray-600 dark:text-gray-300">Theme</label>
+            <select [(ngModel)]="theme" class="input-field w-full dark:bg-gray-700 dark:text-white">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <label class="flex items-center space-x-3">
+            <input type="checkbox" [(ngModel)]="notifications.email" class="form-checkbox rounded text-primary-600" />
+            <span>Email Notifications</span>
+          </label>
+          <label class="flex items-center space-x-3">
+            <input type="checkbox" [(ngModel)]="notifications.sms" class="form-checkbox rounded text-primary-600" />
+            <span>SMS Notifications</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Save Button -->
+      <div class="text-right">
+        <button class="btn-primary w-full sm:w-auto" (click)="saveSettings()">💾 Save Settings</button>
+      </div>
     </div>
   </div>
 </div>

@@ -23,7 +23,7 @@ export class GeodataComponent implements OnInit {
   initMap(): void {
     this.map = L.map('map', {
       center: [this.lat, this.lng],
-      zoom: 12,
+      zoom: 8,
       zoomControl: false // Move zoom control manually
     });
 
